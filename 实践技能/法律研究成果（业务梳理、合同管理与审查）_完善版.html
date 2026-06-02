@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #f5f6fa; --card: #fff; --text: #2d3436; --sub: #636e72;
+    --blue: #0984e3; --green: #00b894; --red: #d63031; --orange: #e17055;
+    --border: #dfe6e9; --highlight: #ffeaa7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif; background: var(--bg); padding: 24px; color: var(--text); line-height: 1.7; }
+  .container { max-width: 780px; margin: 0 auto; }
+  .toc { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 20px; border-left: 4px solid var(--blue); }
+  .toc h2 { font-size: 16px; color: var(--blue); margin-bottom: 12px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 6px 0; font-size: 14px; color: var(--sub); }
+  .toc li a { color: var(--blue); text-decoration: none; }
+  .section { background: var(--card); border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+  .section h2 { font-size: 20px; color: var(--blue); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+  .section h3 { font-size: 16px; color: var(--text); margin: 20px 0 10px; }
+  .section p { font-size: 14px; color: var(--sub); margin: 10px 0; }
+  .highlight { background: var(--highlight); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .red-bold { color: var(--red); font-weight: 600; }
+  .blue-bold { color: var(--blue); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: #f0f3f8; padding: 10px 12px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
+  td { padding: 8px 12px; border: 1px solid var(--border); color: var(--sub); }
+  tr:nth-child(even) td { background: #fafbfc; }
+  
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
+  .mini-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .mini-card h4 { font-size: 14px; color: var(--blue); margin-bottom: 8px; }
+  .mini-card p { font-size: 13px; margin: 4px 0; }
+  
+  .risk-high { border-left: 4px solid var(--red); background: #fff5f5; }
+  .risk-mid { border-left: 4px solid var(--orange); background: #fffaf5; }
+  .risk-low { border-left: 4px solid var(--green); background: #f5fffa; }
+  
+  .law-quote { background: #fff8f0; border: 1px solid var(--orange); border-left: 4px solid var(--red); border-radius: 6px; padding: 14px 18px; margin: 14px 0; font-size: 13px; color: var(--text); }
+  .law-quote .article { font-weight: 700; color: var(--red); }
+  .law-quote .content { margin-top: 6px; color: var(--sub); }
+  
+  .clause-template { background: #f0f7ff; border: 1px solid #b8d4f0; border-radius: 8px; padding: 16px; margin: 12px 0; font-family: 'SF Mono','Courier New',monospace; font-size: 13px; white-space: pre-wrap; color: var(--text); }
+  
+  .checklist-item { display: flex; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-num { background: var(--blue); color: #fff; min-width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 12px; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+  .check-content { font-size: 13px; color: var(--sub); flex: 1; }
+  .check-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; white-space: nowrap; }
+  .tag-must { background: #ff7675; color: #fff; }
+  .tag-opt { background: #ffeaa7; color: var(--text); }
+
+  .badge-new { display: inline-block; background: var(--green); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
+  .badge-imp { display: inline-block; background: var(--red); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
+
+  /* === 顶部导航条 === */
+  .nav-bar { background: #1a1a2e; color: #fff; padding: 10px 24px; margin: 0 0 20px 0; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .nav-bar a { color: #3498db; text-decoration: none; font-weight: 500; }
+  .nav-bar a:hover { color: #5dade2; }
+  .nav-bar .sep { color: #555; }
+  .nav-bar .current { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="../index.html">&larr; 返回首页</a>
+  <span class="sep">/</span>
+  <span>实践技能</span>
+  <span class="sep">/</span>
+  <span class="current">法律研究成果：业务梳理、合同管理与审查</span>
+</nav>
+
+<div class="container">
+
+<div class="toc">
+  <h2>📑 目录索引</h2>
+  <ol>
+    <li><a href="#s1">业务梳理框架 <span class="badge-new">新增</span></a></li>
+    <li><a href="#s2">合同审查 Checklist（含风险分级）<span class="badge-imp">升级</span></a></li>
+    <li><a href="#s3">AI 辅助合同审查实务 <span class="badge-imp">升级</span></a></li>
+    <li><a href="#s4">条款起草模板库 <span class="badge-new">新增</span></a></li>
+    <li><a href="#s5">风险分级框架 <span class="badge-new">新增</span></a></li>
+    <li><a href="#s6">合同模版管理 SOP</a></li>
+    <li><a href="#s7">电子合同与数字签名专题 <span class="badge-new">新增</span></a></li>
+    <li><a href="#s8">常见陷阱与典型案例</a></li>
+  </ol>
+</div>
+
+<!-- ===== 第一章：业务梳理框架 [新增] ===== -->
+<div class="section" id="s1">
+  <h2>一、业务梳理框架 <span class="badge-new">新增</span></h2>
+  
+  <h3>1.1 什么是法律业务梳理？</h3>
+  <p>法律业务梳理（Legal Business Analysis）是指<span class="highlight">对企业的商业模式、业务流程、交易结构进行系统性分析</span>，识别其中涉及的法律关系、权利义务和风险节点。它是连接"商业需求"和"法律方案"的桥梁，也是合同管理和风险防控的起点。</p>
+  
+  <h3>1.2 业务梳理五步法</h3>
+  <table>
+    <tr><th style="width:60px;">步骤</th><th>内容</th><th>产出物</th></tr>
+    <tr><td><strong>Step 1</strong></td><td><strong>商业模式理解：</strong>公司靠什么赚钱？谁是客户？谁是供应商？核心交易是什么？</td><td>商业模式画布</td></tr>
+    <tr><td><strong>Step 2</strong></td><td><strong>业务流程图：</strong>画一条交易从头到尾的完整链路——谁发起？谁审批？资金怎么走？货物怎么走？合同在哪个环节签？</td><td>业务流程图</td></tr>
+    <tr><td><strong>Step 3</strong></td><td><strong>法律关系节点：</strong>在每个业务环节标注对应的法律关系（买卖、委托、许可、担保等），标注权利义务主体。</td><td>法律关系图</td></tr>
+    <tr><td><strong>Step 4</strong></td><td><strong>风险热力图：</strong>对每个法律关系节点进行风险评估（高/中/低），标注风险类型（合规风险、违约风险、知识产权风险等）。</td><td>风险热力图</td></tr>
+    <tr><td><strong>Step 5</strong></td><td><strong>合同方案映射：</strong>将每个风险节点映射到合同条款，形成"一业务环节一合同条款"的对应矩阵。</td><td>业务-合同映射表</td></tr>
+  </table>
+  
+  <h3>1.3 典型业务场景与合同类型对应</h3>
+  <table>
+    <tr><th>业务场景</th><th>核心法律关系</th><th>主要合同类型</th><th>高频风险</th></tr>
+    <tr><td>商品采购</td><td>买卖合同</td><td>采购合同、供货协议</td><td>质量争议、交付延期、付款纠纷</td></tr>
+    <tr><td>服务外包</td><td>服务合同/承揽合同</td><td>服务协议、外包合同</td><td>验收标准模糊、知识产权归属</td></tr>
+    <tr><td>技术开发</td><td>技术开发合同</td><td>技术开发合同、SOW</td><td>成果归属、里程碑验收、源代码交付</td></tr>
+    <tr><td>软件授权</td><td>许可合同</td><td>软件许可协议、SaaS协议</td><td>授权范围、转授权、终止后数据处理</td></tr>
+    <tr><td>股权投资</td><td>股权投资</td><td>SPA、SHA、股东协议</td><td>估值调整、回购条款、优先权</td></tr>
+    <tr><td>劳动用工</td><td>劳动合同</td><td>劳动合同、竞业限制协议</td><td>竞业范围、补偿金标准</td></tr>
+    <tr><td>市场推广</td><td>广告合同/委托合同</td><td>推广服务协议、KOL合作协议</td><td>效果保证、虚假宣传连带责任</td></tr>
+    <tr><td>数据合作</td><td>数据处理协议</td><td>DPA、数据共享协议</td><td>个人信息保护、跨境传输</td></tr>
+  </table>
+
+  <h3>1.4 业务梳理的实用工具</h3>
+  <div class="card-grid">
+    <div class="mini-card"><h4>📊 商业模式画布</h4><p>价值主张→客户关系→渠道→收入来源→核心资源→关键业务→重要伙伴→成本结构</p></div>
+    <div class="mini-card"><h4>🔄 泳道图</h4><p>用泳道分隔不同角色（业务/法务/财务/对方），展示端到端流程</p></div>
+    <div class="mini-card"><h4>🌡️ 风险热力图</h4><p>X轴=发生概率，Y轴=影响程度，气泡大小=合同金额</p></div>
+    <div class="mini-card"><h4>🔗 法律关系矩阵</h4><p>行=业务环节，列=合同条款，标记对应的风险等级和法条依据</p></div>
+  </div>
+</div>
+
+<!-- ===== 第二章：合同审查 Checklist [升级] ===== -->
+<div class="section" id="s2">
+  <h2>二、合同审查 Checklist（含风险分级） <span class="badge-imp">升级</span></h2>
+
+  <h3>2.1 合同审查的基本目标</h3>
+  <p>识别并控制法律风险，避免潜在纠纷；确保合同内容符合法律法规及公司政策；平衡双方权利义务，促成交易公平；明确商业条款，减少履行争议。</p>
+
+  <div class="law-quote">
+    <div class="article">📜 核心法律依据</div>
+    <div class="content">
+      <strong>《民法典》第143条</strong>（民事法律行为有效要件）：具备下列条件的民事法律行为有效：（一）行为人具有相应的民事行为能力；（二）意思表示真实；（三）不违反法律、行政法规的强制性规定，不违背公序良俗。<br><br>
+      <strong>《民法典》第497条</strong>（格式条款无效情形）：有下列情形之一的，该格式条款无效：（一）具有本法第一编第六章第三节和本法第506条规定的无效情形；（二）提供格式条款一方不合理地免除或者减轻其责任、加重对方责任、限制对方主要权利；（三）提供格式条款一方排除对方主要权利。
+    </div>
+  </div>
+
+  <h3>2.2 合同审查九大模块（含风险等级）</h3>
+
+  <table>
+    <tr><th style="width:40px;">#</th><th>审查项</th><th>具体检查内容</th><th>风险</th><th>法条依据</th></tr>
+
+    <tr class="risk-high"><td>1</td><td><strong>主体资格</strong></td>
+      <td>对方营业执照/身份证明是否有效？签约人是否有法定代表人身份或授权委托书？对方是否具备从事相关业务的资质（许可证）？对方是否存在失信、破产、重大诉讼等负面信息？</td>
+      <td><span class="tag-must">高</span></td>
+      <td>民法典143条、公司法</td></tr>
+
+    <tr class="risk-high"><td>2</td><td><strong>合同效力</strong></td>
+      <td>合同是否已签字盖章？日期是否填写？是否存在附生效条件？是否存在《民法典》第497条规定的无效格式条款？是否违反强制性规定？</td>
+      <td><span class="tag-must">高</span></td>
+      <td>民法典143、497、502条</td></tr>
+
+    <tr class="risk-high"><td>3</td><td><strong>权利义务</strong></td>
+      <td>客户的核心义务是什么？能否完成？对方的义务是否明确、可量化、可验证？有没有"兜底条款"可能让客户承担额外义务？</td>
+      <td><span class="tag-must">高</span></td>
+      <td>民法典509条、第577条</td></tr>
+
+    <tr class="risk-mid"><td>4</td><td><strong>标的与交付</strong></td>
+      <td>标的物/服务描述是否清晰、唯一？（型号、规格、数量）交付时间、地点、方式是否明确？验收标准、程序、异议期是否约定？</td>
+      <td><span class="tag-opt">中</span></td>
+      <td>民法典595-603条</td></tr>
+
+    <tr class="risk-mid"><td>5</td><td><strong>价款与支付</strong></td>
+      <td>金额是否大写？币种、含税/不含税是否注明？支付方式（银行转账/承兑汇票等）和期限是否明确？是否有预付款/保证金条款？退款条件是否合理？付款节点是否清晰？</td>
+      <td><span class="tag-opt">中</span></td>
+      <td>民法典626-628条</td></tr>
+
+    <tr class="risk-high"><td>6</td><td><strong>违约责任</strong></td>
+      <td>违约情形是否具体？是否涵盖根本违约？违约金金额或计算方式是否明确？是否过高或过低？是否约定了赔偿范围（直接损失、间接损失）？是否有免责条款（不可抗力、情势变更）？</td>
+      <td><span class="tag-must">高</span></td>
+      <td>民法典577-585条</td></tr>
+
+    <tr class="risk-high"><td>7</td><td><strong>争议解决</strong></td>
+      <td>选择诉讼还是仲裁？管辖法院是否明确？是否对我方有利？仲裁条款是否指定仲裁机构、仲裁地、仲裁规则？适用法律是否明确（涉外合同）？</td>
+      <td><span class="tag-must">高</span></td>
+      <td>民事诉讼法35条、仲裁法</td></tr>
+
+    <tr class="risk-mid"><td>8</td><td><strong>知识产权</strong></td>
+      <td>成果归属（背景/前景）是否清晰？授权范围？侵权担保与赔偿责任？开源软件使用合规？</td>
+      <td><span class="tag-opt">中</span></td>
+      <td>著作权法、民法典合同编技术合同章</td></tr>
+
+    <tr class="risk-mid"><td>9</td><td><strong>特殊条款</strong></td>
+      <td>保密条款（范围、期限）；送达地址；合同解除（条件、后果）；自动续期；合同语言版本冲突处理；不招揽/不竞争。</td>
+      <td><span class="tag-opt">中</span></td>
+      <td>民法典562-567、501条</td></tr>
+  </table>
+
+  <h3>2.3 合同审查前的准备</h3>
+  <p><strong>明确客户立场：</strong>买方还是卖方、甲方还是乙方、谈判地位强还是弱。</p>
+  <p><strong>明确合同目的：</strong>客户想通过这份合同达成什么交易目的？</p>
+  <p><strong>风险容忍度：</strong>客户是宁愿多要条款但可能谈崩，还是愿意让步先把单子拿下？</p>
+  <p><strong>红线条款 vs 谈判筹码：</strong>哪些条款绝对不能让步（如管辖、违约金上限）？哪些可以作为谈判交换条件？</p>
+</div>
+
+<!-- ===== 第三章：AI 辅助合同审查 [升级] ===== -->
+<div class="section" id="s3">
+  <h2>三、AI 辅助合同审查实务 <span class="badge-imp">升级</span></h2>
+
+  <h3>3.1 AI 合同审查能力矩阵</h3>
+  <table>
+    <tr><th>能力</th><th>适合度</th><th>说明</th></tr>
+    <tr><td>条款提取</td><td>⭐⭐⭐⭐⭐</td><td>快速提取金额、期限、管辖等结构化信息，准确率高</td></tr>
+    <tr><td>风险提示</td><td>⭐⭐⭐⭐</td><td>标注潜在风险条款，但需人工确认商业合理性</td></tr>
+    <tr><td>对比分析</td><td>⭐⭐⭐⭐</td><td>将合同与标准模版对比，标注差异</td></tr>
+    <tr><td>翻译支持</td><td>⭐⭐⭐⭐</td><td>英语合同初译，辅助理解</td></tr>
+    <tr><td>条款起草</td><td>⭐⭐⭐</td><td>可生成初稿，需根据具体交易调整</td></tr>
+    <tr><td>商业判断</td><td>⭐</td><td>无法判断商业合理性、行业惯例、谈判背景</td></tr>
+    <tr><td>合规时效</td><td>⭐⭐</td><td>对最新法规变化不够敏感，需人工复核</td></tr>
+  </table>
+
+  <h3>3.2 AI 审合同提示词模板</h3>
+  <div class="clause-template">【条款提取】请从以下合同中提取：合同主体、合同金额、付款方式、交付时间、违约责任、管辖法院、生效条件，以表格形式呈现。</div>
+  <div class="clause-template">【风险审查】你是公司法务，请审查以下合同，从甲方立场逐条识别风险条款，标注风险等级（高/中/低）和修改建议。</div>
+  <div class="clause-template">【对比分析】以下两份合同（标准模版 vs 对方版本），请逐条对比差异，标注对方版本的修改点及风险。</div>
+  <div class="clause-template">【条款起草】请为我起草一份保密条款，保护范围包括技术信息、商业计划、客户数据，保密期5年，违约责任包括损害赔偿和禁令救济。</div>
+
+  <h3>3.3 AI 审查的局限性</h3>
+  <p>⚠️ <span class="red-bold">不可替代律师判断：</span>AI 无法判断商业合理性、行业惯例、谈判背景；可能遗漏隐含风险；对最新法规变化不敏感。AI 是"加速器"不是"替代品"。</p>
+</div>
+
+<!-- ===== 第四章：条款起草模板库 [新增] ===== -->
+<div class="section" id="s4">
+  <h2>四、条款起草模板库 <span class="badge-new">新增</span></h2>
+
+  <h3>4.1 违约责任条款</h3>
+  <div class="clause-template"><strong>【标准版】</strong>
+任何一方违反本合同项下的任何约定，均构成违约。违约方应向守约方赔偿因此造成的全部实际损失（不包括间接损失）。违约方在收到守约方书面通知后30日内仍未纠正的，守约方有权单方解除本合同。
+
+<strong>【加强版（甲方立场）】</strong>
+乙方逾期交付的，每逾期一日，应按合同总价款的千分之五向甲方支付违约金；逾期超过15日的，甲方有权单方解除合同，乙方除返还已收款项外，还应按合同总价款的30%向甲方支付违约金。上述违约金不足以弥补甲方损失的，甲方仍有权就超出部分向乙方追偿。</div>
+
+  <h3>4.2 知识产权归属条款</h3>
+  <div class="clause-template"><strong>【技术开发场景】</strong>
+本合同项下产生的所有工作成果（包括但不限于源代码、文档、设计方案、技术报告等）的知识产权自产生之日起即归属于甲方。乙方应在成果交付后30日内向甲方移交全部相关文档和源代码。甲方有权在全世界范围内以任何方式使用、修改、复制、许可或转让上述成果，无需另行征得乙方同意或支付额外费用。</div>
+
+  <h3>4.3 争议解决条款</h3>
+  <div class="clause-template"><strong>【诉讼版】</strong>
+因本合同引起的或与本合同有关的任何争议，双方应首先友好协商解决。协商不成的，任何一方均有权向甲方住所地有管辖权的人民法院提起诉讼。
+
+<strong>【仲裁版】</strong>
+因本合同引起的或与本合同有关的任何争议，均应提交中国国际经济贸易仲裁委员会（CIETAC），按照申请仲裁时该会现行有效的仲裁规则进行仲裁。仲裁地为北京。仲裁裁决是终局的，对双方均有约束力。</div>
+
+  <h3>4.4 不可抗力条款</h3>
+  <div class="clause-template">因不可抗力导致一方不能履行或不能完全履行本合同的，该方应在不可抗力事件发生后三（3）个工作日内书面通知对方，并在十五（15）日内提供有权机关出具的事件证明。双方应根据事件的影响程度协商决定部分或全部免除责任、延迟履行或解除合同。一方迟延履行后发生不可抗力的，不能免除其违约责任。</div>
+</div>
+
+<!-- ===== 第五章：风险分级框架 [新增] ===== -->
+<div class="section" id="s5">
+  <h2>五、风险分级框架 <span class="badge-new">新增</span></h2>
+
+  <table>
+    <tr><th style="width:60px;">等级</th><th style="width:100px;">标签</th><th>定义</th><th>处理策略</th><th>典型条款</th></tr>
+    <tr class="risk-high">
+      <td><strong>P0</strong></td><td><span class="tag-must">红线条款</span></td>
+      <td>可能导致公司承担超出交易对价的重大法律责任、引发行政处罚或严重商誉损失</td>
+      <td>必须修改或坚持，否则建议放弃交易</td>
+      <td>无上限赔偿责任、无限期保密、单方可变更价格</td>
+    </tr>
+    <tr class="risk-high">
+      <td><strong>P1</strong></td><td><span class="tag-must">高风险</span></td>
+      <td>可能导致较大经济损失或法律纠纷，但可通过条款调整控制</td>
+      <td>优先谈判修改，设底线立场</td>
+      <td>赔偿间接损失、不公平管辖、过高违约金</td>
+    </tr>
+    <tr class="risk-mid">
+      <td><strong>P2</strong></td><td><span class="tag-opt">中风险</span></td>
+      <td>存在一定不确定性或不利因素，但不影响交易全局</td>
+      <td>尽力优化，可适当让步</td>
+      <td>验收标准模糊、知识产权授权范围宽泛</td>
+    </tr>
+    <tr class="risk-low">
+      <td><strong>P3</strong></td><td>低风险</td>
+      <td>条款存在轻微不利或表述不够完善，通常不产生实质影响</td>
+      <td>酌情处理，不影响签约决策</td>
+      <td>通知期限、文件格式等技术性细节</td>
+    </tr>
+  </table>
+
+  <h3>5.1 风险报告模板</h3>
+  <div class="clause-template">【合同风险审查报告】
+合同名称：________  审查日期：________  审查人：________
+
+一、总体风险评估：□ 可签约  □ 修改后可签约  □ 建议放弃
+
+二、红线条款（P0）：
+1. 【条款位置：第X条】风险描述：________  修改建议：________
+
+三、高风险条款（P1）：
+1. ……
+
+四、中风险条款（P2）：
+1. ……
+
+五、谈判策略建议：
+底线条款（不可让步）：________
+核心谈判目标：________
+交换筹码（可放弃）：________</div>
+</div>
+
+<!-- ===== 第六章：合同模版管理SOP ===== -->
+<div class="section" id="s6">
+  <h2>六、合同模版管理 SOP</h2>
+
+  <h3>6.1 合同模版管理目标</h3>
+  <p><strong>统一性：</strong>同一类型合同使用统一模版，减少差异化风险。<strong>合规性：</strong>模版内容符合最新法律法规及公司政策。<strong>效率性：</strong>业务人员可快速获取并使用模版。<strong>可追溯：</strong>版本变更记录清晰。</p>
+
+  <h3>6.2 模版库设计</h3>
+  <table>
+    <tr><th>模块</th><th>内容</th><th>推荐工具</th></tr>
+    <tr><td>分类索引</td><td>按合同类型（保密、采购、销售、合作、授权等）或部门分类</td><td>飞书多维表格、Excel</td></tr>
+    <tr><td>模版文件</td><td>标准Word/PDF模版，含占位符</td><td>云端共享文件夹、SharePoint</td></tr>
+    <tr><td>条款库</td><td>拆解标准化条款，可独立引用</td><td>Confluence、Notion</td></tr>
+    <tr><td>版本记录</td><td>版本号、修订人、修订日期、变更摘要</td><td>表格或文档属性</td></tr>
+    <tr><td>权限管理</td><td>谁可查看、编辑、审批</td><td>文件夹权限 + 审批流程</td></tr>
+    <tr><td>使用说明</td><td>每个模版的填写指南、注意事项、关联法条</td><td>附件文档</td></tr>
+  </table>
+
+  <h3>6.3 模版生命周期</h3>
+  <p>需求提出（业务部门）→ 起草（法务部）→ 审核（法务负责人）→ 批准（合规总监）→ 发布（法务部通知全员）→ 使用（业务部门）→ 反馈 → 定期评审（至少每年一次或法规重大更新时）→ 修订或废止</p>
+</div>
+
+<!-- ===== 第七章：电子合同专题 [新增] ===== -->
+<div class="section" id="s7">
+  <h2>七、电子合同与数字签名专题 <span class="badge-new">新增</span></h2>
+
+  <div class="law-quote">
+    <div class="article">📜 法律依据</div>
+    <div class="content">
+      <strong>《电子签名法》第14条：</strong>可靠的电子签名与手写签名或者盖章具有同等的法律效力。<br><br>
+      <strong>《电子签名法》第13条：</strong>电子签名同时符合下列条件的，视为可靠的电子签名：（一）电子签名制作数据用于电子签名时，属于电子签名人专有；（二）签署时电子签名制作数据仅由电子签名人控制；（三）签署后对电子签名的任何改动能够被发现；（四）签署后对数据电文内容和形式的任何改动能够被发现。
+    </div>
+  </div>
+
+  <h3>7.1 电子合同审查特殊要点</h3>
+  <table>
+    <tr><th>检查项</th><th>要点</th></tr>
+    <tr><td>签署方式</td><td>是否明确约定电子签署方式有效？是否指定了具体平台（如法大大、上上签）？</td></tr>
+    <tr><td>身份认证</td><td>平台采用什么级别的实名认证？是否达到可靠的电子签名标准？</td></tr>
+    <tr><td>存证机制</td><td>合同是否在第三方平台或区块链上存证？发生争议时能否有效举证？</td></tr>
+    <tr><td>送达条款</td><td>电子邮箱是否明确？电子送达是否约定？</td></tr>
+    <tr><td>不适用情形</td><td>涉及婚姻、收养、继承等人身关系，以及涉及停止供水、供热、供气等公用事业服务的文书，不可使用电子签名（电子签名法第3条）</td></tr>
+  </table>
+</div>
+
+<!-- ===== 第八章：常见陷阱 ===== -->
+<div class="section" id="s8">
+  <h2>八、常见陷阱与典型案例</h2>
+
+  <h3>8.1 十大高频合同陷阱</h3>
+
+  <table>
+    <tr><th>#</th><th>陷阱</th><th>典型表现</th><th>对策</th></tr>
+    <tr><td>1</td><td><strong>管辖陷阱</strong></td><td>"可向有管辖权的法院起诉"/约定对方所在地管辖</td><td>明确约定己方所在地法院管辖</td></tr>
+    <tr><td>2</td><td><strong>兜底责任</strong></td><td>"乙方应承担其他合理费用"/"包括但不限于"</td><td>限定列举，删除开放性表述</td></tr>
+    <tr><td>3</td><td><strong>无限赔偿</strong></td><td>无赔偿上限或责任限制</td><td>约定赔偿上限不超过合同金额</td></tr>
+    <tr><td>4</td><td><strong>自动续期</strong></td><td>"合同期满自动续期一年"</td><td>改为"经双方书面确认方可续期"</td></tr>
+    <tr><td>5</td><td><strong>模糊验收</strong></td><td>"符合甲方要求"/"达到行业标准"</td><td>明确客观、可量化的验收标准</td></tr>
+    <tr><td>6</td><td><strong>单方变更权</strong></td><td>"甲方有权随时调整价格/服务内容"</td><td>变更须经双方书面协商一致</td></tr>
+    <tr><td>7</td><td><strong>付款条件模糊</strong></td><td>"验收合格后付款"但不约定验收期限</td><td>加验收期限和逾期付款违约金</td></tr>
+    <tr><td>8</td><td><strong>保密永续</strong></td><td>"保密义务永久有效"</td><td>约定保密期限（如合同终止后3-5年）</td></tr>
+    <tr><td>9</td><td><strong>竞业宽泛</strong></td><td>"不得从事任何竞争性业务"</td><td>限定地域、行业范围和时间</td></tr>
+    <tr><td>10</td><td><strong>生效条件不明确</strong></td><td>"自双方签字盖章后生效"但未约定日期、份数</td><td>明确日期、份数、生效条件</td></tr>
+  </table>
+
+  <h3>8.2 附加提示</h3>
+  <p>💡 <span class="blue-bold">Skill投喂建议：</span>可将合同审查 Checklist 和风险分级框架以 Skills 形式投喂给 AI，配合标准模版，实现"AI初筛 → 人工复核"的审查流程，效率提升约50%。</p>
+</div>
+
+</div>
+</body>
+</html>

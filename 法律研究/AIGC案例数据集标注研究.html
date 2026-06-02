@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIGC案例数据集标注研究</title>
+<style>
+  :root { --bg: #f8f9fa; --card: #fff; --text: #2d3436; --muted: #636e72; --border: #e0e0e0; --accent: #1a5276; --radius: 10px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 24px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg,#1a1a2e,#16213e); color: #fff; padding: 36px 28px; border-radius: var(--radius) var(--radius) 0 0; }
+  .header h1 { font-size: 24px; letter-spacing: 2px; }
+  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 6px; }
+  .body { background: var(--card); padding: 32px 28px; border-radius: 0 0 var(--radius) var(--radius); border: 1px solid var(--border); border-top: none; }
+  h2 { font-size: 19px; color: var(--accent); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #3498db; }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 18px 0 8px; }
+  p, li { font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }
+  .highlight { background: linear-gradient(135deg,#e8f4fd,#d4e6f1); border-left: 4px solid #2980b9; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+  th { background: #1a1a2e; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+  .tag-green { background: #eafaf1; color: #27ae60; }
+  .tag-red { background: #fdedec; color: #c0392b; }
+  .tag-yellow { background: #fef9e7; color: #b9770e; }
+  .conclusion { background: #eafaf1; border-left: 4px solid #27ae60; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; }
+  .footer { text-align: center; padding: 20px; color: #b2bec3; font-size: 12px; margin-top: 20px; }
+  .back-link { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+  /* === 顶部导航条 === */
+  .nav-bar { background: #1a1a2e; color: #fff; padding: 10px 24px; margin: 0 0 20px 0; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .nav-bar a { color: #3498db; text-decoration: none; font-weight: 500; }
+  .nav-bar a:hover { color: #5dade2; }
+  .nav-bar .sep { color: #555; }
+  .nav-bar .current { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="../index.html">&larr; 返回首页</a>
+  <span class="sep">/</span>
+  <span>法律研究</span>
+  <span class="sep">/</span>
+  <span class="current">AIGC 案例数据集标注研究</span>
+</nav>
+
+<div class="container">
+<div class="header">
+  <h1>🤖 AIGC案例数据集标注研究</h1>
+  <p class="meta">Datasheets for Datasets 论文学习产出 · 法律文本分类标注实践</p>
+</div>
+<div class="body">
+
+<h2>一、《Datasheets for Datasets》论文学习心得</h2>
+<h3>论文背景与核心思想</h3>
+<p>《Datasheets for Datasets》是 Timnit Gebru 等人于 2018 年发表的具有开创性意义的论文。核心观察：机器学习社区缺乏记录数据集的标准化流程，而这种缺失可能导致模型在医疗、金融、司法等高风险领域应用时产生严重后果。</p>
+<p>论文主张：只有通过<strong>系统化的文档记录</strong>，才能实现真正负责任的人工智能开发。</p>
+
+<h3>七维文档框架</h3>
+<p>论文提出数据集的完整文档应覆盖<strong>数据的全生命周期</strong>：动机 → 构成 → 收集过程 → 预处理 → 用途与局限 → 分发 → 维护。</p>
+<p>该框架启发我为 AIGC 数据集撰写更规范的文档——数据集说明书、标注指南等。其中"数据集用途""目标用户"等部分的撰写过程，反而让数据集定位更加清晰。</p>
+
+<h2>二、标注指南：法律文本分类任务</h2>
+<p><strong>任务：</strong>判断判决书中关于 AI 生成内容是否构成作品的结论。</p>
+
+<table>
+  <tr><th>标签</th><th>代码</th><th>定义</th><th>正例</th><th>反例/边界案例</th></tr>
+  <tr>
+    <td><span class="tag tag-green">构成作品</span></td>
+    <td>WORK</td>
+    <td>法院明确认定 AI 生成内容满足作品独创性要求，受著作权保护</td>
+    <td>"法院认为，涉案AI生成图片体现了作者的个性化选择和编排，具有独创性"</td>
+    <td>仅提及可能构成但未最终认定</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-red">不构成作品</span></td>
+    <td>NON_WORK</td>
+    <td>法院明确否定 AI 生成内容的可版权性</td>
+    <td>"AI生成报告仅是数据罗列，缺乏人的创造性，不构成作品"</td>
+    <td>因其他原因驳回，但未评价独创性</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-yellow">部分构成/争议</span></td>
+    <td>PARTIAL</td>
+    <td>法院认定部分内容构成作品，或存在分歧意见</td>
+    <td>"AI生成文本中的个别句子具有独创性，但整体不构成作品"</td>
+    <td>发回重审或未决</td>
+  </tr>
+</table>
+
+<h3>标注流程</h3>
+<p>1. 阅读判决书全文，定位关于"独创性"的裁判说理部分<br>
+2. 根据标签定义，选择最匹配的标签<br>
+3. 在备注中摘录法院的关键裁判语句（50字以内）<br>
+4. <strong>双人标注</strong>后，不一致的交由享有终决权的人员决定</p>
+
+<h2>三、标注一致性（Kappa）计算</h2>
+<p>3名标注员（A、B、C）对10个案例进行标注（WORK / NON_WORK / PARTIAL）：</p>
+<table>
+  <tr><th>案例</th><th>标注员A</th><th>标注员B</th><th>标注员C</th><th>多数一致？</th></tr>
+  <tr><td>1</td><td>WORK</td><td>WORK</td><td>WORK</td><td>✅</td></tr>
+  <tr><td>2</td><td>WORK</td><td>WORK</td><td>PARTIAL</td><td>✅</td></tr>
+  <tr><td>3</td><td>NON_WORK</td><td>NON_WORK</td><td>NON_WORK</td><td>✅</td></tr>
+  <tr><td>4</td><td>PARTIAL</td><td>WORK</td><td>WORK</td><td>❌</td></tr>
+  <tr><td>5</td><td>NON_WORK</td><td>NON_WORK</td><td>PARTIAL</td><td>✅</td></tr>
+  <tr><td>6</td><td>WORK</td><td>PARTIAL</td><td>PARTIAL</td><td>❌</td></tr>
+  <tr><td>7</td><td>NON_WORK</td><td>NON_WORK</td><td>NON_WORK</td><td>✅</td></tr>
+  <tr><td>8</td><td>PARTIAL</td><td>PARTIAL</td><td>WORK</td><td>❌</td></tr>
+  <tr><td>9</td><td>WORK</td><td>WORK</td><td>WORK</td><td>✅</td></tr>
+  <tr><td>10</td><td>NON_WORK</td><td>PARTIAL</td><td>PARTIAL</td><td>❌</td></tr>
+</table>
+<p><strong>完全一致率：40%</strong> · <strong>多数一致率：70%</strong> · Fleiss' Kappa κ = 0.65（中等一致性，需优化规则）</p>
+
+<h2>四、豆包 vs 人类标注对比分析</h2>
+<p><strong>目的：</strong>评估大语言模型在法律文本分类任务上的表现。</p>
+<table>
+  <tr><th>案例</th><th>金标准</th><th>豆包输出</th><th>一致？</th></tr>
+  <tr><td>1</td><td>构成作品</td><td>构成作品</td><td>✅</td></tr>
+  <tr><td>2</td><td>构成作品</td><td>部分构成</td><td>❌</td></tr>
+  <tr><td>3</td><td>不构成作品</td><td>不构成作品</td><td>✅</td></tr>
+  <tr><td>4</td><td>部分构成</td><td>构成作品</td><td>❌</td></tr>
+  <tr><td>5</td><td>不构成作品</td><td>不构成作品</td><td>✅</td></tr>
+  <tr><td>6</td><td>构成作品</td><td>构成作品</td><td>✅</td></tr>
+  <tr><td>7</td><td>部分构成</td><td>部分构成</td><td>✅</td></tr>
+  <tr><td>8</td><td>不构成作品</td><td>不构成作品</td><td>✅</td></tr>
+  <tr><td>9</td><td>部分构成</td><td>构成作品</td><td>❌</td></tr>
+  <tr><td>10</td><td>构成作品</td><td>构成作品</td><td>✅</td></tr>
+</table>
+<p><strong>准确率：7/10 = 70%</strong></p>
+
+<h3>错误分析</h3>
+<p>• 案例2：豆包将"AI生成文字+人工少量修改"误判为"部分构成"，但金标准认为修改贡献微小，仍为"构成作品"<br>
+• 案例4：判决书表述模糊，人类通过法官自由裁量判定"部分构成"，豆包偏向明确结论<br>
+• 案例9：豆包忽略了判决书中"尽管AI参与，但用户输入具有独创性"的逻辑</p>
+
+<div class="conclusion">
+  <h3>结论与启发</h3>
+  <p>1. 豆包在法律文本精细分类上准确率尚可（70%），但<strong>无法替代人类对法律概念边界的把握</strong></p>
+  <p>2. 可作为<strong>预标注工具</strong>：让豆包先标，人工复核修正</p>
+  <p>3. 对于模糊、需要法理推理的案例，豆包明显弱于人类</p>
+  <p>4. 标注一致性（κ=0.65）提示<strong>标注规则需持续迭代优化</strong></p>
+</div>
+
+</div>
+<div class="footer">
+  <a class="back-link" href="../index.html">← 返回作品集</a>
+  <p style="margin-top:8px;">⚖️ 法律研究作品 · 仅供学习交流 · 不构成法律意见</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同审查 Checklist</title>
+<style>
+  :root { --bg: #f8f9fa; --card: #fff; --text: #2d3436; --muted: #636e72; --border: #e0e0e0; --accent: #1a5276; --radius: 10px; }
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 24px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg,#1a1a2e,#16213e); color: #fff; padding: 36px 28px; border-radius: var(--radius) var(--radius) 0 0; }
+  .header h1 { font-size: 24px; letter-spacing: 2px; }
+  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 6px; }
+  .body { background: var(--card); padding: 32px 28px; border-radius: 0 0 var(--radius) var(--radius); border: 1px solid var(--border); border-top: none; }
+  h2 { font-size: 19px; color: var(--accent); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #3498db; }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 16px 0 8px; }
+  p, li { font-size: 14.5px; color: var(--muted); margin-bottom: 8px; }
+  li { margin-left: 20px; }
+  .checklist-group { border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin: 14px 0; }
+  .checklist-group h3 { margin-top: 0; color: var(--accent); }
+  .check-item { padding: 6px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 8px; }
+  .check-item:last-child { border-bottom: none; }
+  .check-mark { color: #27ae60; font-weight: bold; flex-shrink: 0; margin-top: 1px; }
+  .check-text { font-size: 13.5px; color: var(--text); }
+  .check-text strong { color: #c0392b; }
+  .tip-box { background: #eafaf1; border-left: 4px solid #27ae60; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13.5px; }
+  .warn-box { background: #fef9e7; border-left: 4px solid #f39c12; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13.5px; }
+  .footer { text-align: center; padding: 20px; color: #b2bec3; font-size: 12px; margin-top: 20px; }
+  .back-link { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+  /* === 顶部导航条 === */
+  .nav-bar { background: #1a1a2e; color: #fff; padding: 10px 24px; margin: 0 0 20px 0; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .nav-bar a { color: #3498db; text-decoration: none; font-weight: 500; }
+  .nav-bar a:hover { color: #5dade2; }
+  .nav-bar .sep { color: #555; }
+  .nav-bar .current { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="../index.html">&larr; 返回首页</a>
+  <span class="sep">/</span>
+  <span>实践技能</span>
+  <span class="sep">/</span>
+  <span class="current">合同审查 Checklist</span>
+</nav>
+
+<div class="container">
+<div class="header">
+  <h1>📋 合同审查 Checklist</h1>
+  <p class="meta">实操工具 · 适用于企业法务/律师日常审查</p>
+</div>
+<div class="body">
+
+<h2>一、合同主体审核</h2>
+
+<div class="checklist-group">
+<h3>① 签约主体是否适格？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">对方是法人还是自然人？法人需合法注册且<strong>存续</strong>，自然人需具备民事行为能力</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">对方是否使用<strong>真实、合法的名称</strong>？需与营业执照、公章名称严格一致</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">对方内设机构作为签约主体的，是否有<strong>授权委托书</strong>？是否有委托人盖章？</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>② 签署人是否有权代表？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">法定代表人签署的，是否核对了营业执照上的法定代表人姓名？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">授权代表签署的，授权委托书是否明确载明<strong>授权范围和期限</strong>？是否加盖公章并由法定代表人签字？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">分支机构对外担保，是否有<strong>公司股东会/董事会决议</strong>？</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>③ 对方的资信和履约能力如何？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否通过"<strong>国家企业信用信息公示系统</strong>"核实其成立时间、注册资本、实缴情况、是否存在清算或行政处罚？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否有重大诉讼、被执行或失信记录？（可通过<strong>中国执行信息公开网、天眼查</strong>查询）</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">对需要特殊经营资质的合同（如建筑工程、医疗、金融），是否核实了<strong>相关许可证的有效性</strong>？</div></div>
+</div>
+
+<h2>二、合同效力与程序审核</h2>
+
+<div class="checklist-group">
+<h3>① 合同是否具备法定有效要件？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">双方意思表示是否<strong>真实</strong>？是否存在欺诈、胁迫或重大误解？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">合同内容是否违反<strong>法律、行政法规的强制性规定</strong>？是否违背公序良俗？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否存在《民法典》规定的<strong>无效情形</strong>？</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>② 合同订立程序是否完备？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">合同在送审前是否已按规定履行<strong>内部审批程序</strong>？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否提交了必要的背景材料？如<strong>招标文件、会议纪要、授权文件</strong>等</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否存在<strong>倒签合同</strong>的情形？如合同在签署前已经开始履行</div></div>
+</div>
+
+<h2>三、合同条款完整性审核</h2>
+
+<div class="checklist-group">
+<h3>① 必备条款是否齐全？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">当事人信息（名称/姓名、地址、联系方式、统一社会信用代码）是否完整？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">标的物/服务内容描述是否<strong>清晰、无歧义</strong>？包括名称、规格、数量、质量标准</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">价款/报酬金额、币种、支付方式和支付期限是否<strong>明确</strong>？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">履行期限、地点和方式是否<strong>具体可操作</strong>？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">违约责任是否明确？（<strong>违约金计算方式、逾期利率、赔偿范围</strong>）</div></div>
+</div>
+
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">合同中提及的附件是否齐全？附件是否经双方<strong>签署确认</strong>？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">合同内容是否与前期招投标文件、会议决议、谈判纪要<strong>一致</strong>？是否存在矛盾？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">关键字段（开户行、账号、税号、签订日期）是否<strong>填写完整</strong>？</div></div>
+
+<h2>四、权利义务审核</h2>
+
+<div class="checklist-group">
+<h3>① 权利义务是否明确且对等？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">双方的权利义务是否清晰界定？是否存在<strong>模糊表述</strong>（如"合理期限""适当金额"）？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否存在明显<strong>不对等、不公平的条款</strong>？（如单方加重对方责任、免除自身责任）</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否约定了<strong>合同解除的条件和程序</strong>？</div></div>
+</div>
+
+<div class="warn-box">⚠️ <strong>注意：</strong>"其他条款"或"补充协议"的空白内容是否已填写？是否存在不合理的"背靠背"条款？（如下游付款后才能向上游付款）</div>
+
+<h2>五、违约责任审核</h2>
+
+<div class="checklist-group">
+<h3>① 违约条款是否可执行？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">违约责任的<strong>触发条件</strong>是否明确具体？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">违约金金额是否<strong>过高</strong>？（需符合《民法典》规定，一般不超过实际损失的30%）</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否使用了"<strong>滞纳金</strong>"等不规范的表述？（应改为"违约金"）</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>② 是否有充分的救济保障？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否约定了<strong>催告宽限期</strong>和补救措施？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">守约方在对方违约时，是否有<strong>暂停履行、解除合同、要求赔偿</strong>的权利？</div></div>
+</div>
+
+<h2>六、争议解决审核</h2>
+
+<div class="checklist-group">
+<h3>① 争议解决方式是否明确且合理？</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否明确选择了<strong>诉讼或仲裁</strong>？<strong>两者只能选其一</strong></div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">诉讼管辖法院是否<strong>有利于我方</strong>？约定是否合法有效？（不得违反级别管辖和专属管辖）</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">仲裁条款是否完整？（须约定<strong>仲裁机构</strong>，如"北京仲裁委员会"）</div></div>
+</div>
+
+<div class="warn-box">⚠️ <strong>避免使用：</strong>"可由双方所在地法院管辖"等不确定的表述</div>
+
+<h2>七、特殊条款审核</h2>
+
+<div class="checklist-group">
+<h3>① 保密条款</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否约定了<strong>保密信息的范围和保密期限</strong>？</div></div>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否明确了<strong>违约责任</strong>？（泄密时的赔偿或违约金）</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>② 知识产权条款</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">涉及技术合作的，<strong>知识产权的归属、使用许可、后续改进的权利分配</strong>是否明确？</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>③ 不可抗力</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">是否约定了<strong>不可抗力的定义、通知义务和后果</strong>？</div></div>
+</div>
+
+<div class="checklist-group">
+<h3>④ 通知与送达</h3>
+<div class="check-item"><span class="check-mark">☐</span><div class="check-text">双方的<strong>送达地址</strong>是否明确？是否约定"<strong>送达地址同时作为司法送达地址</strong>"？</div></div>
+</div>
+
+<div class="tip-box">💡 <strong>实务提示：</strong>此 Checklist 可作为合同审查的标准化 SOP，每次审查时逐项确认，避免遗漏关键风险点。对于高风险合同，建议双人复核。</div>
+
+</div>
+<div class="footer">
+  <a class="back-link" href="../index.html">← 返回作品集</a>
+  <p style="margin-top:8px;">⚖️ 法律研究作品 · 仅供学习交流 · 不构成法律意见</p>
+</div>
+</div>
+</body>
+</html>

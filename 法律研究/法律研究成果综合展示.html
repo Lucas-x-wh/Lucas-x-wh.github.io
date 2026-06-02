@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法律研究成果综合展示</title>
+<style>
+  :root { --bg: #f8f9fa; --card: #fff; --text: #2d3436; --muted: #636e72; --border: #e0e0e0; --accent: #1a5276; --radius: 10px; }
+  * { margin:0; padding:0; box-sizing: border-box; }
+  body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 24px; }
+  
+  .header { background: linear-gradient(135deg,#1a1a2e,#16213e); color: #fff; padding: 36px 28px; border-radius: var(--radius) var(--radius) 0 0; }
+  .header h1 { font-size: 24px; letter-spacing: 2px; }
+  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 6px; }
+  
+  .nav { display: flex; gap: 4px; background: #16213e; padding: 0 28px; overflow-x: auto; }
+  .nav a { color: rgba(255,255,255,0.7); text-decoration: none; padding: 12px 16px; font-size: 13px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.15s; }
+  .nav a:hover, .nav a.active { color: #fff; border-bottom-color: #3498db; }
+  
+  .body { background: var(--card); padding: 32px 28px; border-radius: 0 0 var(--radius) var(--radius); border: 1px solid var(--border); border-top: none; }
+  
+  .section { margin-bottom: 40px; }
+  .section:last-child { margin-bottom: 0; }
+  h2 { font-size: 19px; color: var(--accent); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 2px solid #3498db; display: flex; align-items: center; gap: 8px; }
+  h3 { font-size: 16px; color: #2c3e50; margin: 16px 0 8px; }
+  p { font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }
+  li { font-size: 14px; color: var(--muted); margin-bottom: 6px; margin-left: 20px; }
+  
+  .chart-box { background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 14px 0; }
+  .chart-title { font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
+  
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+  th { background: #1a1a2e; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .tag-green { background: #eafaf1; color: #27ae60; }
+  .tag-blue { background: #e8f4fd; color: #2471a3; }
+  .tag-yellow { background: #fef9e7; color: #b9770e; }
+  .tag-red { background: #fde8e8; color: #c0392b; }
+  
+  .highlight { background: linear-gradient(135deg,#e8f4fd,#d4e6f1); border-left: 4px solid #2980b9; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; font-size: 14px; }
+  .law-box { border: 2px solid #c0392b; border-left: 5px solid #c0392b; padding: 14px 18px; border-radius: 6px; margin: 14px 0; background: #fdf2f2; }
+  .law-box .law-title { font-weight: 700; color: #c0392b; font-size: 14px; margin-bottom: 4px; }
+  .law-box p { font-size: 13.5px; color: #2d3436; margin: 0; }
+  
+  .kb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .kb-card { background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .kb-card h4 { font-size: 14px; color: var(--accent); margin: 0 0 8px; }
+  .kb-card li { font-size: 12.5px; }
+  
+  .tmpl-table { font-size: 12.5px; }
+  .tmpl-table th { font-size: 12px; padding: 8px 10px; }
+  .tmpl-table td { padding: 8px 10px; font-size: 12px; }
+  .status-draft { color: #e67e22; font-weight: 600; }
+  .status-review { color: #2980b9; font-weight: 600; }
+  .status-done { color: #27ae60; font-weight: 600; }
+  
+  .translation-block { background: #f4f6f7; border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 12px 0; }
+  .translation-block .en { font-style: italic; color: #2471a3; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--border); }
+  .translation-block .zh { color: var(--text); }
+  .translation-block .note { background: #eafaf1; border-left: 3px solid #27ae60; padding: 8px 12px; margin-top: 8px; font-size: 12.5px; border-radius: 0 4px 4px 0; }
+  
+  .assessment-box { border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin: 14px 0; }
+  .risk-matrix { display: grid; grid-template-columns: 100px 1fr; gap: 8px; align-items: center; margin: 8px 0; }
+  .risk-label { font-size: 13px; font-weight: 600; }
+  
+  .footer { text-align: center; padding: 20px; color: #b2bec3; font-size: 12px; margin-top: 20px; }
+  .back-link { color: var(--accent); text-decoration: none; font-size: 13px; }
+  
+  @media (max-width: 640px) {
+    .kb-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 12px; }
+  }
+
+  /* === 顶部导航条 === */
+  .nav-bar { background: #1a1a2e; color: #fff; padding: 10px 24px; margin: 0 0 20px 0; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .nav-bar a { color: #3498db; text-decoration: none; font-weight: 500; }
+  .nav-bar a:hover { color: #5dade2; }
+  .nav-bar .sep { color: #555; }
+  .nav-bar .current { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="../index.html">&larr; 返回首页</a>
+  <span class="sep">/</span>
+  <span>法律研究</span>
+  <span class="sep">/</span>
+  <span class="current">法律研究成果综合展示</span>
+</nav>
+
+<div class="container">
+<div class="header">
+  <h1>📊 法律研究成果综合展示</h1>
+  <p class="meta">法律研究 · 数据标注 · 知识库框架 · 合同管理 · 法律翻译 · 项目评估</p>
+</div>
+
+<div class="nav">
+  <a href="#research">研究简报</a>
+  <a href="#dataset">数据集统计</a>
+  <a href="#knowledge">知识库框架</a>
+  <a href="#contract">合同模版管理</a>
+  <a href="#translation">法律翻译</a>
+  <a href="#assessment">项目评估</a>
+</div>
+
+<div class="body">
+
+<!-- Section 1: 法律研究简报 -->
+<div class="section" id="research">
+  <h2>📑 一、法律研究简报</h2>
+  <h3>选题：平台算法推荐内容的法律责任研究</h3>
+  
+  <h3>研究背景</h3>
+  <p>随着个性化推荐算法在短视频、资讯、电商等平台的广泛应用，算法推荐内容的侵权问题日益突出。监管层面，《互联网信息服务算法推荐管理规定》已于2022年生效；司法实践中，平台因算法推荐侵权内容被判担责的案例增多。</p>
+  
+  <h3>核心法律问题</h3>
+  <div class="highlight">平台是否应对算法推荐的内容承担比"通知-删除"更高的注意义务？</div>
+  
+  <h3>检索方法</h3>
+  <li><strong>数据库：</strong>北大法宝、威科先行</li>
+  <li><strong>关键词：</strong>算法推荐 + 侵权责任 / 注意义务 / 避风港</li>
+  <li><strong>时间范围：</strong>2020-2025年</li>
+  <li><strong>案例层级：</strong>最高院、北京/上海/杭州互联网法院</li>
+  
+  <h3>主要法规与政策</h3>
+  <div class="law-box"><p class="law-title">《电子商务法》第38条</p><p>电子商务平台知道或应当知道平台内经营者侵害消费者合法权益，未采取必要措施的，依法与该平台内经营者承担连带责任。</p></div>
+  <div class="law-box"><p class="law-title">《民法典》第1197条</p><p>网络服务提供者知道或者应当知道网络用户利用其网络服务侵害他人民事权益，未采取必要措施的，与该网络用户承担连带责任。</p></div>
+  <div class="law-box"><p class="law-title">《互联网信息服务算法推荐管理规定》第7条</p><p>算法推荐服务提供者应当落实算法安全主体责任，建立健全管理制度和技术措施，不得利用算法推荐服务传播法律、行政法规禁止的信息。</p></div>
+  
+  <h3>典型案例</h3>
+  <table>
+    <tr><th>案例名称</th><th>裁判要点</th><th>法院观点</th></tr>
+    <tr><td>爱奇艺诉字节跳动<br>（"《延禧攻略》案"）</td><td>算法推荐不能免除平台的事先注意义务</td><td>平台对热门影视剧应采取更主动的过滤措施</td></tr>
+    <tr><td>优酷诉百度<br>（"春晚片段案"）</td><td>算法推荐构成"应知"</td><td>平台通过算法推荐侵权视频，属于主动编辑整理行为</td></tr>
+  </table>
+  
+  <h3>初步结论</h3>
+  <div class="highlight">法院倾向于要求平台在算法推荐场景下承担<strong>更高的注意义务</strong>，但尚未要求平台承担普遍事先审查义务。</div>
+  
+  <h3>建议</h3>
+  <li>建立<strong>高侵权风险词库</strong>（如热门影视名称、知名音乐人名字）</li>
+  <li>对算法推荐结果进行<strong>人工抽检</strong></li>
+  <li>在用户协议中明确<strong>推荐算法的原理及投诉渠道</strong></li>
+</div>
+
+<!-- Section 2: AIGC数据集统计 -->
+<div class="section" id="dataset">
+  <h2>📈 二、AIGC案例数据集统计</h2>
+  
+  <h3>数据统计表（案例数量）</h3>
+  <table>
+    <tr><th>年份</th><th>构成作品</th><th>不构成作品</th><th>待定/部分构成</th><th>合计</th></tr>
+    <tr><td>2020</td><td>1</td><td>4</td><td>0</td><td>5</td></tr>
+    <tr><td>2021</td><td>2</td><td>5</td><td>1</td><td>8</td></tr>
+    <tr><td>2022</td><td>3</td><td>6</td><td>1</td><td>10</td></tr>
+    <tr><td>2023</td><td>4</td><td>5</td><td>2</td><td>11</td></tr>
+    <tr><td>2024</td><td>5</td><td>5</td><td>2</td><td>12</td></tr>
+    <tr style="background:#eafaf1;"><td><strong>2025（截至5月）</strong></td><td><strong>2</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>5</strong></td></tr>
+  </table>
+  
+  <h3>数据透视表（按法院层级）</h3>
+  <table>
+    <tr><th>法院层级</th><th>构成作品</th><th>不构成作品</th><th>争议</th></tr>
+    <tr><td>基层法院</td><td>4</td><td>12</td><td>2</td></tr>
+    <tr><td>中级法院</td><td>8</td><td>10</td><td>3</td></tr>
+    <tr><td>高级法院</td><td>3</td><td>2</td><td>0</td></tr>
+    <tr><td>最高法院</td><td>1</td><td>1</td><td>1</td></tr>
+  </table>
+  
+  <div class="chart-box">
+    <div class="chart-title">📊 图表描述（数据来源：人民法院案例库、裁判文书网等）</div>
+    <li><strong>折线图：</strong>2020-2024年"构成作品"案件数量逐年上升，但"不构成作品"仍占多数（约55%）。</li>
+    <li><strong>柱状图：</strong>中级法院审理AIGC案件最多（21件），且裁判观点分歧较大（构成与不构成数量接近）。</li>
+    <li><strong>饼图：</strong>30个案例中，约50%认定为不构成作品，33%构成作品，17%存在争议或部分构成。</li>
+  </div>
+</div>
+
+<!-- Section 3: 知识库分类框架 -->
+<div class="section" id="knowledge">
+  <h2>🗂️ 三、互联网法律合规知识库分类框架</h2>
+  <p><strong>目标：</strong>支撑法务团队快速检索法规、案例、内部评估结论。</p>
+  
+  <div class="kb-grid">
+    <div class="kb-card">
+      <h4>📋 1. 法规库</h4>
+      <li>法律（如《著作权法》《个人信息保护法》）</li>
+      <li>行政法规/部门规章（如《生成式人工智能服务管理暂行办法》）</li>
+      <li>司法解释</li>
+      <li>国家标准/行业标准指引</li>
+      <li>国际条约/境外法规（如GDPR、EU AI Act）</li>
+    </div>
+    <div class="kb-card">
+      <h4>📕 2. 案例库</h4>
+      <li>指导性案例</li>
+      <li>公报案例</li>
+      <li>互联网法院典型案例</li>
+      <li>热点诉讼（按产品/行业细分：短视频、算法推荐、数据爬取、AIGC）</li>
+    </div>
+    <div class="kb-card">
+      <h4>📍 3. 内部评估结论库</h4>
+      <li>按产品线（如抖音、剪映、番茄小说）</li>
+      <li>按功能（如算法推荐、用户生成内容、数据出境、未成年人保护）</li>
+      <li>评估格式：项目背景、法规依据、风险评估、整改建议</li>
+    </div>
+    <div class="kb-card">
+      <h4>📰 4. 法律研究简报库</h4>
+      <li>按主题（AI、数据合规、平台责任、反垄断）</li>
+      <li>按时间（季度/年度）</li>
+      <li>含关键词标签（以便检索）</li>
+    </div>
+  </div>
+  
+  <h3>元数据标签示例（每个文档可打多个标签）</h3>
+  <table class="tmpl-table">
+    <tr><th>维度</th><th>标签值</th></tr>
+    <tr><td>业务线</td><td><span class="tag tag-blue">抖音</span> <span class="tag tag-blue">剪映</span> <span class="tag tag-blue">番茄小说</span></td></tr>
+    <tr><td>法律领域</td><td><span class="tag tag-green">著作权</span> <span class="tag tag-yellow">数据隐私</span> <span class="tag tag-red">平台责任</span></td></tr>
+    <tr><td>效力层级</td><td><span class="tag tag-green">法规</span> <span class="tag tag-blue">案例</span> <span class="tag tag-yellow">内部结论</span></td></tr>
+    <tr><td>紧急程度</td><td><span class="tag tag-red">高</span> <span class="tag tag-yellow">中</span> <span class="tag tag-green">低</span></td></tr>
+    <tr><td>状态</td><td><span class="status-draft">草稿</span> <span class="status-review">审阅中</span> <span class="status-done">已审阅</span></td></tr>
+  </table>
+  
+  <h3>维护机制</h3>
+  <li>每季度更新一次法规库（关注网信办、工信部、市监局新规）</li>
+  <li>每周新增1-2个典型案例（来源：威科先行、知产宝、最高人民法院公报）</li>
+  <li>每次项目评估后，一周内归档结论至"内部评估结论库"</li>
+</div>
+
+<!-- Section 4: 合同模版管理 -->
+<div class="section" id="contract">
+  <h2>📝 四、合同模版管理表</h2>
+  <p>负责任的法务人员需定期审查合同模版，确保条款合法、完整、符合最新监管要求。</p>
+  
+  <table class="tmpl-table">
+    <tr><th style="width:90px">模版<br>编号</th><th>模版名称</th><th style="width:60px">版本<br>号</th><th style="width:70px">更新<br>日期</th><th>适用场景</th><th style="width:50px">负责<br>法务</th><th style="width:70px">下次<br>审查<br>日期</th><th style="width:50px">审查<br>状态</th><th>备注</th></tr>
+    <tr>
+      <td>NDA-001</td>
+      <td>保密协议（双向）</td>
+      <td>V2.1</td>
+      <td>2026-01-15</td>
+      <td>与合作方签署双向保密义务</td>
+      <td>张三</td>
+      <td>2026-07-15</td>
+      <td><span class="status-review">已审阅</span></td>
+      <td>新增欧盟GDPR合规条款</td>
+    </tr>
+    <tr>
+      <td>SW-003</td>
+      <td>软件授权协议（非独家）</td>
+      <td>V1.0</td>
+      <td>2025-10-10</td>
+      <td>授权客户使用公司软件，不含源代码</td>
+      <td>李四</td>
+      <td>2026-10-10</td>
+      <td><span class="status-draft">审阅中</span></td>
+      <td>根据《著作权法》修订知识产权归属条款</td>
+    </tr>
+    <tr>
+      <td>IP-007</td>
+      <td>内容授权协议（信息网络传播权）</td>
+      <td>V3.0</td>
+      <td>2026-02-20</td>
+      <td>授权第三方在视频平台传播我方版权内容</td>
+      <td>王五</td>
+      <td>2026-08-20</td>
+      <td><span class="status-review">审阅中</span></td>
+      <td>需讨论跨境授权条款及维权成本分担</td>
+    </tr>
+    <tr>
+      <td>DEV-012</td>
+      <td>联合开发协议</td>
+      <td>V0.9</td>
+      <td>2026-03-01</td>
+      <td>与外部公司共同开发技术成果</td>
+      <td>赵六</td>
+      <td>2026-06-01</td>
+      <td><span class="status-draft">草稿</span></td>
+      <td>知识产权归属及技术成果转化需修订</td>
+    </tr>
+    <tr>
+      <td>PUR-005</td>
+      <td>采购服务协议（SaaS）</td>
+      <td>V2.2</td>
+      <td>2025-12-01</td>
+      <td>采购云服务或软件即服务</td>
+      <td>张三</td>
+      <td>2026-06-01</td>
+      <td><span class="status-review">已审阅</span></td>
+      <td>增加数据安全管理规则附件</td>
+    </tr>
+  </table>
+  
+  <h3>版本号规则</h3>
+  <li><strong>主版本号</strong>（如 V2.x）→ 重大变更（如增加新章节、改变核心权利义务）</li>
+  <li><strong>次版本号</strong>（如 Vx.1）→ 非实质性修改（如修正笔误、更新联系方式）</li>
+  
+  <h3>审查状态定义</h3>
+  <li><span class="status-draft">草稿</span>：模版初稿完成，待法务负责人审阅</li>
+  <li><span class="status-review">审阅中</span>：正在由法务负责人或外部律师审阅</li>
+  <li><span class="status-done">已审阅</span>：审阅完成，可投入使用</li>
+  <li>需更新：审阅中发现问题，需修改后重新审阅</li>
+  
+  <h3>更新提醒机制</h3>
+  <li>提前 <strong>1个月</strong> 通知负责法务进行定期审查</li>
+  <li>法规更新后 <strong>2周内</strong> 启动模版修订流程</li>
+  <li>权限管理：仅法务团队可编辑，业务部门可查看最新版</li>
+</div>
+
+<!-- Section 5: 法律翻译 -->
+<div class="section" id="translation">
+  <h2>🌐 五、中英法律翻译示例</h2>
+  <p>法律英语翻译需兼顾<strong>准确性</strong>（法律术语对应）、<strong>专业性</strong>（符合目标法域表达习惯）和<strong>一致性</strong>（同一术语全文统一）。</p>
+  
+  <h3>示例1：保密条款（Confidentiality）</h3>
+  <div class="translation-block">
+    <div class="en"><strong>英文原文：</strong>The Receiving Party agrees to use the same degree of care to protect the Disclosing Party's Confidential Information as it uses to protect its own confidential information of a similar nature, but in no event less than a reasonable standard of care. The Receiving Party shall not disclose, copy, or use the Confidential Information for any purpose outside the scope of this Agreement without the prior written consent of the Disclosing Party.</div>
+    <div class="zh"><strong>初译（AI辅助）：</strong>接收方同意以保护本方同类保密信息相同的注意程度保护披露方的保密信息，但在任何情况下均不得低于合理注意标准。未经披露方事先书面同意，接收方不得为本协议范围之外的任何目的披露、复制或使用保密信息。</div>
+    <div class="note"><strong>✅ 人工校对修正：</strong><br>1. 将"注意程度"改为"<strong>谨慎程度</strong>"（更符合法律中文习惯）<br>2. 在"合理注意标准"后补充"<strong>（包括但不限于采取加密、访问控制等措施）</strong>"，使标准更具操作性<br>3. <strong>最终版本：</strong>接收方同意以保护本方同类保密信息相同的谨慎程度保护披露方的保密信息，但在任何情况下均不得低于合理注意标准（包括但不限于采取加密、访问控制等措施）。未经披露方事先书面同意，接收方不得为本协议范围之外的任何目的披露、复制或使用保密信息。</div>
+  </div>
+  
+  <h3>示例2：免责声明（Disclaimer of Warranties）</h3>
+  <div class="translation-block">
+    <div class="en"><strong>英文原文：</strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</div>
+    <div class="zh"><strong>初译（AI辅助）：</strong>本软件按"原样"提供，不附任何形式的明示或默示保证，包括但不限于适销性、特定用途适用性及不侵权的保证。在任何情况下，作者均不对因本软件或本软件的使用或交易所引起的任何索赔、损害或其他责任承担责任，不论该责任是基于合同、侵权还是其他诉讼。</div>
+    <div class="note"><strong>✅ 人工校对修正：</strong><br>1. "原样"改为"<strong>现状</strong>"（更符合中国法律文本习惯，如《软件产品管理办法》中"按现状提供"）<br>2. 将最后一句拆分，明确责任范围<br>3. <strong>最终版本：</strong>本软件按"现状"提供，不附任何明示或默示的保证，包括但不限于适销性、特定用途适用性及不侵权的保证。在任何情况下，作者均不对使用或无法使用本软件所导致的任何索赔、损害或其他责任承担责任，不论该责任是基于合同、侵权或其他理由。</div>
+  </div>
+  
+  <h3>示例3：争议解决条款（Governing Law and Dispute Resolution）</h3>
+  <div class="translation-block">
+    <div class="en"><strong>英文原文：</strong>This Agreement shall be governed by and construed in accordance with the laws of the People's Republic of China. Any dispute arising out of or in connection with this Agreement shall be submitted to the Beijing Arbitration Commission for arbitration which shall be conducted in accordance with its rules in effect at the time of applying for arbitration. The arbitration award shall be final and binding upon both parties.</div>
+    <div class="zh"><strong>初译（AI辅助）：</strong>本协议应受中华人民共和国法律管辖并依其解释。因本协议引起或与本协议有关的任何争议，应提交北京仲裁委员会按照申请仲裁时其现行有效的仲裁规则进行仲裁。仲裁裁决是终局的，对双方均有约束力。</div>
+    <div class="note"><strong>✅ 人工校对修正：</strong><br>1. 确认"北京仲裁委员会"的正确英文名称为"<strong>Beijing Arbitration Commission (BAC)</strong>"<br>2. 增加"仲裁地为北京"的常见补充表述（虽然规则中通常隐含，但明确更好）<br>3. <strong>最终版本：</strong>本协议受中华人民共和国法律管辖并依其解释。因本协议引起或与本协议有关的任何争议，应提交北京仲裁委员会（BAC），按照申请仲裁时其现行有效的仲裁规则在北京进行仲裁。仲裁裁决为终局裁决，对双方均具有约束力。</div>
+  </div>
+</div>
+
+<!-- Section 6: 项目法律评估 -->
+<div class="section" id="assessment">
+  <h2>⚖️ 六、项目法律评估简稿</h2>
+  <p><strong>项目名称：</strong>抖音"AI智能评论助手"功能</p>
+  
+  <h3>一、项目简介</h3>
+  <p>该功能利用大语言模型，根据视频内容（如标题、字幕、画面标签）和用户历史评论风格，实时生成三条推荐评论。用户可选择一键发布，也可自由编辑修改后发布。模型训练数据包括平台过往公开评论（已脱敏）。</p>
+  
+  <h3>二、主要法规依据</h3>
+  <div class="law-box"><p class="law-title">《网络安全法》第47条</p><p>网络运营者对用户发布信息的管理义务</p></div>
+  <div class="law-box"><p class="law-title">《个人信息保护法》第24条</p><p>自动化决策的透明度及拒绝权</p></div>
+  <div class="law-box"><p class="law-title">《互联网信息服务算法推荐管理规定》第7、8、12条</p><p>算法备案、标签管理、用户退出机制</p></div>
+  <div class="law-box"><p class="law-title">《生成式人工智能服务管理暂行办法》第4、7条</p><p>训练数据合法性、内容标识义务</p></div>
+  
+  <h3>三、风险评估</h3>
+  <table>
+    <tr><th style="width:90px">风险点</th><th style="width:60px">风险等级</th><th>风险描述</th><th>初步建议</th></tr>
+    <tr>
+      <td>生成内容侵权</td>
+      <td><span class="tag tag-red">中高</span></td>
+      <td>AI生成的评论可能包含抄袭他人评论、影射侮辱、虚假信息等内容</td>
+      <td>1. 建立关键词过滤库，屏蔽常见违规词；2. 对生成结果进行人工抽检；3. 在用户协议中明确用户对发布内容负责，平台保留删除权</td>
+    </tr>
+    <tr>
+      <td>个人信息保护</td>
+      <td><span class="tag tag-yellow">中</span></td>
+      <td>模型训练使用了用户历史评论，可能涉及用户个人信息（如偏好、头像、ID）</td>
+      <td>1. 确保训练数据已脱敏（去除昵称、头像、ID）；2. 在隐私政策中告知用户评论用于模型训练，并提供关闭选项</td>
+    </tr>
+    <tr>
+      <td>算法透明度</td>
+      <td><span class="tag tag-blue">低</span></td>
+      <td>用户不理解评论是如何生成的，可能质疑公平性</td>
+      <td>1. 在功能入口处增加"该评论由AI生成"的提示；2. 提供"换一批"按钮，让用户主动选择</td>
+    </tr>
+    <tr>
+      <td>虚假信息传播</td>
+      <td><span class="tag tag-red">中高</span></td>
+      <td>生成的评论若被用于传播谣言、暴恐等违法内容</td>
+      <td>1. 部署实时审核模型，对生成评论进行二次过滤；2. 建立用户投诉快速通道；3. 保留生成日志至少6个月以备查证</td>
+    </tr>
+    <tr>
+      <td>知识产权归属不明</td>
+      <td><span class="tag tag-yellow">中</span></td>
+      <td>AI生成的评论若具有独创性，其著作权归属不明</td>
+      <td>在用户协议中约定：用户发布AI生成评论，视为用户放弃著作权或授权平台免费使用（商业上常见做法）</td>
+    </tr>
+  </table>
+  
+  <h3>四、合规结论及后续步骤</h3>
+  <div class="highlight">
+    <p><strong>结论：</strong>功能本身合规风险可控，但需在<strong>内容过滤、用户告知、日志留存</strong>三方面加强措施。</p>
+    <p style="margin-top:8px;"><strong>后续步骤：</strong></p>
+    <li>产品上线前完成算法备案（按《算法推荐管理规定》要求）</li>
+    <li>在隐私政策中补充"AI生成评论"章节（告知用户并获取同意）</li>
+    <li>建立生成内容人工抽检机制（每日抽检比例不低于5%）</li>
+    <li>与法务团队确认"AI生成内容标识"的具体实现方式（文字/图标/水印）</li>
+  </div>
+</div>
+
+</div><!-- end .body -->
+
+<div class="footer">
+  <a class="back-link" href="../index.html">← 返回作品集</a>
+  <p style="margin-top:8px;">⚖️ 法律研究作品 · 仅供学习交流 · 不构成法律意见</p>
+</div>
+
+</div><!-- end .container -->
+</body>
+</html>
