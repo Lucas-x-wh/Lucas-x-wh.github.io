@@ -2,6 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全国首例算法推荐案 · 爱奇艺诉字节跳动 | 案例分析</title>
 <style>
   :root {
     --bg: #f5f6fa; --card: #fff; --text: #2d3436; --sub: #636e72;
@@ -10,14 +12,24 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif; background: var(--bg); padding: 24px; color: var(--text); line-height: 1.7; }
-  .container { max-width: 780px; margin: 0 auto; }
+
+  .breadcrumb { max-width: 820px; margin: 0 auto 16px; font-size: 13px; color: var(--sub); }
+  .breadcrumb a { color: var(--purple); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .container { max-width: 820px; margin: 0 auto; }
+
+  .hero-card { background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); color: #fff; border-radius: 14px; padding: 36px 40px; margin-bottom: 24px; }
+  .hero-card .case-id { font-size: 12px; letter-spacing: 2px; opacity: 0.6; margin-bottom: 8px; }
+  .hero-card h1 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+  .hero-card .meta { font-size: 13px; opacity: 0.65; display: flex; gap: 24px; flex-wrap: wrap; }
 
   .toc { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 20px; border-left: 4px solid var(--purple); }
   .toc h2 { font-size: 16px; color: var(--purple); margin-bottom: 12px; }
-  .toc ol { padding-left: 20px; }
+  .toc ol { padding-left: 22px; }
   .toc li { margin: 6px 0; font-size: 14px; color: var(--sub); }
 
-  .section { background: var(--card); border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+  .section { background: var(--card); border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; }
   .section h2 { font-size: 20px; color: var(--purple); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
   .section h3 { font-size: 16px; color: var(--text); margin: 20px 0 10px; }
   .section p { font-size: 14px; color: var(--sub); margin: 10px 0; }
@@ -25,288 +37,346 @@
   .highlight { background: var(--highlight); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
   .red-bold { color: var(--red); font-weight: 600; }
   .blue-bold { color: var(--blue); font-weight: 600; }
+  .green-bold { color: var(--green); font-weight: 600; }
   .purple-bold { color: var(--purple); font-weight: 600; }
 
   table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
-  th { background: #f0f3f8; padding: 10px 12px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
-  td { padding: 8px 12px; border: 1px solid var(--border); color: var(--sub); }
+  th { background: #f0f3f8; padding: 10px 14px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
+  td { padding: 9px 14px; border: 1px solid var(--border); color: var(--sub); }
   tr:nth-child(even) td { background: #fafbfc; }
+
+  .info-table th { width: 140px; background: #f8f0ff; color: var(--purple); font-size: 13px; }
+  .info-table td { font-size: 14px; }
 
   .law-quote { background: #fff8f0; border: 1px solid var(--orange); border-left: 4px solid var(--red); border-radius: 6px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
   .law-quote .article { font-weight: 700; color: var(--red); }
   .law-quote .content { margin-top: 6px; color: var(--sub); }
 
-  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-  @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
-  .mini-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .mini-card h4 { font-size: 14px; color: var(--purple); margin-bottom: 8px; }
-  .mini-card p { font-size: 13px; margin: 4px 0; }
+  .insight-box { background: #f0f4ff; border-left: 4px solid var(--blue); border-radius: 6px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
+  .insight-box strong { color: var(--blue); }
+
+  .verdict-box { background: #f0fff5; border: 1px solid var(--green); border-radius: 8px; padding: 18px 22px; margin: 18px 0; text-align: center; }
+  .verdict-box .verdict-title { font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+  .verdict-box p { font-size: 13px; color: var(--sub); margin: 4px 0; }
+
+  .standards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 640px) { .standards-grid { grid-template-columns: 1fr; } }
+  .std-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .std-card .std-num { font-size: 22px; font-weight: 800; color: var(--purple); opacity: 0.25; }
+  .std-card h4 { font-size: 14px; color: var(--purple); margin: -8px 0 8px; }
+  .std-card p { font-size: 13px; color: var(--sub); margin: 4px 0; }
 
   .timeline { position: relative; padding: 0; margin: 20px 0; }
-  .tl-item { display: flex; margin-bottom: 16px; }
-  .tl-date { min-width: 110px; font-size: 13px; font-weight: 700; color: var(--purple); padding-top: 2px; }
-  .tl-dot { width: 12px; height: 12px; background: var(--purple); border-radius: 50%; margin: 4px 12px 0 0; flex-shrink: 0; }
-  .tl-content { font-size: 13px; color: var(--sub); flex: 1; padding-bottom: 12px; border-bottom: 1px solid #eee; }
+  .tl-item { display: flex; margin-bottom: 14px; }
+  .tl-time { min-width: 120px; font-size: 13px; font-weight: 700; color: var(--purple); padding-top: 2px; }
+  .tl-dot { width: 10px; height: 10px; background: var(--purple); border-radius: 50%; margin: 5px 14px 0 0; flex-shrink: 0; }
+  .tl-content { font-size: 13px; color: var(--sub); flex: 1; padding-bottom: 10px; border-bottom: 1px solid #eee; }
 
-  .qa-item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
-  .qa-item:last-child { border-bottom: none; }
-  .qa-q { font-weight: 700; color: var(--purple); font-size: 14px; margin-bottom: 6px; }
-  .qa-a { font-size: 13px; color: var(--sub); }
+  .footer-note { max-width: 820px; margin: 32px auto 0; text-align: center; font-size: 12px; color: #b2bec3; }
+  .footer-note a { color: var(--purple); text-decoration: none; }
 
-  .quick-card { background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); border-radius: 12px; padding: 20px 24px; margin: 16px 0; color: #fff; }
-  .quick-card h3 { color: #fff; margin-top: 0; }
-  .quick-card p { color: rgba(255,255,255,0.9); }
-  .quick-card strong { color: #fff; }
-
-  .tag-imp { display: inline-block; background: var(--red); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
-  .badge-new { display: inline-block; background: var(--green); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
-  .badge-imp { display: inline-block; background: var(--red); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
-
-  /* === 顶部导航条 === */
-  .nav-bar { background: #1a1a2e; color: #fff; padding: 10px 24px; margin: 0 0 20px 0; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .nav-bar a { color: #3498db; text-decoration: none; font-weight: 500; }
-  .nav-bar a:hover { color: #5dade2; }
-  .nav-bar .sep { color: #555; }
-  .nav-bar .current { opacity: 0.75; }
-
+  blockquote { background: #fafafa; border-left: 3px solid #ddd; margin: 12px 0; padding: 10px 16px; font-size: 13px; color: var(--sub); font-style: italic; }
 </style>
 </head>
 <body>
-<nav class="nav-bar">
-  <a href="../index.html">&larr; 返回首页</a>
-  <span class="sep">/</span>
-  <span>案件分析</span>
-  <span class="sep">/</span>
-  <span class="current">“延禧攻略”案法律分析</span>
-</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">作品集</a> &rsaquo; 案件分析 &rsaquo; 算法推荐第一案
+</div>
 
 <div class="container">
 
-<div class="toc">
-  <h2>📑 目录索引</h2>
-  <ol>
-    <li><a href="#s0">案件时间线 <span class="badge-new">新增</span></a></li>
-    <li>引言</li>
-    <li>案情概要</li>
-    <li>裁判要点分析</li>
-    <li>争议焦点解读</li>
-    <li><a href="#s5">延伸思考与学理讨论</a></li>
-    <li><a href="#s6">同类案例对比 <span class="badge-new">新增</span></a></li>
-    <li><a href="#s7">国际比较 <span class="badge-new">新增</span></a></li>
-    <li>实务建议与AI应用探索</li>
-    <li><a href="#s9">核心要点速查卡 <span class="badge-new">新增</span></a></li>
-    <li><a href="#s10">常见问题 Q&A <span class="badge-new">新增</span></a></li>
-    <li>结语</li>
-  </ol>
-</div>
-
-<!-- ===== 案件时间线 [新增] ===== -->
-<div class="section" id="s0">
-  <h2>案件时间线 <span class="badge-new">新增</span></h2>
-  <div class="timeline">
-    <div class="tl-item"><div class="tl-date">2018年7月</div><div class="tl-dot"></div><div class="tl-content">《延禧攻略》在爱奇艺平台独播。剧集热播期间，大量用户将剧集内容剪辑成短视频上传至今日头条App</div></div>
-    <div class="tl-item"><div class="tl-date">2018年7-9月</div><div class="tl-dot"></div><div class="tl-content">爱奇艺多次向字节跳动发送预警函，告知侵权行为。侵权视频最高单条播放量超110万次</div></div>
-    <div class="tl-item"><div class="tl-date">2018年</div><div class="tl-dot"></div><div class="tl-content">爱奇艺公司向北京市海淀区人民法院提起诉讼，案号：(2018)京0108民初49421号，索赔3000万元</div></div>
-    <div class="tl-item"><div class="tl-date">2021年12月31日</div><div class="tl-dot"></div><div class="tl-content">一审判决：认定字节跳动构成帮助侵权，赔偿原告经济损失150万元 + 诉讼合理开支50万元 = <strong>200万元</strong></div></div>
-    <div class="tl-item"><div class="tl-date">2022年4月20日</div><div class="tl-dot"></div><div class="tl-content">二审在北京知识产权法院开庭审理。双方均上诉：爱奇艺认为赔偿过低，字节跳动主张不构成侵权</div></div>
-    <div class="tl-item"><div class="tl-date">2022年（二审期间）</div><div class="tl-dot"></div><div class="tl-content">双方达成和解，爱奇艺撤回诉讼，案件以和解结案</div></div>
-  </div>
-</div>
-
-<!-- ===== 引言 ===== -->
-<div class="section">
-  <h2>一、引言</h2>
-  <p>2018年，电视剧《延禧攻略》在爱奇艺平台独播期间热播，与此同时，大量用户将剧集内容剪辑成短视频上传至今日头条App，并通过字节跳动的算法推荐系统获得大规模传播，单条侵权视频最高播放量超过<span class="highlight">110万次</span>。由此引发了被誉为<span class="red-bold">"全国首例算法推荐案"</span>的爱奇艺诉字节跳动侵害信息网络传播权纠纷案（一审案号：（2018）京0108民初49421号）。</p>
-  <p>本案之所以备受关注，是因为其涉及一个核心法律问题：<span class="highlight">短视频平台在采用算法推荐技术向用户推送侵权内容时，是否比不采用算法推荐的平台承担更高的注意义务？</span></p>
-  <p>本案的裁判逻辑确立了算法推荐场景下平台帮助侵权认定的一般框架：一方面拒绝将算法推荐行为等同于直接侵权或共同侵权，另一方面认定采用算法推荐的平台负有比普通信息存储空间服务提供者更高的注意义务。</p>
-</div>
-
-<!-- ===== 案情概要 ===== -->
-<div class="section">
-  <h2>二、案情概要</h2>
-  <table>
-    <tr><th style="width:80px;">要素</th><th>内容</th></tr>
-    <tr><td><strong>原告</strong></td><td>北京爱奇艺科技有限公司，依法享有电视剧《延禧攻略》在全球范围内独占的信息网络传播权及维权权利</td></tr>
-    <tr><td><strong>被告</strong></td><td>北京字节跳动科技有限公司，运营今日头条App（iOS版和安卓版），同时提供信息存储空间服务和信息流推荐服务</td></tr>
-    <tr><td><strong>侵权行为</strong></td><td>在《延禧攻略》热播期间，将用户上传的截取自该剧的短视频通过今日头条App利用信息流推荐技术向公众传播并推荐</td></tr>
-    <tr><td><strong>诉讼请求</strong></td><td>赔偿经济损失2921.6万元 + 维权开支78.4万元 = 共计<strong>3000万元</strong></td></tr>
-    <tr><td><strong>一审判决</strong></td><td>2021年12月31日，认定构成帮助侵权，赔偿150万元 + 诉讼开支50万元 = <strong>200万元</strong></td></tr>
-    <tr><td><strong>二审结果</strong></td><td>双方和解，爱奇艺撤回诉讼</td></tr>
-  </table>
-</div>
-
-<!-- ===== 裁判要点分析 ===== -->
-<div class="section">
-  <h2>三、裁判要点分析</h2>
-
-  <h3>（一）明确信息流推荐服务的独立法律地位</h3>
-  <p>一审法院首次提出<span class="highlight">"信息流推荐服务提供者"</span>的概念。法院认为字节公司并非仅提供信息存储空间服务，而是同时提供了信息流推荐服务——利用算法推荐技术，根据用户画像和历史行为，将特定的短视频主动推送给潜在感兴趣的用户。这种服务模式不同于传统的"被动接收用户请求—返回搜索结果"的信息定位式工具。</p>
-
-  <h3>（二）拒绝直接侵权与共同侵权，确认帮助侵权路径</h3>
-  <p>判决明确指出：短视频版权平台并不会因为使用了算法推荐技术，就构成与用户上传内容行为的分工合作。平台行为和用户行为依然是独立的两个行为，并未构成共同行为。<span class="highlight">红旗原则</span>——即平台在"知道"用户利用其服务实施侵权行为后，未采取必要措施，应与用户承担连带责任——成为本案裁判的核心逻辑。</p>
-
-  <h3>（三）算法推荐不改变"避风港"规则，但提高"应知"认定标准</h3>
-  <p>法院综合考量了<span class="highlight">六项因素</span>认定字节公司"应当知道"侵权行为的存在：</p>
-  <table>
-    <tr><th>#</th><th>因素</th><th>具体表现</th></tr>
-    <tr><td>1</td><td>作品知名度</td><td>《延禧攻略》为当年热播剧，平台对此应有认知</td></tr>
-    <tr><td>2</td><td>权利人预警</td><td>爱奇艺多次发送预警函，内容具体、指认明确</td></tr>
-    <tr><td>3</td><td>显著位置</td><td>大量侵权视频出现在App显著推荐位和热榜中</td></tr>
-    <tr><td>4</td><td>重复推送</td><td>同一内容被短时间、多次重复推送至不同用户</td></tr>
-    <tr><td>5</td><td>标题内容</td><td>标题包含剧名及人物关键词，平台具备识别条件</td></tr>
-    <tr><td>6</td><td>传播规模</td><td>部分视频播放量超110万次，侵权后果严重</td></tr>
-  </table>
-
-  <h3>（四）认定"必要措施"不足，构成帮助侵权</h3>
-  <p>法院采取<span class="highlight">"双重评价"标准</span>：第一重是形式评价（平台是否采取了措施），第二重是效果评价（这些措施是否在实质上取得了有效制止、预防明显侵权的效果）。字节公司虽采取了删除、屏蔽等措施，但并未在实质上取得有效制止、预防明显侵权的效果。</p>
-</div>
-
-<!-- ===== 争议焦点解读 ===== -->
-<div class="section">
-  <h2>四、争议焦点解读</h2>
-
-  <div class="law-quote">
-    <div class="article">📜 《民法典》第1197条（网络服务提供者连带责任）</div>
-    <div class="content">
-      网络服务提供者知道或者应当知道网络用户利用其网络服务侵害他人民事权益，未采取必要措施的，与该网络用户承担连带责任。
+  <!-- Hero -->
+  <div class="hero-card">
+    <div class="case-id">全国首例 · 算法推荐标杆判决</div>
+    <h1>爱奇艺诉字节跳动侵害信息网络传播权纠纷案</h1>
+    <div class="meta">
+      <span>(2018) 京0108民初49421号</span>
+      <span>北京市海淀区人民法院</span>
+      <span>2021年12月31日判决</span>
     </div>
   </div>
 
-  <div class="law-quote">
-    <div class="article">📜 《民法典》第1195条（通知-删除规则）</div>
-    <div class="content">
-      网络用户利用网络服务实施侵权行为的，权利人有权通知网络服务提供者采取删除、屏蔽、断开链接等必要措施。通知应当包括构成侵权的初步证据及权利人的真实身份信息。网络服务提供者接到通知后，应当及时将该通知转送相关网络用户，并根据构成侵权的初步证据和服务类型采取必要措施；未及时采取必要措施的，对损害的扩大部分与该网络用户承担连带责任。
+  <!-- TOC -->
+  <div class="toc">
+    <h2>目录</h2>
+    <ol>
+      <li>案件速览</li>
+      <li>事实时间线</li>
+      <li>争议焦点与法院裁判</li>
+      <li>裁判标准体系（重点）</li>
+      <li>"应知"认定与"必要措施"框架</li>
+      <li>实践意义与启示</li>
+      <li>类案参考与延伸</li>
+    </ol>
+  </div>
+
+  <!-- 1. 案件速览 -->
+  <div class="section">
+    <h2>一、案件速览</h2>
+
+    <table class="info-table">
+      <tr><th>案由</th><td>侵害信息网络传播权纠纷</td></tr>
+      <tr><th>原告</th><td>北京爱奇艺科技有限公司（独占信息网络传播权人）</td></tr>
+      <tr><th>被告</th><td>北京字节跳动科技有限公司（今日头条App运营者）</td></tr>
+      <tr><th>审理法院</th><td>北京市海淀区人民法院</td></tr>
+      <tr><th>原告诉请</th><td>赔偿经济损失 2,921.6 万元 + 维权开支 78.4 万元 = 共 <strong>3,000 万元</strong></td></tr>
+      <tr><th>裁判结果</th><td><span class="red-bold">构成帮助侵权</span>，赔偿经济损失 150 万元 + 诉讼合理开支 50 万元 = <strong>200 万元</strong></td></tr>
+      <tr><th>二审结果</th><td>双方和解，爱奇艺撤回诉讼</td></tr>
+      <tr><th>核心争点</th><td>采用算法推荐的短视频平台，是否比普通信息存储平台承担更高的注意义务？</td></tr>
+    </table>
+
+    <p><span class="highlight">一句话概括</span>：2018年《延禧攻略》热播期间，今日头条用户大量上传截取自该剧的短视频，平台通过算法推荐系统主动推送。爱奇艺起诉索赔 3,000 万元。法院<span class="blue-bold">拒绝将算法推荐等同于直接侵权</span>，但认定算法推荐平台负有<span class="red-bold">更高的注意义务</span>，构成帮助侵权，判赔 200 万元。本案为<span class="red-bold">全国首例"算法推荐案"</span>，首次在司法层面明确了算法推荐场景下平台注意义务的裁判框架。</p>
+  </div>
+
+  <!-- 2. 事实时间线 -->
+  <div class="section">
+    <h2>二、事实时间线</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">2018年7月</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">《延禧攻略》在爱奇艺平台独播。剧集热播期间，大量用户将剧集内容剪辑成短视频上传至今日头条App，并通过字节跳动的算法推荐系统获得大规模传播。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2018年7-9月</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">爱奇艺多次向字节跳动发送预警函，告知侵权行为。<span class="red-bold">单条侵权视频最高播放量超 110 万次</span>，大量侵权视频出现在今日头条App热门推荐位和热榜中。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2018年</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">爱奇艺向北京市海淀区人民法院提起诉讼，案号：(2018)京0108民初49421号。主张字节跳动通过信息流推荐技术传播侵权短视频，索赔 3,000 万元。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2021.12.31</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content"><span class="blue-bold">一审判决</span>：认定字节跳动构成帮助侵权，赔偿经济损失 150 万元 + 诉讼合理开支 50 万元 = <strong>200 万元</strong>。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2022.4.20</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">二审在北京知识产权法院开庭。双方均上诉：爱奇艺认为赔偿过低，字节跳动主张不构成侵权。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2022年（二审期间）</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">双方达成和解，爱奇艺撤回诉讼，案件以和解结案。</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <strong>事实观察</strong>：本案的事实模式与传统的"通知-删除"场景有本质区别。字节跳动并非被动等待用户搜索，而是通过算法<span class="blue-bold">主动将侵权内容推送至用户面前</span>——平台不再是"技术通道"，而是"内容分发者"。这种模式转换正是本案触发更高注意义务的事实基础。
     </div>
   </div>
 
-  <h3>（一）从"通知-删除"到"应知"：两条腿走路</h3>
-  <p>民法典第1197条在原有"避风港规则"之外为权利人开辟了另一条维权路径：即便权利人未发送合格通知，只要平台自身"应当知道"侵权行为的存在，就必须主动采取措施。本案在算法推荐场景下，将"应知"判断标准从"技术上能否识别"转向<span class="highlight">"商业上是否应该知道"</span>。</p>
+  <!-- 3. 争议焦点 -->
+  <div class="section">
+    <h2>三、争议焦点与法院裁判</h2>
 
-  <h3>（二）算法推荐 vs 传统信息存储空间</h3>
-  <p>法院将今日头条App与"仅提供信息存储空间服务"的平台作出明确区分。后者是被动的，前者通过算法主动将内容推送至用户面前——<span class="highlight">平台不再是被动的"技术通道"，而是主动的"内容分发者"</span>，因此应负更高注意义务。</p>
-</div>
+    <p>法院围绕<span class="highlight">三个核心争点</span>展开论证，层层递进：</p>
 
-<!-- ===== 延伸思考 ===== -->
-<div class="section" id="s5">
-  <h2>五、延伸思考与学理讨论</h2>
+    <h3>焦点一：算法推荐是否构成直接侵权或共同侵权？</h3>
 
-  <h3>（一）判决的逻辑张力</h3>
-  <p>在肯定算法推荐"实质非侵权用途"的前提下，法院又认定算法推荐会增加平台注意义务。学界指出这一论证逻辑存在一定张力。法院的解决思路是：将<span class="highlight">技术上的"不能"与商业上的"应知"区分开来</span>。</p>
+    <table>
+      <tr><th style="width:120px">原告主张</th><td>字节跳动通过算法推荐技术分发侵权视频，实质上参与了内容的传播决策，应认定为直接侵权或与上传用户构成共同侵权</td></tr>
+      <tr><th>被告抗辩</th><td>仅提供信息存储空间服务，算法推荐属于技术中立，不改变平台性质</td></tr>
+      <tr><th style="background:#f0fff5; color:var(--green);">法院认定</th><td style="background:#f0fff5;">
+        <strong>不构成直接侵权，也不构成共同侵权。</strong>平台使用算法推荐技术的行为与用户上传行为<span class="blue-bold">是两个独立行为</span>，并未形成分工合作。但法院同时指出，字节跳动不是单纯的"信息存储空间服务提供者"，而是<span class="red-bold">"信息流推荐服务提供者"</span>——这一概念首次在司法层面被明确。
+      </td></tr>
+    </table>
 
-  <h3>（二）算法类型化视角</h3>
-  <p>不同类型算法对侵权的识别能力和风险管控水平存在显著差异。个性化推送算法主要基于用户画像分发，侵权识别能力有限；排序精选算法涉及编辑整理，识别能力更强——应差异化设定注意义务。</p>
-</div>
+    <h3>焦点二：算法推荐平台应适用何种注意义务标准？</h3>
 
-<!-- ===== 同类案例对比 [新增] ===== -->
-<div class="section" id="s6">
-  <h2>六、同类案例对比 <span class="badge-new">新增</span></h2>
+    <p>这是本案<span class="highlight">最核心的裁判贡献</span>。法院从两个维度确立了更高注意义务的正当性：</p>
 
-  <table>
-    <tr><th>要素</th><th>延禧攻略案 (2018)</th><th>腾讯诉微播视界案 (2020)</th><th>网易云音乐案 (2021)</th></tr>
-    <tr><td><strong>法院</strong></td><td>北京海淀法院</td><td>杭州互联网法院</td><td>广州知识产权法院</td></tr>
-    <tr><td><strong>侵权内容</strong></td><td>热播剧剪辑短视频</td><td>《王者荣耀》游戏画面短视频</td><td>音乐作品</td></tr>
-    <tr><td><strong>平台</strong></td><td>今日头条（字节跳动）</td><td>抖音（微播视界）</td><td>在线音乐平台</td></tr>
-    <tr><td><strong>核心争议</strong></td><td>算法推荐是否提高注意义务</td><td>算法功能组合的侵权作用</td><td>算法推荐歌曲的法律定性</td></tr>
-    <tr><td><strong>赔偿</strong></td><td>200万元</td><td>50万元</td><td>协商解决</td></tr>
-    <tr><td><strong>共性</strong></td><td colspan="3">均涉及算法推荐场景下的平台责任认定，"红旗原则"vs"避风港"的平衡</td></tr>
-    <tr><td><strong>趋势</strong></td><td colspan="3">法院一致倾向于：采用算法推荐的平台须承担更高的注意义务，技术中立不是免责盾牌</td></tr>
-  </table>
-</div>
+    <table>
+      <tr><th style="width:140px">论证维度</th><th>法院认定</th></tr>
+      <tr>
+        <td class="blue-bold">商业模式维度</td>
+        <td>算法推荐使平台从被动服务转为<span class="red-bold">主动分发</span>——平台通过精准推送获取流量和商业利益，"享受利益即应承担相应责任"</td>
+      </tr>
+      <tr>
+        <td class="blue-bold">技术能力维度</td>
+        <td>算法推荐技术本身具备一定的<span class="blue-bold">内容识别和过滤能力</span>（如关键词匹配、内容指纹比对），平台不能以"技术不能"为由完全免责</td>
+      </tr>
+    </table>
 
-<!-- ===== 国际比较 [新增] ===== -->
-<div class="section" id="s7">
-  <h2>七、国际比较 <span class="badge-new">新增</span></h2>
+    <p><span class="green-bold">结论：算法推荐平台的注意义务高于普通信息存储空间服务提供者。</span></p>
 
-  <table>
-    <tr><th>维度</th><th>中国</th><th>美国 (DMCA)</th><th>欧盟 (DSA)</th></tr>
-    <tr><td><strong>核心理念</strong></td><td>红旗原则 + 更高注意义务</td><td>避风港原则 (Safe Harbor)</td><td>"通知-行动" + 主动合规义务</td></tr>
-    <tr><td><strong>平台义务</strong></td><td>算法推荐场景下负有更高注意义务</td><td>无主动监控义务（No general monitoring）</td><td>超大型平台须进行系统性风险评估</td></tr>
-    <tr><td><strong>关键条款</strong></td><td>民法典1195-1197条</td><td>17 U.S.C. § 512(c)</td><td>DSA Art. 34-35</td></tr>
-    <tr><td><strong>"知道"标准</strong></td><td>"应知"包括商业上应该知道</td><td>"Red Flag"测试：对理性人显而易见</td><td>收到通知后应立即行动</td></tr>
-    <tr><td><strong>算法态度</strong></td><td>算法推荐=更高义务</td><td>一般认为不影响DMCA保护</td><td>推荐算法须进行风险评估</td></tr>
-    <tr><td><strong>趋势</strong></td><td>加重平台责任</td><td>讨论修改，但维持避风港</td><td>分层监管，大平台重义务</td></tr>
-  </table>
-  <p>💡 <span class="purple-bold">启示：</span>中国在算法推荐领域的司法实践走在前列——在DMCA的"技术中立"和DSA的"分层监管"之间，走出了"技术有益但须付出更高注意义务"的第三条道路。</p>
-</div>
+    <h3>焦点三：被告是否"应知"侵权且未采取"必要措施"？</h3>
 
-<!-- ===== 实务建议 ===== -->
-<div class="section">
-  <h2>八、实务建议与AI应用探索</h2>
+    <p>法院以<span class="highlight">六项因素</span>综合认定字节跳动"应当知道"侵权行为存在，且采取的删除、屏蔽等措施在效果上不足以有效制止侵权。详见下文第四、五部分。</p>
 
-  <h3>（一）对平台企业的合规启示</h3>
-  <p>1. <strong>差异化治理体系：</strong>针对不同算法类型建立匹配的版权管理机制。</p>
-  <p>2. <strong>"必要措施"实质化：</strong>建立"事前预防—事中监控—事后救济"全链条保护体系。</p>
-  <p>3. <strong>常态化风险预警：</strong>将侵权高发内容类型、高发用户、高发时段纳入日常监测。</p>
-
-  <h3>（二）AI应用工具推荐</h3>
-  <table>
-    <tr><th>应用场景</th><th>AI工具</th><th>使用方式</th></tr>
-    <tr><td>关键词生成与过滤</td><td>ChatGPT、Kimi</td><td>输入热播剧名称，AI生成相关关键词/衍生词库</td></tr>
-    <tr><td>版权合规培训</td><td>通用对话式AI</td><td>生成算法合规培训材料、风险案例分析文档</td></tr>
-    <tr><td>侵权线索发现</td><td>秘塔AI、MetaLaw</td><td>检索类似侵权案例，分析法院认定标准和判决要旨</td></tr>
-    <tr><td>预警函草拟</td><td>通用对话式AI</td><td>输入侵权视频信息，AI辅助生成格式化的投诉函件</td></tr>
-    <tr><td>视频指纹比对</td><td>Content ID类系统</td><td>用户上传视频与正版版权库比对，识别实质性相似片段</td></tr>
-  </table>
-
-  <h3>（三）对权利人的维权建议</h3>
-  <p>1. 构建"预警函—侵权清单—持续沟通"的多轮次维权体系。</p>
-  <p>2. 关注侵权视频的"显著性"特征（热门推荐位、播放量、标题关键词）。</p>
-  <p>3. 主动了解目标平台的算法推荐机制，提升维权精准度。</p>
-</div>
-
-<!-- ===== 核心要点速查卡 [新增] ===== -->
-<div class="section" id="s9">
-  <h2>九、核心要点速查卡 <span class="badge-new">新增</span></h2>
-
-  <div class="quick-card">
-    <h3>⚡ 5秒速览——这个案子说了什么？</h3>
-    <p>算法推荐<strong>不是直接侵权</strong>，但平台用算法推荐就要<strong>承担更高注意义务</strong>。</p>
+    <p><span class="green-bold">结论：被告应知侵权存在 + 必要措施不足 → 构成帮助侵权。</span></p>
   </div>
 
-  <table>
-    <tr><th style="width:120px;">维度</th><th>核心结论</th></tr>
-    <tr><td><strong>法律定性</strong></td><td>不构成直接侵权/共同侵权 → <span class="red-bold">帮助侵权</span></td></tr>
-    <tr><td><strong>平台身份</strong></td><td>字节跳动 = "信息流推荐服务提供者"（独立法律概念）</td></tr>
-    <tr><td><strong>注意义务</strong></td><td>算法推荐平台 > 普通信息存储平台</td></tr>
-    <tr><td><strong>"应知"标准</strong></td><td>从"技术能否识别" → "商业上是否应该知道"（六因素综合判断）</td></tr>
-    <tr><td><strong>"必要措施"</strong></td><td>形式评价 + 效果评价双重标准，"通知-删除"不够，需主动预防</td></tr>
-    <tr><td><strong>赔偿</strong></td><td>200万元（索赔3000万，判赔200万）</td></tr>
-    <tr><td><strong>影响</strong></td><td>为算法推荐平台责任设立了裁判标杆</td></tr>
-  </table>
-</div>
+  <!-- 4. 裁判标准体系 -->
+  <div class="section">
+    <h2>四、裁判标准体系</h2>
+    <p style="margin-bottom:18px">本案的核心价值在于，法院在算法推荐这一新兴场景下，<span class="highlight">系统性地确立了一系列裁判标准</span>：</p>
 
-<!-- ===== Q&A [新增] ===== -->
-<div class="section" id="s10">
-  <h2>十、常见问题 Q&A <span class="badge-new">新增</span></h2>
+    <div class="standards-grid">
+      <div class="std-card">
+        <div class="std-num">01</div>
+        <h4>平台身份区分标准</h4>
+        <p>首次提出<span class="blue-bold">"信息流推荐服务提供者"</span>概念，与"信息存储空间服务提供者"明确区分。平台身份决定注意义务层级。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">02</div>
+        <h4>算法中立抗辩边界</h4>
+        <p>算法推荐技术本身<span class="blue-bold">不构成直接侵权</span>（实质非侵权用途），但也<span class="red-bold">不是免责盾牌</span>——技术中立不等于责任豁免。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">03</div>
+        <h4>"应知"六因素综合判断</h4>
+        <p>作品知名度 + 权利人预警 + 显著位置 + 重复推送 + 标题关键词 + 传播规模。从"技术能否识别"转向<span class="blue-bold">"商业上是否应该知道"</span>。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">04</div>
+        <h4>"必要措施"双重评价标准</h4>
+        <p>形式评价（是否采取了措施）+ 效果评价（措施是否<span class="blue-bold">实质有效</span>）。"通知-删除"不够，需主动预防。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">05</div>
+        <h4>算法类型化思维</h4>
+        <p>个性化推送算法 vs 排序精选算法 vs 协同过滤算法——<span class="blue-bold">不同算法类型</span>的侵权识别能力和风险水平不同，注意义务应差异化设定。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">06</div>
+        <h4>利益-责任匹配原则</h4>
+        <p>平台通过算法推荐获取精准分发的商业利益，<span class="blue-bold">"谁获益、谁担责"</span>——这是更高注意义务的政策基础。</p>
+      </div>
+    </div>
 
-  <div class="qa-item">
-    <div class="qa-q">Q1: 平台用了算法推荐，就一定会构成帮助侵权吗？</div>
-    <div class="qa-a">不一定。平台是否构成帮助侵权取决于三个条件同时满足：(1) 知道或应当知道侵权行为存在；(2) 未采取必要措施；(3) 侵权行为成立。算法推荐只是提高了"应知"的认定标准，但不会自动导致侵权认定。如果平台建立了有效的主动过滤机制并及时处理，仍可免责。</div>
+    <blockquote>这六个标准共同构成算法推荐场景下平台版权责任的裁判框架。核心逻辑链：<span class="blue-bold">平台身份定性</span> → <span class="blue-bold">算法中立边界</span> → <span class="blue-bold">"应知"判断标准</span> → <span class="blue-bold">"必要措施"评价</span> → <span class="blue-bold">算法类型化</span> → <span class="blue-bold">利益-责任匹配</span>。</blockquote>
   </div>
 
-  <div class="qa-item">
-    <div class="qa-q">Q2: 这个案子有什么实际影响？</div>
-    <div class="qa-a">影响深远：(1) 首次在司法层面确认"信息流推荐服务提供者"为独立法律身份；(2) 推高了所有采用算法推荐的短视频平台的合规成本；(3) 为后续同类案件（如腾讯诉微播视界案）提供了审理框架。各大平台此后普遍加强了热播内容的主动过滤。</div>
+  <!-- 5. "应知"与"必要措施" -->
+  <div class="section">
+    <h2>五、"应知"认定与"必要措施"双重评价框架</h2>
+    <p style="margin-bottom:16px">法院在本案中搭建了<span class="highlight">两个核心判断工具</span>——"应知"六因素 + "必要措施"双重评价——这是后续类案审理中最常被引用的部分：</p>
+
+    <h3>"应知"认定的六因素体系</h3>
+
+    <table>
+      <tr><th style="width:30px">#</th><th style="width:140px">因素</th><th>本案具体表现</th></tr>
+      <tr><td>1</td><td class="purple-bold">作品知名度</td><td>《延禧攻略》为当年现象级热播剧，平台对此应有充分认知</td></tr>
+      <tr><td>2</td><td class="purple-bold">权利人预警</td><td>爱奇艺在热播期间多次发送预警函，内容具体、指认明确</td></tr>
+      <tr><td>3</td><td class="purple-bold">显著位置</td><td>大量侵权视频出现在App首页推荐位、热门榜单等显著位置</td></tr>
+      <tr><td>4</td><td class="purple-bold">重复推送</td><td>同一侵权内容被短时间、多次重复推送至不同用户群体</td></tr>
+      <tr><td>5</td><td class="purple-bold">标题内容</td><td>标题包含"延禧攻略"及剧中人物关键词，平台具备识别条件</td></tr>
+      <tr><td>6</td><td class="purple-bold">传播规模</td><td>部分侵权视频播放量超110万次，侵权后果严重</td></tr>
+    </table>
+
+    <div class="law-quote">
+      <div class="article">《民法典》第1197条（网络服务提供者连带责任）</div>
+      <div class="content">网络服务提供者知道或者应当知道网络用户利用其网络服务侵害他人民事权益，未采取必要措施的，与该网络用户承担连带责任。</div>
+    </div>
+
+    <div class="insight-box">
+      <strong>关键转变</strong>：法院将"应知"的判断标准从<span class="blue-bold">"技术上能否识别"</span>转向<span class="blue-bold">"商业上是否应该知道"</span>。这意味着平台不能以"算法无法精准识别侵权"为由抗辩——当侵权内容出现在推荐位、播放量超百万、标题含剧名时，平台在商业运营层面"应该知道"。
+    </div>
+
+    <h3>"必要措施"的双重评价标准</h3>
+
+    <table>
+      <tr><th style="width:140px">评价维度</th><th>内涵</th><th>本案认定</th></tr>
+      <tr>
+        <td class="purple-bold">第一重：形式评价</td>
+        <td>平台是否采取了删除、屏蔽、断开链接等措施</td>
+        <td>字节跳动确实采取了部分措施</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">第二重：效果评价</td>
+        <td>这些措施是否在实质上<span class="blue-bold">有效制止、预防</span>了明显侵权</td>
+        <td><span class="red-bold">未通过</span>——同类侵权内容持续出现在推荐位，单条播放量超百万，措施效果不足</td>
+      </tr>
+    </table>
+
+    <div class="law-quote">
+      <div class="article">《民法典》第1195条（通知-删除规则）</div>
+      <div class="content">网络用户利用网络服务实施侵权行为的，权利人有权通知网络服务提供者采取删除、屏蔽、断开链接等必要措施……网络服务提供者接到通知后，应当及时将该通知转送相关网络用户，并根据构成侵权的初步证据和服务类型采取必要措施；未及时采取必要措施的，对损害的扩大部分与该网络用户承担连带责任。</div>
+    </div>
+
+    <div class="insight-box">
+      <strong>实践影响</strong>：双重评价标准意味着平台不能仅满足于"有人举报我就删"的被动模式。法院要求的是<span class="blue-bold">"事前预防—事中监控—事后救济"的全链条治理</span>。对于热播剧等高风险内容，平台应主动建立过滤机制，而非等待权利人通知。
+    </div>
   </div>
 
-  <div class="qa-item">
-    <div class="qa-q">Q3: 为什么一审判赔只有200万，而爱奇艺索赔3000万？</div>
-    <div class="qa-a">法院在确定赔偿金额时通常综合考虑：(1) 权利人实际损失；(2) 侵权人违法所得；(3) 作品知名度；(4) 侵权行为的性质和后果等。本案中法院可能认为3000万的索赔依据不够充分，最终综合考虑后判赔200万。这也是爱奇艺二审上诉的原因之一。</div>
+  <!-- 6. 实践意义 -->
+  <div class="section">
+    <h2>六、实践意义与启示</h2>
+
+    <h3>对互联网产业的信号</h3>
+    <p>判决释放了明确的<span class="blue-bold">"技术有益，但须付出更高注意义务"</span>信号。法院没有否定算法推荐技术的价值（拒绝直接侵权认定），但也明确拒绝了"技术中立=免责金牌"的绝对立场。对平台而言，核心合规要求：<span class="highlight">建立差异化版权治理体系 + 实质有效的过滤机制 + 常态化的风险预警</span>。</p>
+
+    <h3>对法律实务的指引</h3>
+    <table>
+      <tr><th style="width:140px">实务场景</th><th>本案给出的指引</th></tr>
+      <tr><td>权利人维权</td><td>构建"预警函—侵权清单—持续沟通"多轮次维权体系；关注侵权内容的"显著性"特征（推荐位、播放量、标题关键词）作为"应知"证据</td></tr>
+      <tr><td>平台合规</td><td>针对不同算法类型建立差异化版权管理；"通知-删除"不够，须建立主动过滤 + 重复侵权预防机制</td></tr>
+      <tr><td>律师代理</td><td>举证策略：重点收集"显著位置""重复推送""传播规模"等证明平台"应知"的证据；注意区分"通知-删除"路径（1195条）与"应知"路径（1197条）的证明逻辑差异</td></tr>
+    </table>
+
+    <h3>对法学生的启示</h3>
+    <div class="insight-box">
+      <strong>三个值得深入的方向</strong>：(1) <span class="blue-bold">算法类型化与差异化注意义务</span>——个性化推送、排序精选、协同过滤等不同算法应如何差异化设定注意义务标准？(2) <span class="blue-bold">比较法视角</span>——中国"更高注意义务"路径 vs 美国 DMCA 避风港 vs 欧盟 DSA 分层监管，三条路径的制度逻辑差异；(3) <span class="blue-bold">AI 时代的延伸</span>——当生成式 AI 被用于内容分发和推荐时，"延禧攻略案"的裁判框架是否需要调整？
+    </div>
+
+    <div class="verdict-box">
+      <div class="verdict-title">核心评价</div>
+      <p>这是<span class="blue-bold">算法推荐版权责任的奠基性判决</span>——用一个热播剧的短视频侵权纠纷，确立了平台身份区分、"应知"六因素、"必要措施"双重评价等一整套裁判工具。</p>
+      <p>它在 DMCA 的"技术中立"和 DSA 的"分层监管"之间，走出了<span class="blue-bold">中国特色的第三条道路</span>。</p>
+      <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">北京海淀法院在本案中的裁判框架，至今仍是算法推荐版权纠纷领域最常被引用的司法标准。</p>
+    </div>
   </div>
 
-  <div class="qa-item">
-    <div class="qa-q">Q4: 作为法学生/法务，这个案子对实习和工作有什么用？</div>
-    <div class="qa-a">面试高频考点！如果你面试互联网公司或知识产权律所，本案几乎是必问题。核心掌握三点：(1) 红旗原则与避风港规则的平衡；(2) "应知"的六因素判断标准；(3) 算法推荐的平台合规义务。能清晰阐述这三个要点，面试官会对你印象深刻。</div>
+  <!-- 7. 类案与延伸 -->
+  <div class="section">
+    <h2>七、类案参考与延伸</h2>
+
+    <h3>国内同类案件</h3>
+    <table>
+      <tr><th style="width:160px">案件</th><th>核心争议</th><th>与本案的关系</th></tr>
+      <tr>
+        <td class="purple-bold">腾讯诉微播视界案<br>(2020，杭州互联网法院)</td>
+        <td>《王者荣耀》游戏画面短视频的算法推荐侵权</td>
+        <td>延续了"算法推荐=更高注意义务"的裁判逻辑；进一步探讨了算法功能组合的侵权作用</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">网易云音乐案<br>(2021，广州知识产权法院)</td>
+        <td>算法推荐歌曲的版权定性</td>
+        <td>将算法推荐责任框架从视频领域延伸至音乐领域</td>
+      </tr>
+    </table>
+
+    <h3>国际比较</h3>
+    <table>
+      <tr><th style="width:120px">维度</th><th>中国</th><th>美国 (DMCA)</th><th>欧盟 (DSA)</th></tr>
+      <tr><td><strong>核心理念</strong></td><td>红旗原则 + 更高注意义务</td><td>避风港原则 (Safe Harbor)</td><td>"通知-行动" + 主动合规义务</td></tr>
+      <tr><td><strong>平台义务</strong></td><td>算法推荐场景下负有更高注意义务</td><td>无主动监控义务</td><td>超大型平台须系统性风险评估</td></tr>
+      <tr><td><strong>关键条款</strong></td><td>民法典第1195-1197条</td><td>17 U.S.C. § 512(c)</td><td>DSA Art. 34-35</td></tr>
+      <tr><td><strong>"知道"标准</strong></td><td>"应知"包括商业上应该知道</td><td>"Red Flag"测试：对理性人显而易见</td><td>收到通知后应立即行动</td></tr>
+      <tr><td><strong>算法态度</strong></td><td>算法推荐 = 更高义务</td><td>一般认为不影响 DMCA 保护</td><td>推荐算法须进行风险评估</td></tr>
+    </table>
+
+    <div class="insight-box" style="margin-top:18px;">
+      <strong>进阶阅读建议</strong>：建议结合阅读 (1) 判决书原文（法宝引证码 CLI.C.49421）；(2) 《民法典》第1194-1197条（网络侵权责任）；(3) 《信息网络传播权保护条例》第14-17条（通知-删除程序）、第22-23条（避风港规则）；(4) 欧盟《数字服务法》(DSA) 第34-35条（超大型平台风险评估义务）。
+    </div>
   </div>
-</div>
 
-<!-- ===== 结语 ===== -->
-<div class="section">
-  <h2>十一、结语</h2>
-  <p>"延禧攻略"案作为全国首例算法推荐案，其重要贡献在于：它首次在司法层面回应了"算法推荐场景下网络服务提供者的注意义务应当如何认定"这一新生问题。法院既没有因算法推荐技术的介入而将平台行为直接认定为侵权，也没有固守传统的避风港规则而给予平台过度的技术中立保护。</p>
-  <p>对于平台而言，本案释放出明确的信号：<span class="highlight">算法不是免责的"挡箭牌"</span>，平台在享受精准推荐带来的商业利益的同时，也必须在侵权治理上加大投入。对于法律从业者和AI技术探索者而言，本案展示了技术发展与法律规制之间的互动关系——技术的发展不断挑战既有法律框架，而法律的回应又反过来规范着技术应用的方向。</p>
-</div>
+  <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--sub);">
+    <a href="../index.html" style="color:var(--purple); text-decoration:none;">&larr; 返回作品集首页</a>
+  </p>
 
 </div>
+
+<div class="footer-note">
+  <p>本案例分析仅供学习参考，不构成法律意见。案件信息来源于公开裁判文书。</p>
+  <p style="margin-top:4px;">涉及真实法律决策，请以执业律师意见为准。</p>
+</div>
+
 </body>
 </html>
