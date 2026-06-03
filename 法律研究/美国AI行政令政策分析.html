@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国AI行政令政策分析 | 法律研究作品集</title>
+<style>
+:root {
+  --bg: #f8f9fa; --card: #fff; --text: #2d3436; --muted: #636e72;
+  --border: #e0e0e0; --accent: #1a5276; --blue: #2980b9;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06); --radius: 12px;
+  --red: #c0392b; --orange: #d35400; --green: #27ae60;
+}
+* { margin:0; padding:0; box-sizing: border-box; }
+body {
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.8;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  max-width: 900px; margin: 0 auto; padding: 16px 20px 0;
+  font-size: 13px; color: var(--muted);
+}
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ── Hero Card ── */
+.hero-card {
+  max-width: 900px; margin: 20px auto 36px;
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #415a77 100%);
+  color: #fff; border-radius: var(--radius); padding: 40px 36px;
+}
+.hero-card .tag {
+  display: inline-block; font-size: 12px; padding: 4px 12px;
+  border-radius: 14px; background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25); letter-spacing: 1px; margin-bottom: 14px;
+}
+.hero-card h1 { font-size: 28px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
+.hero-card .subtitle { font-size: 15px; opacity: 0.78; margin-bottom: 16px; }
+.hero-card .meta {
+  display: flex; gap: 20px; font-size: 13px; opacity: 0.65; flex-wrap: wrap;
+}
+
+/* ── Container ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px 48px; }
+
+/* ── Section ── */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 20px; font-weight: 700; color: var(--accent);
+  padding-bottom: 10px; border-bottom: 2px solid var(--border); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-size: 14px; font-weight: 700;
+}
+
+/* ── Overview Table ── */
+.overview-table {
+  width: 100%; border-collapse: collapse; margin-bottom: 24px;
+  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+}
+.overview-table td {
+  padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border);
+}
+.overview-table td:first-child {
+  background: #f0f4ff; font-weight: 600; color: var(--accent); width: 160px;
+  white-space: nowrap;
+}
+.overview-table tr:last-child td { border-bottom: none; }
+
+/* ── Timeline ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px;
+  width: 2px; background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -24px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.timeline-item .tl-date { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 2px; }
+.timeline-item .tl-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.timeline-item .tl-desc { font-size: 13px; color: var(--muted); }
+
+/* ── Standards Grid ── */
+.standards-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.standard-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+  border-top: 4px solid var(--accent);
+}
+.standard-card .sc-num {
+  font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 6px;
+}
+.standard-card .sc-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+.standard-card .sc-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── Key Quote ── */
+.quote-box {
+  background: #fffdf0; border-left: 4px solid #e6c300;
+  padding: 18px 22px; margin: 20px 0; border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px; color: #6b5900; line-height: 1.8;
+}
+.quote-box .quote-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; color: #b39700; }
+
+/* ── Compare Table ── */
+.compare-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0 24px;
+  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+}
+.compare-table th {
+  background: var(--accent); color: #fff; padding: 10px 16px;
+  font-size: 14px; text-align: left;
+}
+.compare-table td {
+  padding: 12px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td { background: #fafbfc; }
+
+/* ── Verdict Box ── */
+.verdict-box {
+  background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 100%);
+  border: 1px solid #b8d4f0; border-radius: var(--radius); padding: 24px 28px;
+  margin: 24px 0;
+}
+.verdict-box h4 { font-size: 16px; color: var(--accent); margin-bottom: 12px; }
+.verdict-box p { font-size: 14px; line-height: 1.8; }
+.verdict-box ul { margin-left: 18px; font-size: 14px; line-height: 1.8; }
+.verdict-box li { margin-bottom: 6px; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero-card { padding: 28px 20px; }
+  .hero-card h1 { font-size: 22px; }
+  .standards-grid { grid-template-columns: 1fr; }
+  .overview-table td:first-child { width: 100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  ← <a href="../index.html">返回首页</a> &nbsp;/&nbsp; 法律研究 &nbsp;/&nbsp; 美国AI行政令政策分析
+</div>
+
+<!-- Hero Card -->
+<div class="hero-card">
+  <span class="tag">AI 治理 · 国际比较</span>
+  <h1>美国发布《促进先进人工智能创新与安全》行政令</h1>
+  <p class="subtitle">创新优先与国家安全之间的政策平衡 —— 特朗普第二任期 AI 治理的核心制度设计</p>
+  <div class="meta">
+    <span>来源：清华大学智能法治研究院</span>
+    <span>行政令日期：2026年6月2日</span>
+    <span>分析发布：2026年6月2日</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 一、文件速览 -->
+  <div class="section">
+    <div class="section-title"><span class="num">一</span>文件速览</div>
+    <table class="overview-table">
+      <tr><td>行政令名称</td><td>《促进先进人工智能创新与安全》（<em>Promoting Advanced Artificial Intelligence Innovation and Security</em>）</td></tr>
+      <tr><td>签署人</td><td>唐纳德·J.特朗普总统</td></tr>
+      <tr><td>发布日期</td><td>2026 年 6 月 2 日</td></tr>
+      <tr><td>核心文件</td><td>行政令正文（五部分）+ 配套《情况说明》</td></tr>
+      <tr><td>政策定位</td><td>创新优先 + 国家安全兜底 —— 非全面监管框架，而是有限、定向、自愿合作的安全机制</td></tr>
+      <tr><td>顶层立场</td><td>明确反对 AI 模型的强制性许可、预先审查或准入要求</td></tr>
+      <tr><td>核心红线</td><td>"本条任何内容均不得解释为授权设立……强制性政府许可、预先审查或者准入要求"（第三条第（三）款）</td></tr>
+    </table>
+  </div>
+
+  <!-- 二、政策背景与演进脉络 -->
+  <div class="section">
+    <div class="section-title"><span class="num">二</span>政策背景与演进脉络</div>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">美国 AI 治理政策经历了从"创新促进→风险治理→竞争与安全再平衡"的三阶段调整：</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">2019 年 2 月</div>
+        <div class="tl-title">第 13859 号行政令：《保持美国在 AI 领域的领导地位》</div>
+        <div class="tl-desc">特朗普第一任期。将 AI 定位为关系美国科技、经济和国家安全领导地位的重要能力，强调政府应支持创新、避免不必要地妨碍 AI 技术发展。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2023 年 10 月</div>
+        <div class="tl-title">第 14110 号行政令：《安全、可靠、可信地开发和使用 AI》</div>
+        <div class="tl-desc">拜登政府。全面转向系统性风险治理，覆盖前沿模型安全测试、关键基础设施、网络安全、隐私保护、消费者权益、劳动影响、民权保障等十余个领域，要求部分开发者向联邦政府报告训练和安全措施。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2025 年 1 月</div>
+        <div class="tl-title">第 14179 号行政令：《移除美国 AI 领导地位的障碍》</div>
+        <div class="tl-desc">特朗普第二任期开端。撤销拜登时期若干被认为阻碍创新的政策和指令，要求制定新的 AI 行动计划。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2025 年 7 月</div>
+        <div class="tl-title">《美国人工智能行动计划》发布</div>
+        <div class="tl-desc">提出加快创新、建设 AI 基础设施、推动美国 AI 出口等政策方向，标志着"创新优先"路线的全面回归。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2025 年 12 月</div>
+        <div class="tl-title">行政令：保护 AI 创新免受州法差异影响</div>
+        <div class="tl-desc">禁止联邦政府使用含意识形态偏见或社会议程的 AI 模型，保护美国 AI 创新免受不一致且成本高昂的各州合规制度影响。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2026 年 3 月</div>
+        <div class="tl-title">《美国国家网络战略》+ 国家 AI 立法框架</div>
+        <div class="tl-desc">确立网络空间无可匹敌地位；公布全面的国家立法框架以应对 AI 最紧迫的政策议题。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2026 年 6 月 2 日</div>
+        <div class="tl-title"><strong>本行政令：《促进先进人工智能创新与安全》</strong></div>
+        <div class="tl-desc">在创新优先总体框架下，针对前沿 AI 的网络安全和国家安全风险建立有限、定向、以自愿合作为基础的安全机制。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、核心制度设计 -->
+  <div class="section">
+    <div class="section-title"><span class="num">三</span>核心制度设计（六大措施）</div>
+    <div class="standards-grid">
+      <div class="standard-card" style="border-top-color: var(--accent);">
+        <div class="sc-num">措施一</div>
+        <div class="sc-title">优先加强关键信息系统网络防御</div>
+        <div class="sc-desc">国家安全系统、战争部信息系统 30 日内优先升级网络防御。CISA 发布约束力运行指令，加快民用联邦政府系统防护，并向农村医院、社区银行、地方公用事业单位等关键基础设施运营者提供 AI 赋能安全工具。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #2980b9;">
+        <div class="sc-num">措施二</div>
+        <div class="sc-title">建立 AI 网络安全协调交换机制</div>
+        <div class="sc-desc">财政部牵头，与 AI 产业和关键基础设施运营者自愿合作，协调软件漏洞扫描、冲突排除、漏洞发现验证及修复优先级排序与补丁分发。本质是漏洞协同响应平台，非强制性信息报送制度。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #27ae60;">
+        <div class="sc-num">措施三</div>
+        <div class="sc-title">推动先进 AI 漏洞检测能力建设</div>
+        <div class="sc-desc">OMB 梳理既有联邦拨款项目中可用于 AI 漏洞检测研发的资金；人事管理办公室 60 日内扩大网络安全专员招聘。不创设新资金，而是盘活现有资源 + 扩充人才管道。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #d35400;">
+        <div class="sc-num">措施四</div>
+        <div class="sc-title">建立涉密基准测试程序</div>
+        <div class="sc-desc">60 日内建立涉密基准测试，评估 AI 模型的"先进网络能力"，由 NSA 局长认定"受涵盖前沿模型"。注意：该标签仅服务于本行政令目的，非通用分类，不等同于欧盟 AI 法中的高风险/系统性风险模型。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #8e44ad;">
+        <div class="sc-num">措施五</div>
+        <div class="sc-title">设计开发者自愿合作框架</div>
+        <div class="sc-desc">开发者可自愿向联邦政府提供最长 30 日的模型早期访问权限，在保密、知识产权保护等约束下运行。政府可与开发者共同选择"可信合作伙伴"提前部署。是企业激励性参与，非强制性义务。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #c0392b;">
+        <div class="sc-num">措施六</div>
+        <div class="sc-title">优先打击利用 AI 的网络犯罪</div>
+        <div class="sc-desc">司法部优先执行《美国法典》第 1028/1030/1343 条，针对利用 AI 非法访问或损坏计算机、窃取数据、实施其他犯罪的行为开展执法。不创设新罪名，但提升既有法律的 AI 犯罪执法优先级。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、治理逻辑与政策特点 -->
+  <div class="section">
+    <div class="section-title"><span class="num">四</span>治理逻辑与政策特点</div>
+
+    <p style="font-size:14px;margin-bottom:16px;">与拜登政府"全覆盖风险治理"路径相比，本行政令体现了截然不同的治理逻辑：</p>
+
+    <div class="quote-box">
+      <div class="quote-label">核心逻辑</div>
+      不搞"一刀切"监管，而是针对前沿模型的网络安全风险，通过<strong>"政府能力建设 + 产业自愿合作"</strong>实现风险对冲 —— 既避免抑制创新，也防范国家安全风险。
+    </div>
+
+    <div class="standards-grid">
+      <div class="standard-card" style="border-top-color: #e6c300;">
+        <div class="sc-num">特点一</div>
+        <div class="sc-title">明确反对强制性前置审批</div>
+        <div class="sc-desc">行政令第三条第（三）款构成全文的"防火墙条款"：不得将任何内容解释为授权设立针对 AI 模型开发、发布、分发的强制性许可、预先审查或准入要求。这从法律层面否定了事前审批监管路径。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #2980b9;">
+        <div class="sc-num">特点二</div>
+        <div class="sc-title">以政府能力建设替代市场准入管制</div>
+        <div class="sc-desc">大量任务配置给 CISA、NSA、财政部、OMB、人事管理办公室等既有机构，而非设立专门 AI 监管机构。政府既是监管者，也是采购者、使用者、协调者和安全能力建设者。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #27ae60;">
+        <div class="sc-num">特点三</div>
+        <div class="sc-title">以自愿合作降低企业合规负担</div>
+        <div class="sc-desc">框架限定为"自愿性"，配套保密、网络安全、知识产权保护等要求。早期访问限最长 30 日。对希望进入政府/国防市场的大型企业有商业激励，对一般市场主体不设普遍性强制义务。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、潜在争议与不确定性 -->
+  <div class="section">
+    <div class="section-title"><span class="num">五</span>潜在争议与不确定性</div>
+
+    <table class="compare-table">
+      <tr>
+        <th style="width:30%;">争议点</th>
+        <th>具体风险</th>
+      </tr>
+      <tr>
+        <td><strong>自愿机制 → 事实门槛？</strong></td>
+        <td>若政府采购和大型企业安全审查逐渐将参与该框架作为重要参考因素，自愿机制可能演变为事实上的市场准入门槛，未参与者面临更高解释成本。</td>
+      </tr>
+      <tr>
+        <td><strong>涉密评测的透明度不足</strong></td>
+        <td>评估标准、测试方法、能力阈值不公开，开发者难以提前判断模型是否会被认定。如何在国家安全保密与企业程序预期之间取得平衡，是关键挑战。</td>
+      </tr>
+      <tr>
+        <td><strong>商业秘密与知识产权保护</strong></td>
+        <td>企业仍需担忧模型权重、系统提示、安全策略、训练方法等核心敏感信息在早期访问和评测过程中的泄露风险。后续实施细则的力度决定框架能否稳定运行。</td>
+      </tr>
+      <tr>
+        <td><strong>州法与联邦法的协调</strong></td>
+        <td>行政令表达了防止各州法律差异造成不一致合规制度的意图，但各州（如加州）在 AI 监管方面的立法动力可能构成持续张力。</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 六、国际比较 -->
+  <div class="section">
+    <div class="section-title"><span class="num">六</span>国际比较：美国 vs 欧盟 AI 治理路径</div>
+
+    <table class="compare-table">
+      <tr>
+        <th style="width:20%;">维度</th>
+        <th style="width:40%;">美国（本行政令路径）</th>
+        <th style="width:40%;">欧盟（《人工智能法》路径）</th>
+      </tr>
+      <tr>
+        <td><strong>核心逻辑</strong></td>
+        <td>创新优先 + 国家安全兜底</td>
+        <td>风险分级 + 全面合规监管</td>
+      </tr>
+      <tr>
+        <td><strong>监管方式</strong></td>
+        <td>自愿合作 + 政府能力建设</td>
+        <td>强制性合规义务 + 市场准入规则</td>
+      </tr>
+      <tr>
+        <td><strong>风险覆盖</strong></td>
+        <td>重点聚焦网络安全、国家安全</td>
+        <td>全面覆盖安全、基本权利、健康、环境等</td>
+      </tr>
+      <tr>
+        <td><strong>社会性议题</strong></td>
+        <td>不在本次行政令覆盖范围内</td>
+        <td>算法歧视、消费者保护、劳动权益、民权保障</td>
+      </tr>
+      <tr>
+        <td><strong>机构设置</strong></td>
+        <td>依托既有机构（CISA/NSA/财政部等）跨部门协作</td>
+        <td>设立专门 AI 监管机构（AI Office）</td>
+      </tr>
+      <tr>
+        <td><strong>对企业的影响</strong></td>
+        <td>一般企业无新增强制义务；进入高安全市场有商业激励</td>
+        <td>按风险等级施加不同程度的合规义务</td>
+      </tr>
+      <tr>
+        <td><strong>政策弹性</strong></td>
+        <td>高 —— 行政令可随技术发展调整，立法层面保留空间</td>
+        <td>较低 —— 法规框架固定，修订周期较长</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 七、实践意义与启示 -->
+  <div class="section">
+    <div class="section-title"><span class="num">七</span>实践意义与启示</div>
+
+    <div class="verdict-box">
+      <h4>核心判断</h4>
+      <p>本行政令不是一部全面 AI 监管规则，也不是对前沿模型实施强制发布审批的制度，而是以联邦信息系统升级、关键基础设施保护、漏洞协调、涉密评测和可信合作伙伴机制为主要内容的安全能力建设方案。其核心特征概括为：</p>
+      <ul>
+        <li><strong>治理路径</strong>：不直接阻断技术迭代，而是通过采购、合作、评测和人才建设提高政府和关键基础设施的防御能力</li>
+        <li><strong>覆盖范围</strong>：不对所有模型设置统一准入门槛，仅聚焦具有"先进网络能力"的"受涵盖前沿模型"</li>
+        <li><strong>制度方式</strong>：不建立普遍性监管机构，依托既有网络安全、国防、财政、人事管理部门形成跨部门协作</li>
+      </ul>
+    </div>
+
+    <div class="standards-grid">
+      <div class="standard-card" style="border-top-color: var(--accent);">
+        <div class="sc-num">启示一</div>
+        <div class="sc-title">AI 治理不止"审批 vs 放任"二选一</div>
+        <div class="sc-desc">本行政令展示了第三条路径：在技术快速迭代、风险高度不确定的阶段，通过政府能力建设、产业合作和重点场景防护实现创新与安全的动态平衡。这对中国 AI 治理的制度设计具有参考价值。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #d35400;">
+        <div class="sc-num">启示二</div>
+        <div class="sc-title">"动态系统论"的治理思维</div>
+        <div class="sc-desc">注意义务标准不固定，随技术发展和应用场景动态调整。通用 AI 对话场景标准较低，专业/高风险场景标准提高 —— 这与杭州互联网法院在 AI 幻觉案中的裁判逻辑异曲同工。</div>
+      </div>
+      <div class="standard-card" style="border-top-color: #27ae60;">
+        <div class="sc-num">启示三</div>
+        <div class="sc-title">全球 AI 治理规则竞争加剧</div>
+        <div class="sc-desc">美国"创新优先 + 重点场景安全防护"与欧盟"风险分级 + 全面合规监管"形成两极。中国需要在这一光谱中找准自身定位，既避免过度监管抑制创新，也防止安全真空。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 八、后续观察点 -->
+  <div class="section">
+    <div class="section-title"><span class="num">八</span>后续值得观察的关键问题</div>
+    <ol style="font-size:14px;line-height:2;margin-left:18px;color:var(--muted);">
+      <li><strong>涉密基准测试如何设计</strong> —— 哪些模型能力会被纳入评估，阈值如何设定？</li>
+      <li><strong>哪些模型会被认定</strong> —— 首批"受涵盖前沿模型"名单何时产生，涉及哪些企业？</li>
+      <li><strong>自愿合作的实际参与率</strong> —— 大型 AI 企业是否积极响应，还是保持观望？</li>
+      <li><strong>政府采购是否将框架作为参考</strong> —— 自愿机制是否会形成事实上的市场准入门槛？</li>
+      <li><strong>商业秘密保护细则</strong> —— 政府评测环境的具体安全措施能否消解企业顾虑？</li>
+      <li><strong>国会是否跟进立法</strong> —— 行政令效力有限，国会是否会将核心制度转化为正式立法？</li>
+      <li><strong>与欧盟 AI 法的互动</strong> —— 两种路径的博弈如何影响全球 AI 企业的合规策略？</li>
+    </ol>
+  </div>
+
+  <!-- 参考来源 -->
+  <div class="section" style="padding-top:20px;border-top:1px solid var(--border);">
+    <p style="font-size:13px;color:var(--muted);">
+      <strong>参考来源：</strong><br>
+      (1) 清华大学智能法治研究院，《美国发布〈促进先进人工智能创新与安全〉行政令：创新优先与国家安全之间的政策平衡》，2026 年 6 月 2 日<br>
+      (2) The White House. <em>Executive Order on Promoting Advanced Artificial Intelligence Innovation and Security</em>. June 2, 2026.<br>
+      (3) The White House. <em>Fact Sheet: President Donald J. Trump Promotes Advanced Artificial Intelligence Innovation and Security</em>. June 2, 2026.<br>
+      (4) 行政令第 13859 号（2019）、第 14110 号（2023）、第 14179 号（2025）及《美国人工智能行动计划》（2025 年 7 月）
+    </p>
+  </div>
+
+</div>
+
+<footer style="text-align:center;padding:32px;color:#b2bec3;font-size:13px;border-top:1px solid var(--border);">
+  <p>⚖️ 法律研究作品集 · 仅供学习交流 · 不构成法律意见</p>
+</footer>
+
+</body>
+</html>
