@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全国首例AI代写种草笔记案 · 小某书诉AI写作工具服务商 | 案例分析</title>
+<style>
+  :root {
+    --bg: #f5f6fa; --card: #fff; --text: #2d3436; --sub: #636e72;
+    --blue: #0984e3; --green: #00b894; --red: #d63031; --orange: #e17055;
+    --purple: #6c5ce7; --border: #dfe6e9; --highlight: #ffeaa7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif; background: var(--bg); padding: 24px; color: var(--text); line-height: 1.7; }
+
+  .breadcrumb { max-width: 820px; margin: 0 auto 16px; font-size: 13px; color: var(--sub); }
+  .breadcrumb a { color: var(--purple); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .container { max-width: 820px; margin: 0 auto; }
+
+  .hero-card { background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); color: #fff; border-radius: 14px; padding: 36px 40px; margin-bottom: 24px; }
+  .hero-card .case-id { font-size: 12px; letter-spacing: 2px; opacity: 0.6; margin-bottom: 8px; }
+  .hero-card h1 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+  .hero-card .meta { font-size: 13px; opacity: 0.65; display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .toc { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 20px; border-left: 4px solid var(--purple); }
+  .toc h2 { font-size: 16px; color: var(--purple); margin-bottom: 12px; }
+  .toc ol { padding-left: 22px; }
+  .toc li { margin: 6px 0; font-size: 14px; color: var(--sub); }
+
+  .section { background: var(--card); border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; }
+  .section h2 { font-size: 20px; color: var(--purple); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+  .section h3 { font-size: 16px; color: var(--text); margin: 20px 0 10px; }
+  .section p { font-size: 14px; color: var(--sub); margin: 10px 0; }
+
+  .highlight { background: var(--highlight); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .red-bold { color: var(--red); font-weight: 600; }
+  .blue-bold { color: var(--blue); font-weight: 600; }
+  .green-bold { color: var(--green); font-weight: 600; }
+  .purple-bold { color: var(--purple); font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: #f0f3f8; padding: 10px 14px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
+  td { padding: 9px 14px; border: 1px solid var(--border); color: var(--sub); }
+  tr:nth-child(even) td { background: #fafbfc; }
+
+  .info-table th { width: 140px; background: #f8f0ff; color: var(--purple); font-size: 13px; }
+  .info-table td { font-size: 14px; }
+
+  .law-quote { background: #fff8f0; border: 1px solid var(--orange); border-left: 4px solid var(--red); border-radius: 6px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
+  .law-quote .article { font-weight: 700; color: var(--red); }
+  .law-quote .content { margin-top: 6px; color: var(--sub); }
+
+  .insight-box { background: #f0f4ff; border-left: 4px solid var(--blue); border-radius: 6px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
+  .insight-box strong { color: var(--blue); }
+
+  .verdict-box { background: #f0fff5; border: 1px solid var(--green); border-radius: 8px; padding: 18px 22px; margin: 18px 0; text-align: center; }
+  .verdict-box .verdict-title { font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+  .verdict-box p { font-size: 13px; color: var(--sub); margin: 4px 0; }
+
+  .standards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 640px) { .standards-grid { grid-template-columns: 1fr; } }
+  .std-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .std-card .std-num { font-size: 22px; font-weight: 800; color: var(--purple); opacity: 0.25; }
+  .std-card h4 { font-size: 14px; color: var(--purple); margin: -8px 0 8px; }
+  .std-card p { font-size: 13px; color: var(--sub); margin: 4px 0; }
+
+  .timeline { position: relative; padding: 0; margin: 20px 0; }
+  .tl-item { display: flex; margin-bottom: 14px; }
+  .tl-time { min-width: 120px; font-size: 13px; font-weight: 700; color: var(--purple); padding-top: 2px; }
+  .tl-dot { width: 10px; height: 10px; background: var(--purple); border-radius: 50%; margin: 5px 14px 0 0; flex-shrink: 0; }
+  .tl-content { font-size: 13px; color: var(--sub); flex: 1; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+
+  .footer-note { max-width: 820px; margin: 32px auto 0; text-align: center; font-size: 12px; color: #b2bec3; }
+  .footer-note a { color: var(--purple); text-decoration: none; }
+
+  blockquote { background: #fafafa; border-left: 3px solid #ddd; margin: 12px 0; padding: 10px 16px; font-size: 13px; color: var(--sub); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="breadcrumb">
+  <a href="../index.html">作品集</a> &rsaquo; 案件分析 &rsaquo; AI代写种草笔记案
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero-card">
+    <div class="case-id">全国首例 · AI 代写“种草笔记”不正当竞争案</div>
+    <h1>小某书平台运营者诉 AI 写作工具服务商不正当竞争案</h1>
+    <div class="meta">
+      <span>（2025）浙01民终3998号</span>
+      <span>杭州互联网法院一审 · 杭州中院二审</span>
+      <span>2025年二审公开报道</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>目录</h2>
+    <ol>
+      <li>案件速览</li>
+      <li>事实时间线</li>
+      <li>争议焦点与法院裁判</li>
+      <li>四步不正当性审查框架（重点）</li>
+      <li>AI 服务注意义务边界</li>
+      <li>实践意义与启示</li>
+      <li>类案参考与延伸</li>
+    </ol>
+  </div>
+
+  <!-- 1. 案件速览 -->
+  <div class="section">
+    <h2>一、案件速览</h2>
+
+    <table class="info-table">
+      <tr><th>案由</th><td>著作权侵权及不正当竞争纠纷（报道口径）；二审焦点集中于不正当竞争</td></tr>
+      <tr><th>原告</th><td>某甲公司：某社交电商平台 / “小某书”平台运营者</td></tr>
+      <tr><th>被告</th><td>某乙、某丙公司：共同提供 AI 写作工具；某丁公司：运营网站并提供工具下载服务</td></tr>
+      <tr><th>审理法院</th><td>一审：杭州互联网法院；二审：杭州市中级人民法院（2025）浙01民终3998号</td></tr>
+      <tr><th>审判长</th><td>唐学兵（杭州中院院长，二审）</td></tr>
+      <tr><th>原告诉请</th><td>停止侵权行为、消除影响并赔偿损失；一审请求认定著作权侵权及不正当竞争</td></tr>
+      <tr><th>裁判结果</th><td><span class="red-bold">著作权侵权未获支持；特定“小某书”种草文案等 AI 写作服务构成不正当竞争</span></td></tr>
+      <tr><th>核心争点</th><td>AI 写作工具提供面向特定平台的种草文案、旅游攻略、笔记标题生成服务，是否突破技术中立边界并构成不正当竞争？</td></tr>
+    </table>
+
+    <p><span class="highlight">一句话概括</span>：AI 写作工具以“小某书”种草文案、旅游攻略、笔记标题为特定场景，用户输入少量关键词即可生成带有“亲身体验”色彩的种草内容。法院认为，该服务具有明确指向性和诱导性，可能冲击平台真实种草生态，违反诚实信用原则和商业道德，构成<span class="red-bold">不正当竞争</span>。本案的价值在于：它没有否定通用 AI 写作工具，而是为<span class="blue-bold">“特定平台 + 虚假种草 + 营利性诱导”</span>划出了红线。</p>
+  </div>
+
+  <!-- 2. 事实时间线 -->
+  <div class="section">
+    <h2>二、事实时间线</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">平台经营阶段</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">某甲公司长期投入人力、物力、财力研发、维护、推广平台真实可靠的种草内容生态，并由此形成用户流量、用户粘性和竞争优势。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">被诉服务上线</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">某乙、某丙公司通过 AI 写作工具提供“某平台种草文案”“某平台旅游攻略”“某平台文案”“某平台笔记标题”等服务，某丁公司运营网站并提供下载服务。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">功能宣传</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">工具页面宣称可“为你的小红书笔记生成充满点击欲的标题”“根据产品特点，帮你生成符合小红书调性的分享文章，文字更简洁”等，显示其服务并非抽象通用写作，而是面向特定平台内容生态。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">内容生成</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">用户只需输入几个关键词，便可“一键创作”生成一篇种草文案；公开报道中的法院观点认为，最终生成内容存在虚构用户亲身体验经历和真实感受的问题。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">一审</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">杭州互联网法院认定被诉行为不构成著作权侵权，但构成不正当竞争，并据此判令停止侵权、赔偿经济损失及合理开支等。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">二审</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">某乙、某丙、某丁公司提起上诉。杭州中院二审聚焦相关 AI 写作服务是否构成不正当竞争，最终认定某乙、某丙公司实施的被诉行为构成不正当竞争，并合理确定赔偿金额。</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <strong>事实观察</strong>：本案不是“AI 写作工具能不能存在”的问题，而是“AI 写作工具能否把某一平台的内容生态当作流量卖点，并批量生产虚构体验式内容”的问题。裁判真正打击的是<span class="blue-bold">场景绑定、内容诱导和商业变现</span>的组合风险，而非生成式 AI 技术本身。
+    </div>
+  </div>
+
+  <!-- 3. 争议焦点 -->
+  <div class="section">
+    <h2>三、争议焦点与法院裁判</h2>
+
+    <p>根据公开报道，本案在二审阶段的核心争议收束为<span class="highlight">特定 AI 写作服务是否构成不正当竞争</span>。法院的论证可以拆成三个层次：</p>
+
+    <h3>焦点一：平台“真实种草生态”是否属于反法保护的竞争利益？</h3>
+
+    <table>
+      <tr><th style="width:120px">原告主张</th><td>平台真实可靠的种草内容生态由持续投入形成，带来用户流量、用户信赖和商业竞争优势，应受保护</td></tr>
+      <tr><th>被告抗辩</th><td>公开报道未完整披露；可推知其核心抗辩与 AI 写作工具的通用性、技术工具属性、用户自主使用有关</td></tr>
+      <tr><th style="background:#f0fff5; color:var(--green);">法院认定</th><td style="background:#f0fff5;">甲公司基于平台种草内容生态获取的正当商业利益和形成的竞争优势，应受反不正当竞争法保护。真实内容生态不是抽象“氛围”，而是平台通过治理投入形成的可竞争利益。</td></tr>
+    </table>
+
+    <h3>焦点二：AI 代写种草文案是否具有不正当性？</h3>
+
+    <table>
+      <tr><th style="width:140px">论证维度</th><th>法院认定</th></tr>
+      <tr>
+        <td class="blue-bold">内容性质</td>
+        <td>输入少量关键词即可生成种草文案，生成内容虚构用户亲身体验经历和真实感受，容易形成“虚假种草”</td>
+      </tr>
+      <tr>
+        <td class="blue-bold">风险放大</td>
+        <td>AI 生成虚假种草内容的效率更高、成本更低，危害较传统人工代写更易规模化扩散</td>
+      </tr>
+      <tr>
+        <td class="blue-bold">主观状态</td>
+        <td>服务页面直接以“小某书”笔记标题、种草文案等作为卖点，运营主体主观上难谓善意</td>
+      </tr>
+      <tr>
+        <td class="blue-bold">注意义务</td>
+        <td>被诉服务提供者未采取合理、必要措施进行告知、提醒，可能诱导用户发布虚假种草内容</td>
+      </tr>
+    </table>
+
+    <p><span class="green-bold">结论：特定“小某书”种草文案、旅游攻略、文案、笔记标题等服务构成不正当竞争。</span></p>
+
+    <h3>焦点三：裁判是否否定通用 AI 写作工具？</h3>
+
+    <p>没有。公开报道明确指出，对于 AI 写作工具中提供的其他通用人工智能生成功能，法院<span class="blue-bold">未作否定评价</span>。这使本案的裁判边界很关键：违法性并非来自“使用 AI”，而是来自<span class="red-bold">以特定平台内容生态为应用层、以虚假体验式种草为可预见结果、以营利服务方式诱导用户生成</span>。</p>
+  </div>
+
+  <!-- 4. 裁判标准体系 -->
+  <div class="section">
+    <h2>四、四步不正当性审查框架</h2>
+    <p style="margin-bottom:18px">杭州中院的核心贡献，是把“技术中立”问题转化为一套可操作的<span class="highlight">四步审查框架</span>：</p>
+
+    <div class="standards-grid">
+      <div class="std-card">
+        <div class="std-num">01</div>
+        <h4>是否属于生成式 AI 服务</h4>
+        <p>先确认被诉服务不是普通文本模板或人工代写，而是利用生成式人工智能自动生成内容。该定性决定风险具有<span class="blue-bold">低成本、规模化、快速扩散</span>特征。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">02</div>
+        <h4>是否以特定场景作为应用层</h4>
+        <p>若服务明确绑定“小某书”种草文案、旅游攻略、笔记标题，就不再只是通用写作工具，而是嵌入特定平台生态的<span class="red-bold">场景化工具</span>。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">03</div>
+        <h4>是否具有明确指向性和诱导性</h4>
+        <p>宣传语、功能命名、生成结果共同显示服务是否在诱导用户生产平台化、体验式、可发布的种草内容。指向性越强，技术中立抗辩越弱。</p>
+      </div>
+      <div class="std-card">
+        <div class="std-num">04</div>
+        <h4>是否属于营利性商业行为</h4>
+        <p>若服务提供者通过付费工具、下载引流、会员服务等方式获利，就应承担与其商业收益相匹配的风险控制义务。</p>
+      </div>
+    </div>
+
+    <blockquote>四步框架的逻辑链是：<span class="blue-bold">生成式 AI 属性</span>决定风险放大能力 → <span class="blue-bold">特定平台场景</span>决定竞争关系和损害对象 → <span class="blue-bold">指向性/诱导性</span>决定不正当性 → <span class="blue-bold">营利性</span>决定责任正当性。它比简单说“AI 代写违法”更精确，也给合规改造留下空间。</blockquote>
+  </div>
+
+  <!-- 5. 注意义务 -->
+  <div class="section">
+    <h2>五、AI 服务注意义务边界</h2>
+    <p style="margin-bottom:16px">本案真正值得记的点，是法院把生成式 AI 服务提供者的注意义务放在<span class="highlight">“可预见风险”</span>上，而不是要求其对所有输出结果承担绝对责任。</p>
+
+    <h3>第一层：场景识别义务</h3>
+
+    <table>
+      <tr><th style="width:160px">判断对象</th><th>具体要求</th><th>本案表现</th></tr>
+      <tr>
+        <td class="purple-bold">功能命名</td>
+        <td>服务名称、模块名称是否直接指向特定平台或特定内容生态</td>
+        <td>“某平台种草文案”“某平台旅游攻略”“某平台笔记标题”等功能具有明显场景指向</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">宣传文案</td>
+        <td>是否以“符合平台调性”“生成点击标题”等方式鼓励可发布内容生产</td>
+        <td>宣传语强调生成小红书笔记标题、符合小红书调性的分享文章</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">生成结果</td>
+        <td>输出是否容易虚构亲身体验、真实感受、消费评价</td>
+        <td>法院认为生成内容虚构用户亲身体验经历和真实感受</td>
+      </tr>
+    </table>
+
+    <h3>第二层：风险提示与治理义务</h3>
+
+    <table>
+      <tr><th style="width:180px">义务子项</th><th>内涵</th></tr>
+      <tr><td class="purple-bold">合理告知</td><td>明确提示用户不得虚构消费体验、不得将 AI 生成内容冒充真实使用感受发布</td></tr>
+      <tr><td class="purple-bold">必要提醒</td><td>在面向特定平台种草内容的生成链路中，以醒目方式提醒真实性、广告标识和平台规则风险</td></tr>
+      <tr><td class="purple-bold">功能克制</td><td>避免直接以特定平台、特定内容生态作为卖点；对高风险模板、伪原创功能、虚假体验表达进行限制</td></tr>
+      <tr><td class="purple-bold">商业闭环治理</td><td>如果服务收费或用于商业获客，应建立更高水平的审核、投诉、下架、关键词拦截机制</td></tr>
+    </table>
+
+    <div class="law-quote">
+      <div class="article">《反不正当竞争法》第 2 条</div>
+      <div class="content">经营者在生产经营活动中，应当遵循自愿、平等、公平、诚信的原则，遵守法律和商业道德。本案仍是典型的“一般条款”适用：当新型 AI 行为难以被具体类型化条款完全覆盖时，法院以诚实信用原则和商业道德评价其正当性。</div>
+    </div>
+
+    <div class="insight-box">
+      <strong>边界提炼</strong>：AI 服务提供者不必保证所有生成内容绝对真实，但当其主动设计、宣传、销售一种“面向特定平台生成虚假体验式内容”的工具时，就不能再躲在“我只是技术工具”后面。技术中立保护的是中性能力，不保护<span class="red-bold">被商业化包装后的规避平台治理能力</span>。
+    </div>
+  </div>
+
+  <!-- 6. 实践意义 -->
+  <div class="section">
+    <h2>六、实践意义与启示</h2>
+
+    <h3>对 AI 产业的信号</h3>
+    <p>判决释放的是<span class="blue-bold">“不禁通用 AI，但严管定向作弊工具”</span>的信号。法院没有否认 AI 写作、AI 营销辅助本身的商业价值，但对借 AI 规模化制造虚假体验、侵蚀平台内容信任的行为保持高压。这种路径比“一刀切禁 AI 写作”更合理，也更符合技术发展现实。</p>
+
+    <h3>对法律实务的指引</h3>
+    <table>
+      <tr><th style="width:140px">实务场景</th><th>本案给出的指引</th></tr>
+      <tr><td>平台维权</td><td>不要只证明“有人发了假笔记”，还要证明平台真实内容生态的投入、竞争利益、治理成本和用户信赖损害</td></tr>
+      <tr><td>AI 公司合规</td><td>避免使用特定平台名称作为功能卖点；对种草、测评、攻略、伪原创等高风险模板设置真实性提醒和输出限制</td></tr>
+      <tr><td>律师代理</td><td>举证重点是“特定场景 + 明确诱导 + 营利模式 + 未尽提醒义务”，而不是抽象争论 AI 技术是否中立</td></tr>
+      <tr><td>监管治理</td><td>可将“数字泔水”治理从发布端延伸到生成端，要求生成式 AI 服务在高风险内容场景前置合规设计</td></tr>
+    </table>
+
+    <h3>对法学生的启示</h3>
+    <div class="insight-box">
+      <strong>三个值得深入的方向</strong>：(1) <span class="blue-bold">反不正当竞争法一般条款在 AI 场景的扩张边界</span>——会不会过度依赖商业道德？(2) <span class="blue-bold">平台生态利益的可保护性</span>——真实内容生态、用户信任、治理秩序能否成为稳定的竞争利益？(3) <span class="blue-bold">生成端责任与发布端责任的分工</span>——AI 工具商、发布用户、平台分别应承担什么义务？
+    </div>
+
+    <div class="verdict-box">
+      <div class="verdict-title">核心评价</div>
+      <p>这是一份<span class="blue-bold">“反数字泔水”的标杆判决</span>：法院真正处理的不是 AI 写作，而是 AI 对虚假营销内容生产链条的工业化改造。</p>
+      <p>本案把责任前移到生成端，提醒 AI 服务商：如果你把别人的平台生态当作获客场景，就要承担相应的生态风险。</p>
+      <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">最好的裁判边界在这里：不否定通用功能，只否定有明确平台指向和虚假种草诱导的特定服务。</p>
+    </div>
+  </div>
+
+  <!-- 7. 类案与延伸 -->
+  <div class="section">
+    <h2>七、类案参考与延伸</h2>
+
+    <table>
+      <tr><th style="width:130px">类别</th><th>案件/规范</th><th>与本案的关系</th></tr>
+      <tr>
+        <td class="purple-bold">AI 幻觉侵权</td>
+        <td>梁某诉某人工智能公司网络侵权责任纠纷案</td>
+        <td>同样讨论生成式 AI 服务提供者注意义务；梁某案偏向用户个体损害与过错责任，本案偏向平台生态竞争利益与不正当竞争</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">算法推荐责任</td>
+        <td>延禧攻略案</td>
+        <td>延禧攻略案强调平台算法分发的更高注意义务；本案进一步把责任视角前移到 AI 内容生成工具</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">虚假营销治理</td>
+        <td>《反不正当竞争法》第 2 条、第 8 条</td>
+        <td>第 2 条提供诚实信用和商业道德的一般评价框架；第 8 条体现对虚假或引人误解商业宣传的规制精神</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">生成式 AI 监管</td>
+        <td>《生成式人工智能服务管理暂行办法》</td>
+        <td>强调生成式 AI 服务提供者应依法合规、安全可信，避免生成虚假有害信息；本案是司法层面对生成端治理的具体展开</td>
+      </tr>
+      <tr>
+        <td class="purple-bold">平台规则治理</td>
+        <td>内容社区关于种草笔记、广告标识、虚假体验的治理规则</td>
+        <td>平台内部规则不是法律本身，但可成为识别行业商业道德、用户信赖基础和竞争利益的重要事实材料</td>
+      </tr>
+    </table>
+
+    <div class="insight-box" style="margin-top:18px;">
+      <strong>进阶阅读建议</strong>：建议结合阅读 (1) 杭州法院关于“谁在种草？聚焦笔记背后的 AI 写手”的公开报道；(2) 二审判决书公开节选；(3) 《反不正当竞争法》第 2 条、第 8 条；(4) 《生成式人工智能服务管理暂行办法》关于服务提供者义务的规定。
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--sub);">
+    <a href="../index.html" style="color:var(--purple); text-decoration:none;">&larr; 返回作品集首页</a>
+  </p>
+
+</div>
+
+<div class="footer-note">
+  <p>本案例分析仅供学习参考，不构成法律意见。案件信息来源于杭州法院公开报道、央视新闻相关报道及公开判决书节选；一审案号、完整当事人名称和完整判项以正式裁判文书为准。</p>
+  <p style="margin-top:4px;">涉及真实法律决策，请以执业律师意见为准。</p>
+</div>
+
+</body>
+</html>
