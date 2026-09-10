@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="8plzz1EfBFtv9AzNN8mLb7" data-dm-ref="1"><head data-page-node-id="nbtXtI445ryQrNb5eQNB7w">
+<meta charset="UTF-8" data-page-node-id="us8BVI9Gs8XcBVEOn52uSl">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="VANrINnprl2GA9htEOEmys">
+<title>入企业之后 · 双十联培纪实（板块二）</title>
+<style>
+  :root{
+    --thu-purple:#5C068C;
+    --thu-purple-light:#f5effa;
+    --ink:#1f2330;
+    --ink-2:#4a5060;
+    --line:#e3e0ea;
+    --campus:#3f51b5;
+    --campus-bg:#eef1fb;
+    --corp:#00695c;
+    --corp-bg:#e6f2f0;
+    --bridge:#b45309;
+    --bridge-bg:#fdf3e3;
+    --warn:#9a3412;
+    --live:#8a2b5c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:var(--ink);
+    background:#f4f2f7;
+    line-height:1.75;
+    font-size:15.5px;
+  }
+  .page{max-width:1080px;margin:0 auto;padding:28px 22px 80px;}
+
+  /* ---------- header ---------- */
+  .hero{
+    background:linear-gradient(135deg,#4a0672 0%,#6a1b9a 55%,#82318e 100%);
+    color:#fff;border-radius:16px;padding:40px 38px 34px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+  }
+  .hero::before{
+    content:"";position:absolute;right:40px;bottom:-90px;width:200px;height:200px;border-radius:50%;
+    background:rgba(255,255,255,.06);
+  }
+  .hero .kicker{font-size:13px;letter-spacing:2px;opacity:.85;margin-bottom:10px;}
+  .hero h1{font-size:29px;line-height:1.35;margin-bottom:12px;font-weight:700;}
+  .hero .sub{font-size:14.5px;opacity:.92;max-width:780px;}
+  .hero .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
+  .hero .tags span{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;padding:3px 12px;font-size:12.5px;
+  }
+  .hero a.taglink{
+    background:rgba(255,255,255,.92);color:var(--thu-purple);text-decoration:none;font-weight:700;
+    border-radius:999px;padding:3px 12px;font-size:12.5px;
+  }
+  .hero a.taglink:hover{background:#fff;}
+
+  /* ---------- toc ---------- */
+  .toc{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:16px 24px;margin:20px 0;display:flex;flex-wrap:wrap;gap:10px 22px;
+    font-size:14px;box-shadow:0 1px 4px rgba(60,40,90,.06);
+  }
+  .toc a{color:var(--thu-purple);text-decoration:none;font-weight:600;}
+  .toc a:hover{text-decoration:underline;}
+  .toc .toc-label{font-weight:700;color:var(--ink-2);}
+
+  /* ---------- sections ---------- */
+  section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 36px;margin-bottom:24px;box-shadow:0 1px 4px rgba(60,40,90,.05);}
+  h2{
+    font-size:21px;color:var(--thu-purple);margin-bottom:6px;font-weight:700;
+    display:flex;align-items:center;gap:10px;
+  }
+  h2 .num{
+    background:var(--thu-purple);color:#fff;width:30px;height:30px;border-radius:8px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none;
+  }
+  .sec-desc{color:var(--ink-2);font-size:14px;margin-bottom:18px;}
+  h3{font-size:16.5px;margin:20px 0 10px;color:var(--ink);font-weight:700;}
+  p{margin:8px 0;}
+  ul,ol{padding-left:22px;margin:8px 0;}
+  li{margin:4px 0;}
+  b,strong{font-weight:700;}
+  .hl{color:var(--thu-purple);font-weight:700;}
+  .small{font-size:12.5px;color:#8b8fa0;}
+
+  /* ---------- callout ---------- */
+  .note{
+    background:#fffbea;border:1px solid #f2e3ae;border-left:4px solid #d9a514;
+    border-radius:10px;padding:11px 16px;margin:14px 0;font-size:13.2px;color:#6b5410;
+  }
+  .note b{color:#8a6a06;}
+
+  /* ---------- stage cards ---------- */
+  .stage{border-radius:14px;padding:20px 22px;margin:18px 0;}
+  .stage.home{background:var(--thu-purple-light);border:1px solid #d9c9ec;}
+  .stage.ready{background:var(--campus-bg);border:1px solid #c9d3f2;}
+  .stage.work{background:var(--corp-bg);border:1px solid #b9ded8;}
+  .stage h3{margin-top:0;display:flex;align-items:center;gap:10px;}
+  .stage.home h3{color:var(--thu-purple);}
+  .stage.ready h3{color:var(--campus);}
+  .stage.work h3{color:var(--corp);}
+  .stage .badge{
+    font-size:12px;color:#fff;border-radius:6px;padding:2px 10px;font-weight:600;flex:none;
+  }
+  .stage.home .badge{background:var(--thu-purple);}
+  .stage.ready .badge{background:var(--campus);}
+  .stage.work .badge{background:var(--corp);}
+  .steps{counter-reset:st;margin-top:6px;}
+  .step{
+    counter-increment:st;position:relative;background:#fff;border:1px solid rgba(0,0,0,.07);
+    border-radius:10px;padding:12px 16px 12px 52px;margin:10px 0;
+  }
+  .step::before{
+    content:counter(st);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;
+    color:#fff;font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;
+  }
+  .ready .step::before{background:var(--campus);}
+  .step .t{font-weight:700;font-size:14.5px;}
+  .step .meta{font-size:12.8px;color:var(--ink-2);margin-top:3px;}
+  .step .meta b{color:var(--ink);}
+
+  /* ---------- photo cards (点触展开) ---------- */
+  details.photo-card{
+    background:#fff;border:1.5px solid #d3c4ee;border-radius:12px;margin:16px 0;
+    overflow:hidden;box-shadow:0 1px 4px rgba(60,40,90,.06);
+  }
+  details.photo-card summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;
+    padding:13px 18px;background:linear-gradient(90deg,#f5effa,#faf8fd);
+    font-weight:700;font-size:14.2px;color:var(--thu-purple);
+    user-select:none;
+  }
+  details.photo-card summary, details.photo-card summary *{
+    cursor:pointer !important;-webkit-user-select:none !important;user-select:none !important;
+  }
+  details.photo-card summary::-webkit-details-marker{display:none;}
+  details.photo-card summary::before{
+    content:"▸";flex:none;font-size:15px;transition:transform .2s ease;color:#9a6ab8;
+  }
+  details.photo-card[open] summary::before{transform:rotate(90deg);}
+  details.photo-card summary .hint{
+    margin-left:auto;font-size:11.6px;font-weight:400;color:#9a6ab8;
+    background:#fff;border:1px solid #d3c4ee;border-radius:999px;padding:2px 10px;flex:none;
+  }
+  .photo-body{padding:16px 18px;border-top:1px dashed #d3c4ee;background:#fff;}
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+  .photo-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;}
+  .photo-grid img{width:100%;height:190px;object-fit:cover;display:block;background:#eee;}
+  .photo-grid figcaption{
+    font-size:12.3px;color:var(--ink-2);padding:7px 10px;background:#faf9fc;
+    border-top:1px solid var(--line);
+  }
+  .photo-grid figcaption b{color:var(--thu-purple);}
+
+  /* ---------- vertical timeline ---------- */
+  .tl{position:relative;margin:20px 0 8px;padding-left:30px;}
+  .tl::before{
+    content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;border-radius:3px;
+    background:linear-gradient(180deg,#3f51b5,#3f51b5 26%,#00695c 58%,#8a2b5c);
+  }
+  .tl-item{position:relative;margin:0 0 20px;}
+  .tl-item::before{
+    content:"";position:absolute;left:-27px;top:7px;width:13px;height:13px;border-radius:50%;
+    background:#fff;border:3.5px solid var(--thu-purple);
+  }
+  .tl-item.c-go::before{border-color:var(--campus);}
+  .tl-item.c-work::before{border-color:var(--corp);}
+  .tl-item.c-lunch::before{border-color:var(--bridge);}
+  .tl-item.c-back::before{border-color:var(--live);}
+  .tl-when{
+    display:inline-block;background:var(--campus);color:#fff;font-size:12.6px;font-weight:700;
+    border-radius:6px;padding:2px 11px;margin-bottom:5px;font-variant-numeric:tabular-nums;
+  }
+  .c-work .tl-when{background:var(--corp);}
+  .c-lunch .tl-when{background:var(--bridge);}
+  .c-back .tl-when{background:var(--live);}
+  .tl-what{font-weight:700;font-size:15px;}
+  .tl-note{font-size:12.9px;color:var(--ink-2);margin-top:3px;}
+  .tl-note b{color:var(--warn);}
+  .lunch-card{margin:10px 0 2px;}
+
+  footer{color:#8b8fa0;font-size:12.5px;text-align:center;margin-top:26px;line-height:1.8;}
+  footer a{color:var(--thu-purple);font-weight:600;}
+
+  @media (max-width:720px){
+    section{padding:24px 18px;}
+    .hero{padding:30px 22px;}
+    .hero h1{font-size:23px;}
+    .photo-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media print{
+    body{background:#fff;}
+    section{box-shadow:none;break-inside:avoid;}
+    details.photo-card{break-inside:avoid;}
+  }
+</style>
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="EaIO1hw5e3CtWyzNYrZjS9" style="">
+<div class="page" data-page-node-id="nEAR4PpH1sR2vPEMrunPw8">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero" data-page-node-id="i4bpx1wePEWvEonUbs7Du8">
+    <div class="kicker" data-page-node-id="1VtpLwjY4weIhbmmyV764H" style="text-align: center;">TSINGHUA ​</div>
+    <h1 data-page-node-id="Nhv02oxunJ8G4uH35AQ4Xs" style="text-align: center;">入企业之后 —— 从安顿定居到正式入职</h1>
+    
+    <div class="tags" data-page-node-id="UhWrukNtovFiP7xPQQZSlT">
+      
+      
+      
+      
+    </div>
+  </div>
+
+  <!-- ================= TOC ================= -->
+  <nav class="toc" data-page-node-id="YGku7RQvpWK7FAPLKc4GgA">
+    <span class="toc-label" data-page-node-id="cBri5eg9UFWb6yb2S0J5LZ">本板块目录</span>
+    <a href="#s1" data-page-node-id="hSYpusChT2X75tVW45RG54">一、安顿定居</a>
+    <a href="#s2" data-page-node-id="Uu2VrzpS9RRGSBYoD9STgL">二、入职前准备</a>
+    <a href="#s3" data-page-node-id="OaG6j62QEfTjce4cGDf9bQ">三、正式入职（每日时间轴）</a>
+  </nav>
+
+  <!-- ================= S1 安顿定居 ================= -->
+  <section id="s1" data-page-node-id="B8NiOnz113FQuxjAYnwGMB">
+    <h2 data-page-node-id="smR7XZXq5XAQph6uD5VTMY"><span class="num" data-page-node-id="oViR7S2MRS2Q3SFPoBxs2B">一</span>安顿定居</h2>
+    <p class="sec-desc" data-page-node-id="NtKaRALxyaRxjUkCCUxjku">落地常熟的第一步：拎包入住公司安排的公寓小区。</p>
+
+    <div class="stage home" data-page-node-id="e8OGc4GV4CIp1QNgKvvxBC">
+      <h3 data-page-node-id="BnZz3BB0TehbZdz2Zpg4gm"><span class="badge" data-page-node-id="e9GH10GmdcIAENdeIEDv9M">入住</span>常熟站附近小区</h3>
+      <p data-page-node-id="r19HRjVj8LkkRGlwHdtYEx">抵达后入住公司安排的公寓小区，位于<b data-page-node-id="klYGhaiwEsURcLDYLSZBpP">常熟站附近</b>，小区紧邻河道绿化带，环境安静、生活便利。</p>
+      <ul data-page-node-id="JFHa9CxMu8D8GbKNDnaZ7e">
+        <li data-page-node-id="d4mDVKrIl1Aw7gpwu0e2VU"><b data-page-node-id="AxK3EaROwtxPRYOhFf5NFw">户型与家具：</b>独立卧室配床与衣柜；客厅餐厅一体，沙发、餐桌齐备，可直接拎包入住。</li>
+        <li data-page-node-id="nXm3v7lYvJuZNa1jWy5ask"><b data-page-node-id="TxL06CFh4uzTmREE7nYYnS">厨卫家电：</b>厨房配燃气灶与水槽橱柜，冰箱独立摆放；阳台配备洗衣机；卫生间为独立干湿分离淋浴房。</li>
+        <li data-page-node-id="wAHPpDfoXXsHsSVq0IQkIb"><b data-page-node-id="xcK6RxIZ4cLagZL6U5CFIZ">通勤衔接：</b>工作日有小区班车直达公司（07:40 发车），下班班车返回小区（17:40 发车），详见第三部分时间轴。</li>
+      </ul>
+    </div>
+
+    <details class="photo-card" data-page-node-id="FhSq0VyCVtBvSh2pamG8tK">
+      <summary data-page-node-id="ltp5nebq3PWe08k9g81XdQ" style="">📷 宿舍实拍 · 小区环境与房间内部<span class="hint" data-page-node-id="Br1rdq5jY0CgFZRthawe90" style="">点击展开​</span></summary>
+      <div class="photo-body" data-page-node-id="EAhUuyYUpXeKVjDOBpavPZ">
+        <div class="photo-grid" data-page-node-id="Lv7sL0sIaWwpGZvFV5ZCRS">
+          <figure data-page-node-id="NwD60bc5TPPuy3RLPGtrjq"><img src="images/img01-community.jpg" alt="小区环境" data-page-node-id="i0Umlz4C3hPT7wyfFAWphl"><figcaption data-page-node-id="BrsB2Aa8SAqT5T6OFkqvnE"><b data-page-node-id="kZMVsVTCQlBWbJD59TzZF8">小区环境</b> · 常熟站附近，紧邻河道绿化带</figcaption></figure>
+          <figure data-page-node-id="8DaE4zBnXUZIl9cGwIrWaE"><img src="images/img02-bedroom.jpg" alt="卧室" data-page-node-id="oQPzIUcRGzYpBhA5a1TFGw"><figcaption data-page-node-id="3o9cVf3HnF6BRzrPheOJhQ"><b data-page-node-id="5ZFE1cqaHoXHOxq0qyoNFn">卧室</b> · 床、衣柜、阳台推拉门，木地板</figcaption></figure>
+          <figure data-page-node-id="CzN8sYeJcj4AKSjSvcUBPD"><img src="images/img03-livingroom.jpg" alt="客厅" data-page-node-id="HkIPTx9dIElkHmVlVdybyc"><figcaption data-page-node-id="mGgK0uWokXpsrcWzt1DDR9"><b data-page-node-id="Z8ZJNTrqukdBBP5dwNr8rI">客厅餐厅</b> · 沙发茶几 + 餐桌椅</figcaption></figure>
+          <figure data-page-node-id="wB8Zib75b6eU1tZdfh1Vn0"><img src="images/img04-kitchen.jpg" alt="厨房" data-page-node-id="ySdTlc4I6v1XmezbNHeGxl"><figcaption data-page-node-id="CR5Px4WetBm8WDHoyQEEqb"><b data-page-node-id="6TP49E31nORhEA68feog83">厨房</b> · 燃气灶 + 水槽，橱柜收纳</figcaption></figure>
+          <figure data-page-node-id="U6lPvRnar3pAmJdhfTNBgw"><img src="images/img05-fridge.jpg" alt="冰箱" data-page-node-id="andp3urjBKHOt6TugFPFOH"><figcaption data-page-node-id="weZoTUUXxIlYTlZWIM9HEk"><b data-page-node-id="L2zQYH8wLZWCAXIof0mUMY">家电</b> · 双门冰箱</figcaption></figure>
+          <figure data-page-node-id="ufizkvABgSVb5d2Vy9Qbol"><img src="images/img06-balcony.jpg" alt="阳台" data-page-node-id="Pa2m4N68KLBwdivS2ZLzY0"><figcaption data-page-node-id="EjzvZyeCVlPhbHlYZP6HNO"><b data-page-node-id="XZiZ0KHDHzlWMWczjO9Bwx">阳台</b> · 洗衣机 + 晾晒区</figcaption></figure>
+          <figure data-page-node-id="GfrGsJJdTKn0j2oSV5BQ8M"><img src="images/img07-bathroom.jpg" alt="卫生间" data-page-node-id="RRZKobpBmo9qeNtRPI0Jb2"><figcaption data-page-node-id="q40sy7Ty3Oi1qP2MVv2nmI"><b data-page-node-id="9GtdwSGtAo9GoFkL34ezTB">卫生间</b> · 独立淋浴房，干湿分离</figcaption></figure>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= S2 入职前准备 ================= -->
+  <section id="s2" data-page-node-id="YrmkhGe9T14S12Jp9NCH5s">
+    <h2 data-page-node-id="PlqW7HIXDcECUOLIPCMboB"><span class="num" data-page-node-id="gCqlzXwTzTB8apuFp5RBSy">二</span>入职前准备</h2>
+    <p class="sec-desc" data-page-node-id="xYKLabvW1ClFj2Bk9bylb7">入住次日的两项安排：先体检、再培训，为正式走上岗位做好准备。</p>
+
+    <div class="stage ready" data-page-node-id="tHyvfCuiKEL0TZKaG4whEQ">
+      <h3 data-page-node-id="AhPSYLuKFZdtnBAVUX5FYr"><span class="badge" data-page-node-id="jRAcQ8CFWHjd0ne36HWv4n">次日安排</span>体检 · 安全培训 · 知识学习</h3>
+      <div class="steps" data-page-node-id="l0YvGpRn7h2ikG4Q25I3oE">
+        <div class="step" data-page-node-id="X1i79bfyl8MPM7OVAaGqoL">
+          <div class="t" data-page-node-id="c1lzKNLGVOztiTbXHsGnwN">医院入职体检</div>
+          <div class="meta" data-page-node-id="3kdzx6nv0pJ16Dt5GIx4eL"><b data-page-node-id="W3Gxz3VrgiMBxICZOYmCYq">时间：</b>入住次日进行；按公司通知的时间地点集合前往医院完成入职体检项目（具体要求以体检通知为准）。</div>
+        </div>
+        <div class="step" data-page-node-id="y0i7E0RHp6MDCHA0bLB4F8">
+          <div class="t" data-page-node-id="ec2RfSxrtFjqegcpfA3ocj">公司安全培训</div>
+          <div class="meta" data-page-node-id="8ieGidEXYcvuBjQ99H3aFj"><b data-page-node-id="wfiI5MVw6YBHjhXNlYeQo1">内容：</b>进入实验与工作区域前的必修环节，由公司统一组织，覆盖安全规范与注意事项。</div>
+        </div>
+        <div class="step" data-page-node-id="DvHzWD3BpaB8R2QkfF1AHh">
+          <div class="t" data-page-node-id="hZ3K7PZVAqY9frUbHuM1a1">相关知识学习</div>
+          <div class="meta" data-page-node-id="AGgNnwEJKahqudxDlDtCa6"><b data-page-node-id="9XXMKOK9AqGKYOeLOgJdYu">内容：</b>岗位相关的知识学习与准备，为正式开展实验工作打好基础。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= S3 正式入职 ================= -->
+  <section id="s3" data-page-node-id="wWH7B4S3bRsB091PJTP9RE">
+    <h2 data-page-node-id="PdJl94KXMr9TYCN8UVBz96"><span class="num" data-page-node-id="lR0gzi2RSNQCmLMg2ZEkVm">三</span>正式入职 · 每日时间轴</h2>
+    <p class="sec-desc" data-page-node-id="b10WjfGf4orzxsw7tqTeDE">正式入职后的每天按以下节奏运转：小区—公司双班车接驳，白天实验工作，午餐午休在司内食堂。</p>
+
+    <div class="tl" data-page-node-id="h9CwQGRdqqyhikq2X0tMhm">
+      <div class="tl-item c-go" data-page-node-id="XaAvtEl9AWnKcyoMeRXHq7">
+        <span class="tl-when" data-page-node-id="OZhSS3voiwrOswDclWNL8B">07:40</span>
+        <div class="tl-what" data-page-node-id="q3sp5T9RptHYsVUO6dODcl">小区班车出发前往公司</div>
+        <div class="tl-note" data-page-node-id="CQP1lCcXk4X3W4vr7F4tyo">班车从小区发车直达公司，全程无需自行通勤。</div>
+      </div>
+      <div class="tl-item c-go" data-page-node-id="8C06XUtrt2kCTqI7nk7I0J">
+        <span class="tl-when" data-page-node-id="7vJqWaxDpHTefl4j9rEz6N">08:30</span>
+        <div class="tl-what" data-page-node-id="sL0kafGE3P2AgPkYZrAzVO">换好工作服，开部门早会</div>
+        <div class="tl-note" data-page-node-id="ED3jVAXsvhKtgaR9hhxPN3">到岗后更换工作服，参加部门早会，同步当天安排。</div>
+      </div>
+      <div class="tl-item c-go" data-page-node-id="H8mreAuHkmbPQrCv8EyZpA">
+        <span class="tl-when" data-page-node-id="TLEDq2A9rMkkO9ADGjprec">08:40</span>
+        <div class="tl-what" data-page-node-id="ALeYdLo1SeeGEmGmPhSN6Z">不同方向小组开小会</div>
+        <div class="tl-note" data-page-node-id="NWHRtf6lkoLDPJl6j28rLu">各部门早会结束后，不同方向小组分别开小会，细化当日任务。</div>
+      </div>
+      <div class="tl-item c-work" data-page-node-id="66l0LBxhuBExG72WcfZAwZ">
+        <span class="tl-when" data-page-node-id="TKRpvuhF2l2zzoq913cNpG">09:00</span>
+        <div class="tl-what" data-page-node-id="elZJiLUrVQa4h8DhlY26uz">开始正式做实验</div>
+        <div class="tl-note" data-page-node-id="ZN7LQp1aGOewBLclNNTOei">进入实验环节，按小组计划推进当日工作。</div>
+      </div>
+      <div class="tl-item c-lunch" data-page-node-id="Eq10oJcXPxP7xCKEiPniCU">
+        <span class="tl-when" data-page-node-id="uv52M5TjPmnt2cbhZ0vY6B" style="white-space: pre-wrap; cursor: text;">11:00 – 12:00</span>
+        <div class="tl-what" data-page-node-id="49pi0HYt3kNXnPKShiQJJx">午餐及午休</div>
+        <div class="tl-note" data-page-node-id="PayYVnf2ejVI7OcMPhpXgL" style="">午餐在公司内部食堂解决——<b data-page-node-id="Lla8G8b6Ao53iplT5G4kPP">每餐不限量、仅需 1.5 元</b>；午休时长可根据工作内容适当调整。</div>
+        <details class="photo-card lunch-card" data-page-node-id="Sx56amuOMJV1WsqfqYyvz1">
+          <summary data-page-node-id="ac8EmTy3tk207Eer95Mej9" style="">📷 食堂实拍<span class="hint" data-page-node-id="h2IT4dL3CKHQA9BxGRifaS">点击展开</span></summary>
+          <div class="photo-body" data-page-node-id="jDSFm4Ir0XJ8NKs6yyFr1A">
+            <div class="photo-grid" data-page-node-id="oXzegbyYVGmO5GX2wWIy6c">
+              <figure data-page-node-id="Lo2oHvAI6LN2IBCCrHeALA"><img src="images/img08-breakfast.jpg" alt="食堂早餐" data-page-node-id="vpbyiRS8pGaxWgJhTjp13A"><figcaption data-page-node-id="XR7i98EwUlQCwcy4p9t9ev"><b data-page-node-id="hyH1a1EpwAuEm6pkHzBMM9">早餐</b> · 包子、小菜配牛奶</figcaption></figure>
+              <figure data-page-node-id="NLeHKvbBl46oAKhwJ0pGaq"><img src="images/img09-lunch-tray.jpg" alt="午餐托盘" data-page-node-id="xNDOuVnEAu01nKbCDk5dHW"><figcaption data-page-node-id="c1OmpUT73i3YH3oG6Kcfgg"><b data-page-node-id="TtC5GaEE6c40wAgTGo2QDS">午餐</b> · 托盘自选，米饭主食</figcaption></figure>
+              <figure data-page-node-id="zfhk8QWO3FJi0Z45xIYPoW"><img src="images/img10-noodles.jpg" alt="面档" data-page-node-id="br0b0KIwAGt0B3779NXVPF"><figcaption data-page-node-id="z0Ryuz08tg6IXSZD6dQBIM"><b data-page-node-id="qoo8kYnDPaH9N7oagx8Xd4">面档</b> · 现做汤面配炸鸡排</figcaption></figure>
+              <figure data-page-node-id="JgOuyEbHTIAff3CW49PVqU"><img src="images/img11-lunch-fish.jpg" alt="午餐烤鱼" data-page-node-id="pucTcllj97pSKFU86WJN6m"><figcaption data-page-node-id="GJnMnXsXL3sZfzSXrZqHNE"><b data-page-node-id="4pUANgPCegTVOoLnCgOFPY">午餐</b> · 现制烤鱼配米饭</figcaption></figure>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="tl-item c-work" data-page-node-id="aCZRz4tssicJyfpniCL6uS">
+        <span class="tl-when" data-page-node-id="dV4iHPbMUBalAUg3wHl7c4">17:15</span>
+        <div class="tl-what" data-page-node-id="oOuVprSjY6YYAC9eMlKm39">下班</div>
+        <div class="tl-note" data-page-node-id="z0uaEc6TaSCERQciQ47dvT">结束当日实验工作，整理收尾。</div>
+      </div>
+      <div class="tl-item c-back" data-page-node-id="BMNzGgyJcaY1iBwduFJtUX">
+        <span class="tl-when" data-page-node-id="40QBIUKml9BDK9bVvnXpbY">17:40</span>
+        <div class="tl-what" data-page-node-id="wnHN7PxOptZXGwUwjcALqz">下班班车发车返回小区</div>
+        <div class="tl-note" data-page-node-id="RWygmfrA6q7asIMFyyXWq2">班车从公司发车返回小区，回到住处。</div>
+      </div>
+    </div>
+
+    
+  </section>
+
+  <footer data-page-node-id="0Y0mTYZW7oxVQ8vtXaQA1u" style="cursor: text; white-space: pre-wrap;"> <a href="application-process.html" data-page-node-id="OPHRA1PVgY8HCfzRW0UoRE">返回上一板块</a> ｜ <a href="work-life-balance.html" data-page-node-id="gu6SJL0HZuKOjm9DKhllyj">下一板块：Work Life Balance →</a>
+版权所有 侵权必究<div data-page-node-id="NpCliA8zj62DpzQTN2UtXK">核桃街出品©️</div></footer>
+</div>
+
+
+
+
+
+</body></html>

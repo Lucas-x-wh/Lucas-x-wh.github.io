@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="JbIDVPQAnIEnlgQCEMaorY" data-dm-ref="1"><head data-page-node-id="SIhHXCtoeoxxNIpy8DCyqy">
+<meta charset="UTF-8" data-page-node-id="QwYOeyy7kTAx8JTTxaTXcH">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="888VZ83DFxwghKOSV0EHdf"><title data-page-node-id="Kn6CRpWA8H9KMksAlaHXzU" data-pnid-children="EpGaJWVnbVpwDFszl5er71" style="box-sizing:border-box;margin:0;padding:0;-webkit-user-drag:none !important">Work Life Balance · 双十联培纪实（板块三）</title>
+<title>Work Life Balance · 双十联培纪实（板块三）</title>
+<style>
+  :root{
+    --thu-purple:#5C068C;
+    --thu-purple-light:#f5effa;
+    --ink:#1f2330;
+    --ink-2:#4a5060;
+    --line:#e3e0ea;
+    --campus:#3f51b5;
+    --campus-bg:#eef1fb;
+    --corp:#00695c;
+    --corp-bg:#e6f2f0;
+    --bridge:#b45309;
+    --bridge-bg:#fdf3e3;
+    --live:#8a2b5c;
+    --live-bg:#f9eef4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:var(--ink);
+    background:#f4f2f7;
+    line-height:1.75;
+    font-size:15.5px;
+  }
+  .page{max-width:1080px;margin:0 auto;padding:28px 22px 80px;}
+
+  /* ---------- header ---------- */
+  .hero{
+    background:linear-gradient(135deg,#4a0672 0%,#6a1b9a 55%,#82318e 100%);
+    color:#fff;border-radius:16px;padding:40px 38px 34px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+  }
+  .hero::before{
+    content:"";position:absolute;right:40px;bottom:-90px;width:200px;height:200px;border-radius:50%;
+    background:rgba(255,255,255,.06);
+  }
+  .hero .kicker{font-size:13px;letter-spacing:2px;opacity:.85;margin-bottom:10px;}
+  .hero h1{font-size:29px;line-height:1.35;margin-bottom:12px;font-weight:700;}
+  .hero .sub{font-size:14.5px;opacity:.92;max-width:780px;}
+  .hero .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
+  .hero .tags span{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;padding:3px 12px;font-size:12.5px;
+  }
+  .hero a.taglink{
+    background:rgba(255,255,255,.92);color:var(--thu-purple);text-decoration:none;font-weight:700;
+    border-radius:999px;padding:3px 12px;font-size:12.5px;
+  }
+  .hero a.taglink:hover{background:#fff;}
+
+  /* ---------- toc ---------- */
+  .toc{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:16px 24px;margin:20px 0;display:flex;flex-wrap:wrap;gap:10px 22px;
+    font-size:14px;box-shadow:0 1px 4px rgba(60,40,90,.06);
+  }
+  .toc a{color:var(--thu-purple);text-decoration:none;font-weight:600;}
+  .toc a:hover{text-decoration:underline;}
+  .toc .toc-label{font-weight:700;color:var(--ink-2);}
+
+  /* ---------- sections ---------- */
+  section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 36px;margin-bottom:24px;box-shadow:0 1px 4px rgba(60,40,90,.05);}
+  h2{
+    font-size:21px;color:var(--thu-purple);margin-bottom:6px;font-weight:700;
+    display:flex;align-items:center;gap:10px;
+  }
+  h2 .num{
+    background:var(--thu-purple);color:#fff;width:30px;height:30px;border-radius:8px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none;
+  }
+  .sec-desc{color:var(--ink-2);font-size:14px;margin-bottom:18px;}
+  p{margin:8px 0;}
+  b,strong{font-weight:700;}
+  .hl{color:var(--thu-purple);font-weight:700;}
+  .small{font-size:12.5px;color:#8b8fa0;}
+
+  /* ---------- keyline chips ---------- */
+  .keyline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0;}
+  .keyline .k{background:var(--thu-purple-light);border-radius:10px;padding:9px 14px;font-size:13px;}
+  .keyline .k b{color:var(--thu-purple);}
+
+  /* ---------- stage cards ---------- */
+  .stage{border-radius:14px;padding:20px 22px;margin:18px 0;}
+  .stage.gift{background:var(--bridge-bg);border:1px solid #f2d9a8;}
+  .stage.gift h3{color:var(--bridge);}
+  .stage.trip{background:var(--campus-bg);border:1px solid #c9d3f2;}
+  .stage.trip h3{color:var(--campus);}
+  .stage.life{background:var(--corp-bg);border:1px solid #b9ded8;}
+  .stage.life h3{color:var(--corp);}
+  .stage h3{margin-top:0;display:flex;align-items:center;gap:10px;}
+  .stage .badge{font-size:12px;color:#fff;border-radius:6px;padding:2px 10px;font-weight:600;flex:none;}
+  .stage.gift .badge{background:var(--bridge);}
+  .stage.trip .badge{background:var(--campus);}
+  .stage.life .badge{background:var(--corp);}
+
+  /* ---------- photo cards (默认折叠) ---------- */
+  details.photo-card{
+    background:#fff;border:1.5px solid #d3c4ee;border-radius:12px;margin:16px 0;
+    overflow:hidden;box-shadow:0 1px 4px rgba(60,40,90,.06);
+  }
+  details.photo-card summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;
+    padding:13px 18px;background:linear-gradient(90deg,#f5effa,#faf8fd);
+    font-weight:700;font-size:14.2px;color:var(--thu-purple);user-select:none;
+  }
+  details.photo-card summary, details.photo-card summary *{
+    cursor:pointer !important;-webkit-user-select:none !important;user-select:none !important;
+  }
+  details.photo-card summary::-webkit-details-marker{display:none;}
+  details.photo-card summary::before{
+    content:"▸";flex:none;font-size:15px;transition:transform .2s ease;color:#9a6ab8;
+  }
+  details.photo-card[open] summary::before{transform:rotate(90deg);}
+  details.photo-card summary .hint{
+    margin-left:auto;font-size:11.6px;font-weight:400;color:#9a6ab8;
+    background:#fff;border:1px solid #d3c4ee;border-radius:999px;padding:2px 10px;flex:none;
+  }
+  .photo-body{padding:16px 18px;border-top:1px dashed #d3c4ee;background:#fff;}
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+  .photo-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;}
+  .photo-grid img{width:100%;height:190px;object-fit:cover;display:block;background:#eee;}
+  .photo-grid figcaption{
+    font-size:12.3px;color:var(--ink-2);padding:7px 10px;background:#faf9fc;
+    border-top:1px solid var(--line);
+  }
+  .photo-grid figcaption b{color:var(--thu-purple);}
+
+  /* ---------- city board ---------- */
+  .city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0;}
+  .city{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+    text-align:center;font-weight:700;font-size:13.5px;color:var(--campus);
+  }
+  .city small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-2);margin-top:2px;}
+
+  footer{color:#8b8fa0;font-size:12.5px;text-align:center;margin-top:26px;line-height:1.8;}
+  footer a{color:var(--thu-purple);font-weight:600;}
+  .next-link{text-align:center;margin:16px 0 0;}
+  .next-link a{color:var(--thu-purple);font-weight:700;text-decoration:none;}
+
+  @media (max-width:720px){
+    section{padding:24px 18px;}
+    .hero{padding:30px 22px;}
+    .hero h1{font-size:23px;}
+    .photo-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media print{
+    body{background:#fff;}
+    section{box-shadow:none;break-inside:avoid;}
+    details.photo-card{break-inside:avoid;}
+  }
+</style>
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="YKWOiKdwfmEtVQS7GzMfR8" style="">
+<div class="page" data-page-node-id="wrqEciuW6TJEO3TdeBZi5B">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero" data-page-node-id="4uEMwFelCf53DZQXwzlefA">
+    <div class="kicker" data-page-node-id="xgoyByu5SB8OvydZrpyHpj" style="text-align: center;">TSINGHUA​</div>
+    <h1 data-page-node-id="hW1S0eBCs33BLeD14h2lGp" style="white-space: pre-wrap; text-align: center;">Work Life Balance 
+
+ 工作之外，生活也在生长</h1>
+    
+    
+  </div>
+
+  <!-- ================= TOC ================= -->
+  <nav class="toc" data-page-node-id="S4BGW3ClDMoPriD9zEYsGv">
+    <span class="toc-label" data-page-node-id="onPGgJkzW8z4u7eX2S4uiC">本板块目录</span>
+    <a href="#s1" data-page-node-id="swCY6FHBfD7mZzCNIbvKWH">一、员工福利</a>
+    <a href="#s2" data-page-node-id="xEsPDGQO2dCBVFl5tZ2TYL">二、周末与假期 · 高铁出发</a>
+    <a href="#s3" data-page-node-id="6h5dUqAH37cs8FNz9aZ1Yc">三、日常生活 · 下班之后</a>
+  </nav>
+
+  <!-- ================= S1 员工福利 ================= -->
+  <section id="s1" data-page-node-id="5BLm5fQg5UCrpnvF8jWFMs">
+    <h2 data-page-node-id="439bTcpBcjsMT8T3dohAh9"><span class="num" data-page-node-id="gwspLPENHhCdoTyYgW3Jfo">一</span>员工福利</h2>
+    <p class="sec-desc" data-page-node-id="UO48hR3Mji4oSyH3o9dsAn">节假日的仪式感，公司替你想好了。</p>
+    <div class="stage gift" data-page-node-id="ugtWAGOBA0db0uVgDM9ytt">
+      <h3 data-page-node-id="UwxAvi2TK1wsNmkUSQwKFt"><span class="badge" data-page-node-id="EU6BO6acwDXEKBBQZ0FFIS">🎁 福利</span>节假日伴手礼</h3>
+      <div class="keyline" data-page-node-id="IilJdfVW4pptdstMplNOzg">
+        <div class="k" data-page-node-id="QkF1RqdFSmFea7kdZIhfyi"><b data-page-node-id="dkEgXtXffeNAcltaLvuBiB">端午节礼盒</b> · 节日限定</div>
+        <div class="k" data-page-node-id="gngqKjMPRa44cobZSr2d3Z"><b data-page-node-id="DWvYRvVQNieojvEkyxO00k">中秋节礼盒</b> ·「美好团圆」月饼</div>
+        <div class="k" data-page-node-id="yfDapttDMKKAhObbB3W9iq"><b data-page-node-id="muEO81VVNnEyH75xiGnorR">夏日水果</b> · 时令鲜果直送到手</div>
+        <div class="k" data-page-node-id="MZr2wfp2Di4CHzEPDTqrp8"><b data-page-node-id="z2kaC4SmWUaepL1Vk9c3fI">旅游经费</b> · 国内外旅行支持</div>
+      </div>
+      <p class="small" data-page-node-id="JIeyxbt5ePP9Ihjvm9MXah">从传统节令到夏日时鲜，福利跟着日历走；旅游经费则把假期半径直接扩展到国内外。</p>
+    </div>
+
+    <details class="photo-card" data-page-node-id="cRoaAkpU4aJCAcyT8diWa7">
+      <summary data-page-node-id="5vvnNca1EikrYsd5LZYYBJ" style="">📷 福利实拍<span class="hint" data-page-node-id="Vku5d6jp9CdbL7t3ICaOgG">点击展开</span></summary>
+      <div class="photo-body" data-page-node-id="ctYTQIv3zKmbAUKNF7BlK5">
+        <div class="photo-grid" data-page-node-id="LMu4HRzm3X7awmnb1WirsZ">
+          <figure data-page-node-id="cchnnKccC5u6EAAz9gQpX6"><img src="images/img20-welfare-mooncake.jpg" alt="中秋礼盒" data-page-node-id="iyTaJRPPq1TpDYJMdwEpbD"><figcaption data-page-node-id="3ahqfvxsjPa4CGkvw0kCwi"><b data-page-node-id="Tw59DStqfU0QSyFhRfRdhp">中秋节礼盒</b> ·「美好团圆」月饼礼袋</figcaption></figure>
+          <figure data-page-node-id="SoWZdf5Dywwz9Vm9aidApu"><img src="images/img21-welfare-fruitbox.jpg" alt="夏日水果" data-page-node-id="exg3xRwbpzdPU0TOg5wzXy"><figcaption data-page-node-id="S5pgU4vbLb1zKgQiF97U4E"><b data-page-node-id="tmRlZIZnI9DncaauYSLf6V">夏日水果</b> · 葡萄、鲜梨礼盒整箱到岗</figcaption></figure>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= S2 周末与假期 ================= -->
+  <section id="s2" data-page-node-id="fIojE1c9pTtYYcyYhAItSE">
+    <h2 data-page-node-id="Vjj7ME2puNiHsWmcLRxSuU"><span class="num" data-page-node-id="YCrKHbNYRq4VY0uFn0vGLh">二</span>周末与假期 · 高铁出发</h2>
+    <p class="sec-desc" data-page-node-id="GmXNDxzMnQSzRJ5UxTM3Az">周末双休 + 节假日，从小区门口乘高铁说走就走——常熟站毗邻多个旅游城市，国内城市快速直达，远至马来西亚则飞往海外。</p>
+
+    <div class="stage trip" data-page-node-id="OUEpESB9VGjO0t6Ov7UHzA">
+      <h3 data-page-node-id="4yN2BgeuOGV8J3OpynWvaq"><span class="badge" data-page-node-id="8t88cfFnjRf14CiwHE03nz">🚄 出发</span>已有足迹</h3>
+      <div class="city-grid" data-page-node-id="5E7zzUJSGs51rGmr3RZwMU">
+        <div class="city" data-page-node-id="EuCzA3D1Iv38JphtMxZbWx">📍 杭州<small data-page-node-id="VIChf0L9hLbImACnWprUoq">西湖烟雨</small></div>
+        <div class="city" data-page-node-id="BPFKFICBIgnLhnic3G4wuQ">📍 苏州<small data-page-node-id="e6MjIYnpGGEtft8f2GJdfQ">石湖拱桥</small></div>
+        <div class="city" data-page-node-id="SmPQATgyVuxA9F51L7z6bD">📍 上海<small data-page-node-id="O7RfZy3FH74AB1T3lKmuO7">都市食光</small></div>
+        <div class="city" data-page-node-id="i7dobesGQaJ5q36tSeMert">📍 安徽<small data-page-node-id="hs3TlSMFvhGsUDkGncoAw7">徽行之宴</small></div>
+        <div class="city" data-page-node-id="iqss4f0yOnEzhSgp4kSvXz">📍 北京<small data-page-node-id="9oGGRaRYat8M9gPoBpJ9Mw">故宫檐角</small></div>
+        <div class="city" data-page-node-id="p0jRimNZJQF6XT9aM8lbRu">📍 马来西亚<small data-page-node-id="IuB3395VIBcr03ER9h9Lxl">海岛泳池</small></div>
+      </div>
+      <p class="small" data-page-node-id="aMGRN8fANAQnrKZoGCKQsH" style="color: rgb(192, 0, 0); white-space: pre-wrap;">近则高铁半小时圈，远则护照加机票——旅游经费让"远方"也在日程表里。​​​​​</p>
+    </div>
+
+    <details class="photo-card" data-page-node-id="wQ0y24zgcBDqSCBSGb46DF">
+      <summary data-page-node-id="dkC53gqzueqsunnuikmDRq" style="">📷 旅行相册<span class="hint" data-page-node-id="ZUK5EjVAZFnPjn1mgLYESg">点击展开</span></summary>
+      <div class="photo-body" data-page-node-id="kCwtLs1l5F0T32WxAOpLzc">
+        <div class="photo-grid" data-page-node-id="Gh5PR2gxTi2f2T4DaWNYEl">
+          <figure data-page-node-id="xF6SeLAm4OeohdCRSpu2cB"><img src="images/img22-travel-hangzhou.jpg" alt="杭州" data-page-node-id="TKlYAGZ3heLuMHfPwX6yem"><figcaption data-page-node-id="IVPgSH64ZyHDcyHX4OzYbY"><b data-page-node-id="CQbV3vIm2cMBT3g68dlmDI">杭州</b> · 西湖烟雨，湖心亭远眺</figcaption></figure>
+          <figure data-page-node-id="5ih9vRaA0Vo3mdEfzwEeBx"><img src="images/img23-travel-malaysia.jpg" alt="马来西亚" data-page-node-id="Rlx3WcAPJLDP3hBUGUvMoG"><figcaption data-page-node-id="LkjpBZ6w2f9UUG86E0F5rU"><b data-page-node-id="xpwGvqj555xTOYSPH7Mo9Z">马来西亚</b> · 海岛泳池与棕榈</figcaption></figure>
+          <figure data-page-node-id="0tpsXuDgBfQfR9gD9ufzos"><img src="images/img24-travel-beijing.jpg" alt="北京" data-page-node-id="FrTDWjqsRWNZjJP4ZGLCYe"><figcaption data-page-node-id="vI43QGwhiZ9AqcjTBoTBNX"><b data-page-node-id="uGN5ikAm7hjvYYdhFBe6Yc">北京</b> · 故宫檐角脊兽</figcaption></figure>
+          <figure data-page-node-id="qQ84pQP1D6c0ANqDOPTNdU"><img src="images/img25-travel-anhui.jpg" alt="安徽" data-page-node-id="vxRnWqgZVP6vSITjUGHSRw"><figcaption data-page-node-id="26WvfI9Y6nY7yCjQ1SYtns"><b data-page-node-id="mk7AAfzuWSL9SnlQhOocXO">安徽</b> · 徽行一桌好菜</figcaption></figure>
+          <figure data-page-node-id="CG10NEMcXLbp7i7hVX8ydm"><img src="images/img26-travel-suzhou.jpg" alt="苏州" data-page-node-id="MJbAN30jNVXcb9uzFEYpNl"><figcaption data-page-node-id="bFYKq6canFBMjn6Jr3TN5E"><b data-page-node-id="Dr7VVYL4Sinleb090Qusfk">苏州</b> · 夕照石湖拱桥</figcaption></figure>
+          <figure data-page-node-id="6os6QRRivwrxl2Ima4sfRC"><img src="images/img27-travel-shanghai.jpg" alt="上海" data-page-node-id="ZGSOHG2Cq0joTHR5FBxZs8"><figcaption data-page-node-id="luA1qUGShJTHdpXlLGVi1g"><b data-page-node-id="8Qh1GhG6LEH07cYUJ8FzJ1">上海</b> · 旅途食光</figcaption></figure>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= S3 日常生活 ================= -->
+  <section id="s3" data-page-node-id="zUFDPvrwKor5WhyqlDCGkn">
+    <h2 data-page-node-id="5qAaF0rjw00po2iLCn39Ke"><span class="num" data-page-node-id="Y63XjvEeSFqJ2hunlUqray">三</span>日常生活 · 下班之后</h2>
+    <p class="sec-desc" data-page-node-id="14J9fade8ltPJZzok03Cn9">工作之余学习自己喜欢的技能——比如做饭。从西餐到硬菜，厨房进度条持续加载中。</p>
+
+    <div class="stage life" data-page-node-id="oUTXo5z3zj3v0QHnYrI7hS">
+      <h3 data-page-node-id="bUH2sjBmW6pHAy40Q5Sz6L"><span class="badge" data-page-node-id="bnP0VOMZ7Z4BBJDGIC2DkV">🍳 厨艺</span>下班后的第二实验室</h3>
+      <div class="keyline" data-page-node-id="hNMZ3ux2QlJXLYvrQhvN6D">
+        <div class="k" data-page-node-id="CBqrYm6zHeets6ZKmern9t"><b data-page-node-id="snP7kxckfqRpomXQXyDj5s">西餐线</b> · 香煎牛排 / 缤纷酸奶碗</div>
+        <div class="k" data-page-node-id="aRHl5Qa3fjoMuoBtoCjhxP"><b data-page-node-id="8r6nXiHk2sA3dG6JyuXqao">主食线</b> · 溏心蛋肥牛面 / 红油汤饺</div>
+        <div class="k" data-page-node-id="ndN8JwmFvdP6qUrJNJyri5"><b data-page-node-id="55d0cuz53lOVRNSHpREilP">硬菜线</b> · 麻辣小龙虾 / 土豆烧排骨</div>
+      </div>
+      <p class="small" data-page-node-id="BCGsFeBgEdl2IICHgp8HWf">做实验讲流程，做菜讲火候——技能点在厨房也能点亮。</p>
+    </div>
+
+    <details class="photo-card" data-page-node-id="DkrHmLyg3J3HX0eA127bXd">
+      <summary data-page-node-id="neq0V4GknmzIwQY9eoCXnJ">📷 厨艺战绩<span class="hint" data-page-node-id="tqgzJAxTD29cxuPOp8Eo0R">点击展开</span></summary>
+      <div class="photo-body" data-page-node-id="haDE6fbvwPUnRPL8IOVI8j">
+        <div class="photo-grid" data-page-node-id="MXQkkhtxzEtrl22XeoO2Sh">
+          <figure data-page-node-id="Js7GsZCnQv777JDOpwwPzC"><img src="images/img28-cook-steak.jpg" alt="香煎牛排" data-page-node-id="EFaygJwtJ444LfnDzIT3zW"><figcaption data-page-node-id="xttdD8DAH3zlH1GUKPOgMl"><b data-page-node-id="fbby4ljpaatvSQ9ZPzcH2v">战绩 ①</b> · 香煎牛排，粉心刚好</figcaption></figure>
+          <figure data-page-node-id="d3opvnk4UQq2DMheq3GoAu"><img src="images/img29-cook-yogurtbowl.jpg" alt="缤纷酸奶碗" data-page-node-id="3s0a0cVjZPJDnkJ21UIQ1Z"><figcaption data-page-node-id="CaaaKFniU5xhxlzDbjdr1e"><b data-page-node-id="HFuwQmznJzKkxmPKE7NdHs">战绩 ②</b> · 缤纷酸奶碗，蓝莓自由</figcaption></figure>
+          <figure data-page-node-id="icLeqdCS5qcD8nkFZo184u"><img src="images/img30-cook-noodles.jpg" alt="溏心蛋肥牛面" data-page-node-id="8wXZEEksYm0CTfOW24swel"><figcaption data-page-node-id="BLGekN0HhBf1lFEa1NKkVX"><b data-page-node-id="uaq38TIi6snZMWEZYN9moz">战绩 ③</b> · 溏心蛋肥牛面，卧蛋流心</figcaption></figure>
+          <figure data-page-node-id="R9dgF3ToVg10FtyACajYmF"><img src="images/img31-cook-dumplings.jpg" alt="红油汤饺" data-page-node-id="StsIB6jQ3FrPZiJSRkAl93"><figcaption data-page-node-id="r8P9So6mtFquUB9jwo1CUM"><b data-page-node-id="tMHygYZ001ddkwGT2CcrMo">战绩 ④</b> · 红油汤饺，蘸料在线</figcaption></figure>
+          <figure data-page-node-id="djfr5KjfOp5mR4uKFCvigr"><img src="images/img32-cook-crayfish.jpg" alt="麻辣小龙虾" data-page-node-id="bxBxmEwYXcmKzh2vPuyCCl"><figcaption data-page-node-id="TyBZLpH1Nxz8L9LTILHQjj"><b data-page-node-id="d9Lq7Z5hfrfToTXeLZvlcF">战绩 ⑤</b> · 麻辣小龙虾，锅中见红</figcaption></figure>
+          <figure data-page-node-id="Gzn6Qpfs1oUNfwFBSsHVkU"><img src="images/img33-cook-ribs.jpg" alt="土豆烧排骨" data-page-node-id="sQR5Ckrn6CcAuJQfzJIymd"><figcaption data-page-node-id="AnIZaDXwUAzuvk9LHpdeya"><b data-page-node-id="a4t6uLcaXJw5Q7ciyIvxQS">战绩 ⑥</b> · 土豆烧排骨，下饭硬菜</figcaption></figure>
+        </div>
+      </div>
+    </details>
+
+    <p class="next-link" data-page-node-id="quhAJXElOcrMiHuHy3kNPh"><a href="application-process.html" data-page-node-id="OP8D5kH5yXj1wwcOuEpCFD">← 返回板块一《申请流程》</a>　·　<a href="after-onboarding.html" data-page-node-id="o6XasBdCyKVzmWVuDWPfBd">← 板块二《入企业之后》</a></p>
+  </section>
+
+  <p class="next-link" data-page-node-id="FT9876Z29JFSZyJpf8sW2d"><a href="ending.html" data-page-node-id="9SBGXAFw1fNhBaZh8lWNpB" style="white-space: pre-wrap; cursor: text;">下一页：结束页 · 欢迎同学们选择大金​</a></p>
+  <footer data-page-node-id="iCITTbiEinDPms7ujehNAw" style="white-space: pre-wrap; text-align: center; text-decoration-line: none;">                
+版权所有 侵权必究<div data-page-node-id="26TBZQSRnkMJDCiCndn7iD" style="">核桃街出品©️​</div></footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
