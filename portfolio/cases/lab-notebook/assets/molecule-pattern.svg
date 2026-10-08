@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="300" viewBox="0 0 360 300">
+  <defs>
+    <radialGradient id="atom" cx="30%" cy="25%" r="75%"><stop stop-color="#fff"/><stop offset=".4" stop-color="#cad4e6"/><stop offset="1" stop-color="#8b9ebf"/></radialGradient>
+    <radialGradient id="accent" cx="30%" cy="25%" r="75%"><stop stop-color="#edf4ff"/><stop offset=".5" stop-color="#9ab5df"/><stop offset="1" stop-color="#6e8cbb"/></radialGradient>
+    <g id="water"><path d="M-18 12 0 0 18 12" fill="none" stroke="#9aacc8" stroke-width="4" stroke-linecap="round"/><circle r="7" fill="url(#accent)"/><circle cx="-18" cy="12" r="4.5" fill="url(#atom)"/><circle cx="18" cy="12" r="4.5" fill="url(#atom)"/></g>
+    <g id="tetra"><path d="M0 0-20-12M0 0 19-14M0 0 4 23M0 0-4-23" fill="none" stroke="#9aacc8" stroke-width="3.5" stroke-linecap="round"/><circle cx="-4" cy="-23" r="4" fill="url(#atom)"/><circle r="7" fill="url(#accent)"/><circle cx="-20" cy="-12" r="4.5" fill="url(#atom)"/><circle cx="19" cy="-14" r="4.5" fill="url(#atom)"/><circle cx="4" cy="23" r="4.5" fill="url(#atom)"/></g>
+    <g id="chain"><path d="M-24 9-8-4 10 8 26-5" fill="none" stroke="#9aacc8" stroke-width="3.5" stroke-linecap="round"/><circle cx="-24" cy="9" r="5" fill="url(#atom)"/><circle cx="-8" cy="-4" r="6" fill="url(#accent)"/><circle cx="10" cy="8" r="6" fill="url(#atom)"/><circle cx="26" cy="-5" r="5" fill="url(#accent)"/></g>
+  </defs>
+  <g opacity=".14">
+    <use href="#water" transform="translate(52 52) rotate(-22)"/>
+    <use href="#tetra" transform="translate(230 54) rotate(18) scale(.82)"/>
+    <use href="#chain" transform="translate(142 157) rotate(-28)"/>
+    <use href="#water" transform="translate(321 162) rotate(48) scale(.85)"/>
+    <use href="#tetra" transform="translate(40 260) rotate(-18) scale(.75)"/>
+    <use href="#chain" transform="translate(243 266) rotate(18) scale(.8)"/>
+  </g>
+</svg>

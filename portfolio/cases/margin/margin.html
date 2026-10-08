@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Margin · 作品展示</title>
+  <meta name="description" content="Margin，一个从英文 PDF 书库开始的精读工具。展示真实书库界面与精读设计原型。">
+  <link rel="icon" href="assets/margin-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳至正文</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="Margin，回到顶部"><img src="assets/margin-logo.svg" width="32" height="32" alt=""><span>Margin</span></a>
+    <nav aria-label="作品章节"><a href="../../landing%20page.html#works">返回作品</a><a href="#library">书库界面</a><a href="#reading">精读原型</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="project-title">
+      <div class="project-intro">
+        <div><p class="eyebrow">英文 PDF 精读工具</p><h1 id="project-title">Margin<span class="period">.</span></h1></div>
+        <div class="project-description"><p>在页间，<br>读懂更多。</p><span class="project-status"><i aria-hidden="true"></i>个人项目 · 开发中</span></div>
+      </div>
+      <div class="reading-cover">
+        <img src="assets/reading-cover.jpg" alt="湖边树下，一位读者安静地读书" width="1536" height="1024" fetchpriority="high">
+        <div class="cover-copy"><p>Read beyond<br><em>the words.</em></p><a href="#library" class="cover-link">探索阅读体验 <span aria-hidden="true">↓</span></a></div>
+        <span class="cover-caption" aria-hidden="true">A little room for deeper reading.</span>
+      </div>
+    </section>
+
+    <section id="library" class="library-section wrap" aria-labelledby="library-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE LIBRARY</p><h2 id="library-title">让文件，也有书的形状。</h2></div>
+        <p class="section-description">导入 PDF，展开卡组，点击预览。</p>
+      </div>
+      <div class="product-gallery">
+        <div class="gallery-toolbar">
+          <div class="view-tabs" role="tablist" aria-label="书库界面状态">
+            <button type="button" id="tab-library" role="tab" aria-selected="true" aria-controls="library-panel" data-view="assets/library-closed.png" data-label="书库">书库</button>
+            <button type="button" id="tab-deck" role="tab" aria-selected="false" aria-controls="library-panel" tabindex="-1" data-view="assets/library-open.png" data-label="卡组展开">卡组展开</button>
+            <button type="button" id="tab-preview" role="tab" aria-selected="false" aria-controls="library-panel" tabindex="-1" data-view="assets/pdf-preview.png" data-label="首页预览">首页预览</button>
+          </div>
+          <span class="capture-kind">真实界面 · 示例 PDF</span>
+        </div>
+        <div id="library-panel" role="tabpanel" aria-labelledby="tab-library" tabindex="0">
+          <button type="button" class="product-screen" id="screen-zoom" aria-label="放大书库界面">
+            <img id="product-image" src="assets/library-closed.png" width="1440" height="1000" alt="Margin 真实书库界面，六组刊物封面和已导入文件数量" loading="lazy">
+            <span class="zoom-indicator" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reading" class="reading-section" aria-labelledby="reading-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">IN THE MARGIN</p><h2 id="reading-title">理解，留在原文旁。</h2></div>
+          <span class="prototype-label">精读设计原型</span>
+        </div>
+        <div class="reader-prototype">
+          <div class="reader-toolbar"><span class="document-name">The art of paying attention.pdf</span><span class="reader-page">首页</span></div>
+          <div class="reader-body">
+            <article class="reading-paper" aria-label="原创示例文章">
+              <p class="paper-kicker">THE READING ROOM</p>
+              <h3>The art of<br><em>paying attention</em></h3>
+              <img src="assets/reading-cover.jpg" alt="湖边阅读场景" width="1536" height="1024" loading="lazy">
+              <p><button type="button" class="selected-sentence" id="selected-sentence" aria-expanded="true" aria-controls="explanation">Although the evidence is limited, the findings are promising.</button></p>
+              <p>Reading slowly gives unfamiliar ideas time to take shape. A single paragraph can invite us to reconsider what we know, connect different experiences, and find a new perspective.</p>
+              <p>Attention is a habit we can develop. The goal is to leave the page with something that was not there when we began.</p>
+              <span class="paper-footer">Original sample text</span>
+            </article>
+            <aside class="page-margin" aria-label="页边解释原型">
+              <div class="explanation" id="explanation">
+                <div class="explanation-tabs" role="tablist" aria-label="解释类型">
+                  <button type="button" id="tab-translation" role="tab" aria-selected="true" aria-controls="translation">译文</button>
+                  <button type="button" id="tab-structure" role="tab" aria-selected="false" aria-controls="structure" tabindex="-1">句子结构</button>
+                </div>
+                <div class="explanation-content" id="translation" role="tabpanel" aria-labelledby="tab-translation" tabindex="0"><p>尽管证据有限，<br>这些发现仍然令人期待。</p><div class="vocabulary"><span>promising</span><span>有希望的；前景良好的</span></div></div>
+                <div class="explanation-content structure" id="structure" role="tabpanel" aria-labelledby="tab-structure" tabindex="0" hidden>
+                  <div><small>让步从句</small><p>Although the evidence is limited</p></div>
+                  <div><small>主句</small><p>the findings are promising</p></div>
+                  <p class="structure-note">Although 引出让步，主句表达判断。</p>
+                </div>
+              </div>
+              <p class="prototype-hint">点选高亮句，查看页边解释。</p>
+            </aside>
+          </div>
+        </div>
+        <p class="reading-caption">原型展示选文解释的交互方向，尚未接入实际精读功能。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div><span class="footer-brand">Margin</span><p>已实现导入与首页预览，下一步是选文解释与笔记。</p></div>
+    <a href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
+  </footer>
+
+  <dialog id="image-viewer" aria-label="Margin 界面截图">
+    <div class="viewer-heading"><span id="viewer-title">书库</span><button type="button" id="close-viewer" aria-label="关闭截图"><svg viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div>
+    <div class="viewer-content"><img id="full-image" alt=""></div>
+  </dialog>
+</body>
+</html>

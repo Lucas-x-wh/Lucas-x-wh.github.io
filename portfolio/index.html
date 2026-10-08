@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas — 个人作品</title>
+<link rel="icon" href="assets/logo.png">
+<style>
+  :root {
+    /* 色彩唯一来源：logo 的晨雾蓝 */
+    --bg: #fdfdfc;
+    --ink: #17202c;        /* 近黑的蓝墨 */
+    --body: #46505e;
+    --muted: #8b95a3;
+    --line: #e6eaef;
+    --accent: #3e6fbf;     /* logo 主蓝 */
+    --accent-soft: #eef3fa;
+    --glow: #dce8f8;
+    --warm: #f6d9b8;       /* logo 暖橙，仅点缀 */
+    --maxw: 1080px;
+    --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --serif: "Songti SC", "STSong", "SimSun", serif;
+    --ease: cubic-bezier(.2, .6, .2, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Helvetica Neue", var(--sans);
+    background: var(--bg);
+    color: var(--body);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--glow); color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+
+  /* ---------- 顶栏 ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(253, 253, 252, .88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img {
+    width: 30px; height: 30px;
+    display: block;   /* 圆角已内建于 PNG 透明通道，不再用 CSS 裁切 */
+  }
+  .brand-name {
+    color: var(--ink); font-weight: 600; font-size: 15px; letter-spacing: .02em;
+  }
+  .nav { display: flex; gap: 32px; }
+  .nav a {
+    font-size: 14px; color: var(--muted);
+    transition: color .25s var(--ease);
+  }
+  .nav a:hover { color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 120px 0 104px;
+    overflow: hidden;
+  }
+  /* 极淡光晕，呼应 logo 气质，仅此一处 */
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 720px; height: 720px;
+    border-radius: 50%;
+    top: -280px; right: -160px;
+    background: radial-gradient(circle, var(--glow) 0%, rgba(220,232,248,0) 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    bottom: -220px; left: -120px;
+    background: radial-gradient(circle, rgba(246,217,184,.35) 0%, rgba(246,217,184,0) 65%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; letter-spacing: .18em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: ""; width: 28px; height: 1px; background: var(--accent);
+  }
+  h1 {
+    color: var(--ink);
+    font-size: clamp(64px, 6vw, 76px);
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -.01em;
+    max-width: none;
+    margin-bottom: 40px;
+  }
+  h1 .hero-line { display: block; }
+  h1 .hero-line + .hero-line {
+    font-family: var(--serif); font-weight: 500; color: var(--accent);
+    margin-top: 12px; letter-spacing: -.045em;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 46px; padding: 0 26px;
+    font-size: 15px; font-weight: 500;
+    border-radius: 23px;
+    transition: all .25s var(--ease);
+  }
+  .btn-primary {
+    background: var(--ink); color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost {
+    color: var(--ink);
+    border: 1px solid var(--line);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn .arrow { transition: transform .25s var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ---------- 区块通用 ---------- */
+  section { padding: 96px 0; }
+  .sec-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .sec-title {
+    color: var(--ink); font-family: var(--serif); font-size: 30px; font-weight: 600; letter-spacing: .01em;
+  }
+  .sec-num {
+    font-size: 13px; color: var(--muted); letter-spacing: .14em;
+  }
+  .rule { border: 0; border-top: 1px solid var(--line); }
+
+  /* ---------- 作品 ---------- */
+  .works { border-top: 1px solid var(--line); }
+  .work-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;
+  }
+  .work-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  a.work-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--glow);
+    box-shadow: 0 16px 40px -20px rgba(62, 111, 191, .25);
+  }
+  .work-media {
+    aspect-ratio: 16 / 10;
+    background: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; overflow: hidden;
+  }
+  .work-media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .work-media.margin-media { background: #f5eedc; }
+  a.work-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+  .work-body { padding: 22px 22px 24px; }
+  .work-tag {
+    font-size: 12px; letter-spacing: .12em; color: var(--accent);
+    text-transform: uppercase;
+  }
+  .work-title {
+    color: var(--ink); font-size: 24px; font-weight: 600;
+    margin: 8px 0 6px;
+  }
+  .work-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* ---------- 关于 ---------- */
+  .about { border-top: 1px solid var(--line); }
+  .about-grid {
+    display: grid; grid-template-columns: 5fr 4fr; gap: 80px;
+    align-items: start;
+  }
+  .about-text p { margin-bottom: 20px; }
+  .about-facts {
+    border-left: 1px solid var(--line);
+    padding-left: 40px;
+    display: grid; gap: 28px;
+  }
+  .fact-num {
+    color: var(--accent); font-size: 30px; font-weight: 600;
+    letter-spacing: -.01em; line-height: 1.2;
+  }
+  .fact-label { font-size: 14px; color: var(--muted); }
+
+  /* ---------- 联系 ---------- */
+  .contact {
+    border-top: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-soft) 100%);
+  }
+  .contact-inner { text-align: center; padding: 24px 0 8px; }
+  .contact h2 {
+    color: var(--ink);
+    font-size: clamp(26px, 3.4vw, 38px);
+    font-weight: 600; letter-spacing: -.01em;
+    margin-bottom: 16px;
+  }
+  .contact p { max-width: 30em; margin: 0 auto 36px; }
+  .contact .email {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 17px; color: var(--ink); font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    transition: color .25s var(--ease), border-color .25s var(--ease);
+  }
+  .contact .email:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- 页脚 ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+  }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a:hover { color: var(--ink); }
+
+  /* ---------- 进场动画 ---------- */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .7s var(--ease), transform .7s var(--ease);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width: 860px) {
+    .wrap { padding: 0 24px; }
+    .hero { padding: 88px 0 72px; }
+    h1 { font-size: clamp(44px, 7.6vw, 64px); }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-facts {
+      border-left: 0; border-top: 1px solid var(--line);
+      padding-left: 0; padding-top: 40px;
+      grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .nav { gap: 20px; }
+    .nav a:nth-child(2) { display: none; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: clamp(32px, 8.9vw, 44px); letter-spacing: -.04em; }
+    h1 .hero-line + .hero-line { margin-top: 10px; }
+    .work-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero { padding: 76px 0 64px; }
+    .sec-head { margin-bottom: 28px; }
+    .work-title { font-size: 24px; }
+    .work-media { padding: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .work-card { transition: none; }
+    a.work-card:hover { transform: none; }
+  }
+</style>
+<link rel="stylesheet" href="assets/specular-react.bundle.css">
+<script src="assets/specular-react.bundle.js" defer></script>
+</head>
+<body>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">
+        <img src="assets/logo.png" alt="站点 Logo">
+        <span class="brand-name">Lucas</span>
+      </a>
+      <nav class="nav">
+        <a href="#works">作品</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1><span class="hero-line">从自己的问题出发，</span><span class="hero-line">把想法做成工具。</span></h1>
+      <div class="hero-actions">
+        <span data-specular-root data-target="works" data-label="查看作品 →"
+              data-props='{"tint":"#17202c","tintOpacity":1,"textColor":"#f5f5f5","lineColor":"#ffffff","baseColor":"#5a6472","intensity":1.2}'></span>
+        <span data-specular-root data-target="contact" data-label="联系我"
+              data-props='{"tint":"#ffffff","tintOpacity":0.55,"blur":6,"textColor":"#17202c","lineColor":"#3e6fbf","baseColor":"#7f8ea3","intensity":1.1}'></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品 -->
+  <section class="works" id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title">精选作品</h2>
+      </div>
+      <div class="work-grid">
+        <a class="work-card reveal" href="cases/margin/margin.html">
+          <div class="work-media margin-media"><img src="assets/margin-landing.png" alt="Margin 首页：湖边阅读场景与 Read beyond the words 标题" width="2664" height="1674" loading="lazy"></div>
+          <div class="work-body">
+            <h3 class="work-title">Margin</h3>
+            <p class="work-desc">划词理解，留住生词。</p>
+          </div>
+        </a>
+        <a class="work-card reveal" href="cases/lab-notebook/experiment-notes.html">
+          <div class="work-media"><img src="cases/lab-notebook/assets/library.png" alt="实验札记：实验手册列表界面" width="2048" height="1082" loading="lazy"></div>
+          <div class="work-body">
+            <h3 class="work-title">实验札记</h3>
+            <p class="work-desc">导入手册，记录观察，回顾实验。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title">关于我</h2>
+        <span class="sec-num">About</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            目前就读于清华大学法学院，业余时间做产品和写代码。
+            相信好的工具应该安静、可靠、不打扰人——这也是这个网站
+            视觉上尽量克制的原因。
+          </p>
+          <p>
+            关注 AI 与日常工作的结合方式：不是替代人，而是把重复的
+            部分拿走，把判断留给人。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <h2 class="reveal">有想法？聊聊看。</h2>
+      <p class="reveal">
+        无论是合作、实习机会，还是单纯想交流某个项目，
+        都欢迎写邮件给我，我通常会很快回复。
+      </p>
+      <a class="email reveal" href="mailto:xwh25@mails.tsinghua.edu.cn">xwh25@mails.tsinghua.edu.cn</a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 Lucas </span>
+      <div class="footer-links">
+        <a href="https://github.com/Lucas-x-wh" target="_blank" rel="noopener">GitHub</a>
+        <a href="#top">回到顶部 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // 进场动画：IntersectionObserver，保持轻量
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

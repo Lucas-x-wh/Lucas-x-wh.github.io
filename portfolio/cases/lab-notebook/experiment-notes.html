@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>实验札记 · 产品案例</title>
+  <meta name="description" content="实验札记产品案例">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳至正文</a>
+<header class="top"><a class="wordmark" href="#">实验札记<span>LAB NOTEBOOK</span></a></header>
+<main id="main">
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-copy"><p class="eyebrow">产品案例 / 01</p><h1 id="title"><span class="title-sans">实验</span><span class="title-serif">札记<span class="period">.</span></span></h1><p class="intro">让每一次<span class="circled">观察</span>，<br>回到它发生的步骤。</p><a class="visit" href="https://lab-notebook.app.workbuddy.host/app.html?v=1790600531159" target="_blank" rel="noopener noreferrer">访问产品 <span aria-hidden="true">↗</span></a></div>
+    <button class="shot hero-shot" data-image="assets/library.png" aria-label="放大实验手册首页"><img src="assets/library.png" alt="实验手册首页：以卡片展示手册原图、名称和步骤数量" width="2048" height="1082" fetchpriority="high"></button>
+  </section>
+  <ol class="flow" aria-label="产品流程"><li><span>01</span>导入手册</li><li><span>02</span>按步骤记录</li><li><span>03</span>按批次回顾</li></ol>
+  <section class="chapter import" id="import" aria-labelledby="import-title">
+    <div class="section-copy"><p class="number">01 <i>Read it.</i></p><h2 id="import-title">从一张图，<br>到<span class="marked">精确识别</span>。</h2>
+    <div class="ocr-demo" role="img" aria-label="能力示意：扫描手册图像，通过 API OCR 提取文字与化学分子式；并非实时识别结果">
+      <div class="ocr-top"><span>调用API，实现精准OCR识别</span></div>
+      <div class="scan-paper"><span class="paper-label">原图</span><div class="source-formula">C₆H₆</div><div class="paper-lines"><b></b><b></b><b></b></div><div class="scan-line"></div></div>
+      <div class="ocr-connector"><svg viewBox="0 0 240 44" aria-hidden="true"><path d="M14 8 C80 8 74 32 146 32 H220"/><path class="arrow-head" d="m211 25 10 7-10 7"/></svg></div>
+      <div class="ocr-output"><span class="output-check">✓</span><div><small>分子式</small><strong>C<sub>6</sub>H<sub>6</sub></strong></div><span class="output-caret"></span></div>
+    </div></div>
+    <div class="import-frame"><span class="annotation import-note">原图 → 手册</span><button class="shot" data-image="assets/import.png" aria-label="放大上传实验页面"><img src="assets/import.png" alt="上传实验页面，提供原图、文字识别、逐项校对和确认入口" width="948" height="1534" loading="lazy"></button></div>
+  </section>
+  <section class="chapter record" id="record" aria-labelledby="record-title">
+    <div class="section-head"><div><p class="number">02 <i>Catch it.</i></p><h2 id="record-title"><span class="title-sans">观察，</span><br><span class="marked">跟着步骤走。</span></h2></div></div>
+    <div class="record-grid"><svg class="record-arrow" viewBox="0 0 200 90" aria-hidden="true"><path d="M8 70 C55 5 124 5 183 54"/><path class="arrow-head" d="m167 55 20 3-3-20"/></svg><div class="experiment-frame"><button class="shot" data-image="assets/experiment.png" aria-label="放大实验详情"><img src="assets/experiment.png" alt="实验详情将反应原图、实验步骤和记录入口放在同一页面" width="1820" height="1426" loading="lazy"></button></div><div class="observation-frame"><button class="shot" data-image="assets/observation.png" aria-label="放大新增观察页面"><img src="assets/observation.png" alt="新增观察页面保留对应步骤原文，并提供时间、文字与图片输入" width="1344" height="1448" loading="lazy"></button></div></div>
+    <div class="feedback"><span class="annotation">有迹可循 ↗</span><button class="shot" data-image="assets/feedback.png" aria-label="放大已有记录状态"><img src="assets/feedback.png" alt="步骤卡片显示已有记录一条" width="1312" height="336" loading="lazy"></button></div>
+  </section>
+  <section class="chapter review" id="review" aria-labelledby="review-title">
+    <div class="section-head"><div><p class="number">03 <i>Keep it.</i></p><h2 id="review-title">同一份手册，<br><em>不同次</em>实验。</h2></div></div>
+    <div class="batches-frame"><button class="shot" data-image="assets/batches.png" aria-label="放大我的实验页面"><img src="assets/batches.png" alt="我的实验按批次展示进行中和已完成记录，并提供继续记录和查看记录入口" width="2048" height="867" loading="lazy"></button></div>
+  </section>
+</main>
+<footer><p>记录每一次灵感迸发的时刻！</p><a href="#">回到顶部 <span aria-hidden="true">↑</span></a></footer>
+<dialog id="viewer" aria-label="产品截图"><button class="close" aria-label="关闭截图">关闭 <span aria-hidden="true">×</span></button><img id="full-image" alt=""></dialog>
+</body></html>
